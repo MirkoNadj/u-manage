@@ -1,15 +1,15 @@
-import { weatherObject } from "../Interfaces/ObjectInterfaces";
+import { WeatherObject } from "../Interfaces/ObjectInterfaces";
 
 export function getWeather(position: string) {
        
-    const weatherObj: weatherObject = {
+    const weatherObj: WeatherObject = {
         tempMax: '',
         tempMin: '',
         pressure: '',
         humidity: '',
     }
-
-    return fetch(`https://api.openweathermap.org/data/2.5/weather?${position}&units=metric&appid=ea46a9ffca9adcfb60e279646d104d71`, {
+    
+    return fetch(`https://api.openweathermap.org/data/2.5/weather?${position}&units=metric&appid=b29fa64222e4a59135edc4650f1cced7`, {
         method: "GET"
     })
     .then((response) => {

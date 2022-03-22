@@ -1,4 +1,4 @@
-export interface weatherObject {
+export interface WeatherObject {
     tempMax: number | string;
     tempMin: number | string;
     pressure: number | string;

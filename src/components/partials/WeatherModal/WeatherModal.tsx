@@ -1,16 +1,21 @@
 import React, {FC, useState, useEffect} from "react";
 import { getWeather } from "../../../services/getWeather";
-import { weatherObject } from "../../../Interfaces/ObjectInterfaces";
+import { WeatherObject } from "../../../Interfaces/ObjectInterfaces";
+import { PositionObject } from "../../../TypeFiles/ObjectTypes";
 import './WeatherModal.css';
+
 
 export const WeatherModal: FC = () => {
     
-    const [weather, setWeather] = useState<weatherObject>({tempMax: 'loading', tempMin: 'loading', pressure: 'loading', humidity: 'loading'})
-    const [location, setLocation] = useState<string>('')
+    const [weather, setWeather] = useState<WeatherObject>({tempMax: 'loading', tempMin: 'loading', pressure: 'loading', humidity: 'loading'})
+    const [location, setLocation] = useState<string | undefined>(undefined)
 
-    type positionObject = {
-        coords: {latitude: number, longitude: number}
-    }
+    useEffect(() => {
+        getLocation();
+        if (location) {
+        getWeather(location).then(weatherObj => {setWeather(weatherObj)});
+        }
+    })    
     
     function getLocation() {
         if (navigator.geolocation) {
@@ -20,24 +25,13 @@ export const WeatherModal: FC = () => {
         }
     }   
     
-    function showPosition (positionO:positionObject):void {
+    function showPosition (positionO:PositionObject):void {
         let latitude = positionO.coords.latitude;
-        let longitude = positionO.coords.longitude;
+        let longitude = positionO.coords.longitude;        
         setLocation(`lat=${latitude}&lon=${longitude}`)
-    }
-
-    getLocation();
+    }    
     
-    if (location === '') {
-        return (
-            <div className="weather-modal isHovering">
-                <p>Unable to get location</p>           
-            </div>
-        )
-    }
-    else {
-        getWeather(location).then(weatherObj => {setWeather(weatherObj)});
-
+    if(weather) {
         return (
             <div className="weather-modal isHovering">
                 <p>Weather today:</p>
@@ -48,4 +42,9 @@ export const WeatherModal: FC = () => {
             </div>
         )
     }
+       return (
+            <div className="weather-modal isHovering">
+                <p>Unable to get location</p>           
+            </div>
+            )
 }
