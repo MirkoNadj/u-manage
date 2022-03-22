@@ -1,0 +1,17 @@
+.home {
+    width: 100%;
+    text-align: center;
+}
+
+.home img {
+    width: 50%;
+    margin: 50px 0px 20px 0px;
+    transition-property: height;
+    transition-duration: 2s;
+}
+
+.home h1 {
+    color: whitesmoke;
+    font-size: 24px;
+    
+}
