@@ -12,12 +12,10 @@ export const WeatherModal: FC = () => {
 
     useEffect(() => {
         getLocation();
-        if (location) {
-        getWeather(location).then(weatherObj => {setWeather(weatherObj)});
-        }
-    })    
+        fetchWeather();      // eslint-disable-next-line
+    },[location])    
     
-    function getLocation() {
+    function getLocation() { //console.log('getLocation')
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
@@ -29,7 +27,13 @@ export const WeatherModal: FC = () => {
         let latitude = positionO.coords.latitude;
         let longitude = positionO.coords.longitude;        
         setLocation(`lat=${latitude}&lon=${longitude}`)
-    }    
+    }
+    
+    function fetchWeather() {
+        if (location) {
+            getWeather(location).then(weatherObj => {setWeather(weatherObj)});
+            }
+    }
     
     if(weather) {
         return (
