@@ -8,7 +8,7 @@ export function getWeather(position: string) {
         pressure: '',
         humidity: '',
     }
-    //console.log('getWeather')
+    console.log('getWeather')
     return fetch(`https://api.openweathermap.org/data/2.5/weather?${position}&units=metric&appid=b29fa64222e4a59135edc4650f1cced7`, {
         method: "GET"
     })

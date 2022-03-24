@@ -1,41 +1,56 @@
-import React, {FC, useState, useEffect} from "react";
+import React, { FC, useState, useEffect, useCallback } from "react";
 import { getWeather } from "../../../services/getWeather";
 import { WeatherObject } from "../../../Interfaces/ObjectInterfaces";
 import { PositionObject } from "../../../TypeFiles/ObjectTypes";
-import './WeatherModal.css';
-
+import "./WeatherModal.css";
 
 export const WeatherModal: FC = () => {
-    
-    const [weather, setWeather] = useState<WeatherObject>({tempMax: 'loading', tempMin: 'loading', pressure: 'loading', humidity: 'loading'})
-    const [location, setLocation] = useState<string | undefined>(undefined)
+    const [weather, setWeather] = useState<WeatherObject>({
+        tempMax: "loading",
+        tempMin: "loading",
+        pressure: "loading",
+        humidity: "loading",
+    });
+    const [location, setLocation] = useState<string | undefined>(undefined);
 
-    useEffect(() => {
-        getLocation();
-        fetchWeather();      // eslint-disable-next-line
-    },[location])    
-    
-    function getLocation() { //console.log('getLocation')
+    function showPosition(positionO: PositionObject): void {
+        console.log("showPosition");
+        let latitude = positionO.coords.latitude;
+        let longitude = positionO.coords.longitude;
+        setLocation(`lat=${latitude}&lon=${longitude}`);
+    }
+
+    const fetchWeather = useCallback(() => {
+        console.log("fetchWeather");
+        if (location) {
+            getWeather(location).then((weatherObj) => {
+                setWeather(weatherObj);
+            });
+        }
+    }, [location]);
+
+    const getLocation = useCallback(() => {
+        console.log("getLocation");
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
-            alert('You must enable geolocation')
+            alert("You must enable geolocation");
         }
-    }   
-    
-    function showPosition (positionO:PositionObject):void {
-        let latitude = positionO.coords.latitude;
-        let longitude = positionO.coords.longitude;        
-        setLocation(`lat=${latitude}&lon=${longitude}`)
-    }
-    
-    function fetchWeather() {
+    }, []);
+
+    useEffect(() => {
+        if (!location) {
+            getLocation();
+        }
+    }, [getLocation, location]);
+
+    useEffect(() => {
         if (location) {
-            getWeather(location).then(weatherObj => {setWeather(weatherObj)});
-            }
-    }
-    
-    if(weather) {
+            fetchWeather();
+        }
+    }, [fetchWeather, location]);
+
+    if (weather) {
         return (
             <div className="weather-modal isHovering">
                 <p>Weather today:</p>
@@ -44,11 +59,11 @@ export const WeatherModal: FC = () => {
                 <h5>Pressure: {weather.pressure}</h5>
                 <h5>Humidity: {weather.humidity}</h5>
             </div>
-        )
+        );
     }
-       return (
-            <div className="weather-modal isHovering">
-                <p>Unable to get location</p>           
-            </div>
-            )
-}
+    return (
+        <div className="weather-modal isHovering">
+            <p>Unable to get location</p>
+        </div>
+    );
+};
