@@ -1,0 +1,17 @@
+.weather-modal {
+    float: right;
+    position:absolute;
+    margin-top: 20px;
+    margin-left: 85%;
+    z-index: +10;
+    width: 12%;
+    height: 150px;
+    background-color: 187EFF;
+    color:rgb(255, 255, 255);
+    font-size: 12px;
+    box-shadow: 5px 5px 20px 7px #0c60fc;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: white;
+    text-align: center;   
+}

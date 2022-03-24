@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import {Header} from './components/partials/Header/Header';
+import {Home} from './components/partials/Home/Home';
 
-function App() {
+const App: FC = () => {
+  
   return (
-    <div className="App">
-      <h1>U-MANAGE APP</h1>
-    </div>
+    <>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />}/>
+   {/*  <Route path="/users/" element={<Users />}/>
+        <Route path="/users/create" element={<UserForm />}/>
+        <Route path="/users/{id}" element={<UserForm />}/>
+        <Route path="/companies" element={<Companies />}/>
+        <Route path="/companies/create" element={<CompanyForm />}/>
+        <Route path="/companies/{id}" element={<CompanyForm />}/> */}
+      </Routes>      
+    </Router>
+    </>
   );
 }
 
