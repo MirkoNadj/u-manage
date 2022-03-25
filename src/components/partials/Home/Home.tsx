@@ -1,5 +1,6 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import './Home.css';
+
 
 export const Home: FC = () => {
     return (

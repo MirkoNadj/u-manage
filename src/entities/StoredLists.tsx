@@ -1,0 +1,66 @@
+import { UserInterface, CompanyInterface } from "../Interfaces/ObjectInterfaces"
+
+export let storedUserList: UserInterface[] = [
+    {
+        id: 'u1',
+        firstName: 'John',
+        lastName: 'Smith',
+        companyId: 'c4',
+        companyName: 'Microsoft',
+        dOB: '1998-01-15',
+        position: 'Software Developer',
+        phoneNumber: '0123456',
+    },
+    {
+        id: 'u2',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        companyId: 'c5',
+        companyName: 'IBM',
+        dOB: '2000-06-20',
+        position: 'Manager',
+        phoneNumber: '6564565',
+    },
+    {
+        id: 'u3',
+        firstName: 'Marry',
+        lastName: 'Sing',
+        companyId: 'c6',
+        companyName: 'Apple',
+        dOB: '1980-02-10',
+        position: 'QA engineer',
+        phoneNumber: '0123456',
+    }
+];
+
+export let storedCompanyList: CompanyInterface[] = [
+    {
+        id: 'c4',
+        name: 'Microsoft',
+        users: ['u1'],
+        city: 'San Francisco',
+        country: 'USA'
+    },
+    {
+        id: 'c5',
+        name: 'IBM',
+        users: ['u2'],
+        city: 'New York',
+        country: 'USA'
+    },
+    {
+        id: 'c6',
+        name: 'Apple',
+        users: ['u3'],
+        city: 'LA',
+        country: 'USA'
+    }
+];
+
+export let storedPositionList = [
+    'Manager',
+    'Software Developer',
+    'QA engineer',
+    'Stuff'
+]
+
