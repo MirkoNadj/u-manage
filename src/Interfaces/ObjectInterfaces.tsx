@@ -1,5 +1,3 @@
-import { Position } from '../TypeFiles/ObjectTypes';
-
 export interface WeatherObject {
     tempMax: number | string;
     tempMin: number | string;
@@ -8,14 +6,14 @@ export interface WeatherObject {
 }
 
 export interface UserInterface {
-    id: string;
+    id: string | undefined;
     firstName: string;
     lastName: string;
     companyId: string;
     companyName: string;
     dOB: string;
     position: string;
-    phoneNumber: string;
+    phoneNumber: string | number;
 }
 
 export interface CompanyInterface {
@@ -27,11 +25,12 @@ export interface CompanyInterface {
 }
 
 export interface ValidationErrors {
+    isValid?: boolean;
     firstName?: string;
     lastName?: string;
     companyId?: string;
     companyName?: string;
     dOB?: string;
     position?: string;
-    phoneNumber?: string;
+    phoneNumber?: string | number;
 }
