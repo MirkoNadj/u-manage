@@ -51,7 +51,7 @@ export const UserForm: FC = () => {
 
     const [formErrors, setFormErrors] = useState<ValidationErrors>({ isValid: false });
 
-    const handleChange = (event: ChangeEvent<any>): void => {
+    const handleChangeSelect = (event: ChangeEvent<HTMLSelectElement>): void => {
 
         if (event.target.name === 'companyName') {
             setUserInfo({
@@ -70,6 +70,14 @@ export const UserForm: FC = () => {
         }
     }
 
+    const handleChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
+
+        setUserInfo({
+            ...userInfo,
+            [event.target.id]: event.target.value,
+        });
+    }
+
     useEffect(() => {
         window.localStorage.setItem("storedUserList", JSON.stringify(userList));
     }, [userList]);
@@ -86,9 +94,9 @@ export const UserForm: FC = () => {
             }
             else {                      // new user
                 userInfo.id = guIdGenerator();
-                updateUserList([...userList, userInfo]);
+                updateUserList([...userList, userInfo]); console.log('save', userInfo, userList)
             }
-            navigate('/users');
+            setTimeout(() => { navigate('/users') }, 10);
         };
     }
 
@@ -98,13 +106,13 @@ export const UserForm: FC = () => {
             <button onClick={saveUser}>Save/Edit</button>
             <form className='form-container'>
                 <label>First Name:</label>
-                <input type='text' id='firstName' name='firstName' value={userInfo.firstName} onChange={handleChange}></input>
+                <input type='text' id='firstName' name='firstName' value={userInfo.firstName} onChange={handleChangeInput}></input>
                 {formErrors.firstName && <p className='errors'>{formErrors.firstName}</p>}
                 <label>Last Name:</label>
-                <input type='text' id='lastName' name='lastName' value={userInfo.lastName} onChange={handleChange}></input>
+                <input type='text' id='lastName' name='lastName' value={userInfo.lastName} onChange={handleChangeInput}></input>
                 {formErrors.lastName && <p className='errors'>{formErrors.lastName}</p>}
                 <label>Company:</label>
-                <select id="companyId" name="companyName" value={userInfo.companyId} onChange={handleChange}>
+                <select id="companyId" name="companyName" value={userInfo.companyId} onChange={handleChangeSelect}>
                     <option value='defaultId'>-Company-</option>
                     {parsedCompanyList.map((companyItem: CompanyInterface) => {
                         return <option value={companyItem.id}>{companyItem.name}</option>
@@ -112,10 +120,10 @@ export const UserForm: FC = () => {
                 </select>
                 {formErrors.companyId && <p className='errors'>{formErrors.companyId}</p>}
                 <label>DOB:</label>
-                <input type='date' id='dOB' name='dOB' value={userInfo.dOB} onChange={handleChange}></input>
+                <input type='date' id='dOB' name='dOB' value={userInfo.dOB} onChange={handleChangeInput}></input>
                 {formErrors.dOB && <p className='errors'>{formErrors.dOB}</p>}
                 <label>Position:</label>
-                <select name="position" id="position" value={userInfo.position} onChange={handleChange}>
+                <select name="position" id="position" value={userInfo.position} onChange={handleChangeSelect}>
                     <option value='defaultId'>-Position-</option>
                     {parsedPositionList.map((positionItem: string) => {
                         return <option value={positionItem}>{positionItem}</option>
@@ -123,7 +131,7 @@ export const UserForm: FC = () => {
                 </select>
                 {formErrors.position && <p className='errors'>{formErrors.position}</p>}
                 <label>Phone Number:</label>
-                <input type='number' id='phoneNumber' name='phoneNumber' value={userInfo.phoneNumber} onChange={handleChange}></input>
+                <input type='number' id='phoneNumber' name='phoneNumber' value={userInfo.phoneNumber} onChange={handleChangeInput}></input>
                 {formErrors.phoneNumber && <p className='errors'>{formErrors.phoneNumber}</p>}
             </form>
         </div>
