@@ -7,7 +7,7 @@ export const TableUsers: FC = () => {
     let fetchedUserList = window.localStorage.getItem("storedUserList");
 
     if (!fetchedUserList) {
-        fetchedUserList = '';
+        fetchedUserList = '[]';
     }
 
     const parsedUserList: Array<UserInterface> = JSON.parse(fetchedUserList)
@@ -26,6 +26,10 @@ export const TableUsers: FC = () => {
         }));
     };
 
+    const convertDateString = (date: string) => {
+        return date.split('-').reverse().join('-');
+    }
+
     return (
         <table>
             <thead>
@@ -40,7 +44,7 @@ export const TableUsers: FC = () => {
                 {tableList.map((userItem: UserInterface) => (
                     <tr>
                         <td>{`${userItem.firstName} ${userItem.lastName}`}</td>
-                        <td>{userItem.dOB}</td>
+                        <td>{convertDateString(userItem.dOB)}</td>
                         <td>{userItem.companyName}</td>
                         <td>{userItem.position}</td>
                         <td><button className='delEditBtn' onClick={() => { navigate(`/users/${userItem.id}`) }}>Edit</button></td>
