@@ -89,11 +89,40 @@ export const UserForm: FC = () => {
 
             if (currentUserId) {         // for editing old user
                 let userIndex = parsedUserList.findIndex((userFromList: UserInterface) => userFromList.id === currentUserId)
+                //updating company users array
+                let newCompanyList = parsedCompanyList.map((companyItem) => {
+                    if (companyItem.id === userList[userIndex].companyId) {
+                        companyItem.users = companyItem.users.filter(user => user !== currentUserId)
+                        return companyItem;
+                    }
+                    else if (companyItem.id === userInfo.companyId && currentUserId) {
+                        companyItem.users.push(currentUserId)
+                        return companyItem;
+                    }
+                    else {
+                        return companyItem;
+                    };
+                });
+                window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
+                // end of updating
                 userList[userIndex] = userInfo;
                 window.localStorage.setItem("storedUserList", JSON.stringify(userList));
             }
-            else {                      // new user
+            else {            // new user
                 userInfo.id = guIdGenerator();
+                //updating company users array
+                let newCompanyList = parsedCompanyList.map((companyItem) => {
+                    if (companyItem.id === userInfo.companyId && userInfo.id) {
+                        companyItem.users.push(userInfo.id)
+                        console.log('upis novi', userInfo.companyId)
+                        return companyItem;
+                    }
+                    else {
+                        return companyItem;
+                    };
+                });
+                window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
+                // end of updating
                 updateUserList([...userList, userInfo]); console.log('save', userInfo, userList)
             }
             setTimeout(() => { navigate('/users') }, 10);

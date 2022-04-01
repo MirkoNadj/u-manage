@@ -1,27 +1,50 @@
-import React, { FC, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import React, { FC, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom'
 import './TableUsers.css'
-import { UserInterface } from '../../Interfaces/ObjectInterfaces';
+import { CompanyInterface, UserInterface } from '../../Interfaces/ObjectInterfaces';
 
 export const TableUsers: FC = () => {
-    let fetchedUserList = window.localStorage.getItem("storedUserList");
+    let navigate = useNavigate();
+    const { currentCompanyId } = useParams();
 
+    let fetchedUserList = window.localStorage.getItem("storedUserList");
+    let fetchedCompanyList = window.localStorage.getItem("storedCompanyList");
     if (!fetchedUserList) {
         fetchedUserList = '[]';
     }
 
-    const parsedUserList: Array<UserInterface> = JSON.parse(fetchedUserList)
+    let parsedUserList: Array<UserInterface> = JSON.parse(fetchedUserList)
+    if (!fetchedCompanyList) {
+        fetchedCompanyList = '[]';
+    }
+    let parsedCompanyList: Array<CompanyInterface> = JSON.parse(fetchedCompanyList)
 
-    const [tableList, setTableList] = useState(parsedUserList)
+    let nowUserList = parsedUserList;
 
-    let navigate = useNavigate();
+    if (currentCompanyId) {
+        nowUserList = parsedUserList.filter(userItem => userItem.companyId === currentCompanyId);
+    }
 
-    useEffect(() => {
-        window.localStorage.setItem("storedUserList", JSON.stringify(tableList));
-    }, [tableList])
+    const [tableList, setTableList] = useState(nowUserList)
 
     const deleteItem = (idToDelete: string | undefined): void => {
-        setTableList(tableList.filter((listItem: UserInterface) => {
+        let newUserList = parsedUserList.filter(userItem => userItem.id !== idToDelete);
+        window.localStorage.setItem("storedUserList", JSON.stringify(newUserList));
+
+        if (currentCompanyId) {
+            let newCompanyList = parsedCompanyList.map((companyItem) => {
+                if (companyItem.id === currentCompanyId) {
+                    companyItem.users = companyItem.users.filter(user => user !== idToDelete)
+                    return companyItem;
+                }
+                else {
+                    return companyItem;
+                };
+            });
+            window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
+        }
+
+        setTableList(nowUserList.filter((listItem: UserInterface) => {
             return listItem.id !== idToDelete
         }));
     };
@@ -53,6 +76,5 @@ export const TableUsers: FC = () => {
                 ))}
             </tbody>
         </table>
-
     )
 }
