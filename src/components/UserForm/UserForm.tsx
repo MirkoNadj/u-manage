@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, ChangeEvent } from 'react';
+import React, { FC, useState, ChangeEvent } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './UserForm.css';
 import { CompanyInterface, UserInterface, ValidationErrors } from '../../Interfaces/ObjectInterfaces';
@@ -25,8 +25,6 @@ export const UserForm: FC = () => {
         fetchedPositionList = '[]';
     };
     const parsedPositionList: string[] = JSON.parse(fetchedPositionList);
-
-    const [userList, updateUserList] = useState(parsedUserList);
 
     let { currentUserId } = useParams();
 
@@ -78,10 +76,6 @@ export const UserForm: FC = () => {
         });
     }
 
-    useEffect(() => {
-        window.localStorage.setItem("storedUserList", JSON.stringify(userList));
-    }, [userList]);
-
     const saveUser = () => {
         setFormErrors(formValidation(userInfo));
 
@@ -91,7 +85,7 @@ export const UserForm: FC = () => {
                 let userIndex = parsedUserList.findIndex((userFromList: UserInterface) => userFromList.id === currentUserId)
                 //updating company users array
                 let newCompanyList = parsedCompanyList.map((companyItem) => {
-                    if (companyItem.id === userList[userIndex].companyId) {
+                    if (companyItem.id === parsedUserList[userIndex].companyId) {
                         companyItem.users = companyItem.users.filter(user => user !== currentUserId)
                         return companyItem;
                     }
@@ -105,8 +99,8 @@ export const UserForm: FC = () => {
                 });
                 window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
                 // end of updating
-                userList[userIndex] = userInfo;
-                window.localStorage.setItem("storedUserList", JSON.stringify(userList));
+                parsedUserList[userIndex] = userInfo;
+                window.localStorage.setItem("storedUserList", JSON.stringify(parsedUserList));
             }
             else {            // new user
                 userInfo.id = guIdGenerator();
@@ -123,9 +117,10 @@ export const UserForm: FC = () => {
                 });
                 window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
                 // end of updating
-                updateUserList([...userList, userInfo]); console.log('save', userInfo, userList)
+                parsedUserList[parsedUserList.length] = userInfo;
+                window.localStorage.setItem("storedUserList", JSON.stringify(parsedUserList));
             }
-            setTimeout(() => { navigate('/users') }, 10);
+            navigate('/users')
         };
     }
 
