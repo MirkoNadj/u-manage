@@ -27,25 +27,23 @@ export const TableUsers: FC = () => {
 
     const [tableList, setTableList] = useState(nowUserList)
 
-    const deleteItem = (idToDelete: string | undefined): void => {
-        let newUserList = parsedUserList.filter(userItem => userItem.id !== idToDelete);
+    const deleteItem = (userIdToDelete: string | undefined, companyIdToDeleteFrom: string | undefined): void => {
+        let newUserList = parsedUserList.filter(userItem => userItem.id !== userIdToDelete);
         window.localStorage.setItem("storedUserList", JSON.stringify(newUserList));
-
-        if (currentCompanyId) {
-            let newCompanyList = parsedCompanyList.map((companyItem) => {
-                if (companyItem.id === currentCompanyId) {
-                    companyItem.users = companyItem.users.filter(user => user !== idToDelete)
-                    return companyItem;
-                }
-                else {
-                    return companyItem;
-                };
-            });
-            window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
-        }
-
+        // updating company
+        let newCompanyList = parsedCompanyList.map((companyItem) => {
+            if (companyItem.id === companyIdToDeleteFrom) {
+                companyItem.users = companyItem.users.filter(user => user !== userIdToDelete)
+                return companyItem;
+            }
+            else {
+                return companyItem;
+            };
+        });
+        window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
+        // end of updating company
         setTableList(nowUserList.filter((listItem: UserInterface) => {
-            return listItem.id !== idToDelete
+            return listItem.id !== userIdToDelete;
         }));
     };
 
@@ -71,7 +69,7 @@ export const TableUsers: FC = () => {
                         <td>{userItem.companyName}</td>
                         <td>{userItem.position}</td>
                         <td><button className='delEditBtn' onClick={() => { navigate(`/users/${userItem.id}`) }}>Edit</button></td>
-                        <td><button className='delEditBtn' onClick={() => { deleteItem(userItem.id) }}>Delete</button></td>
+                        <td><button className='delEditBtn' onClick={() => { deleteItem(userItem.id, userItem.companyId) }}>Delete</button></td>
                     </tr>
                 ))}
             </tbody>

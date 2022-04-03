@@ -56,17 +56,16 @@ export const UserForm: FC = () => {
                 ...userInfo,
                 [event.target.id]: event.target.value,
                 [event.target.name]: event.target.options[event.target.selectedIndex].text,
-            }); console.log(event.target.name, event.target.options[event.target.selectedIndex].text);
-            console.log(event.target.id, event.target.value)
+            });
         };
 
         if (event.target.name !== 'companyName') {
             setUserInfo({
                 ...userInfo,
                 [event.target.id]: event.target.value,
-            }); console.log(event.target.name, event.target.value)
-        }
-    }
+            });
+        };
+    };
 
     const handleChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
 
@@ -108,7 +107,6 @@ export const UserForm: FC = () => {
                 let newCompanyList = parsedCompanyList.map((companyItem) => {
                     if (companyItem.id === userInfo.companyId && userInfo.id) {
                         companyItem.users.push(userInfo.id)
-                        console.log('upis novi', userInfo.companyId)
                         return companyItem;
                     }
                     else {

@@ -9,7 +9,7 @@ export let storedUserList: UserInterface[] = [
         companyName: 'Microsoft',
         dOB: '1998-01-15',
         position: 'Software Developer',
-        phoneNumber: '0123456',
+        phoneNumber: '012345678',
     },
     {
         id: 'u2',
@@ -19,7 +19,7 @@ export let storedUserList: UserInterface[] = [
         companyName: 'IBM',
         dOB: '2000-06-20',
         position: 'Manager',
-        phoneNumber: '6564565',
+        phoneNumber: '656456577',
     },
     {
         id: 'u3',
@@ -29,7 +29,7 @@ export let storedUserList: UserInterface[] = [
         companyName: 'Apple',
         dOB: '1980-02-10',
         position: 'QA engineer',
-        phoneNumber: '0123456',
+        phoneNumber: '012345677',
     }
 ];
 
@@ -61,6 +61,6 @@ export let storedPositionList = [
     'Manager',
     'Software Developer',
     'QA engineer',
-    'Stuff'
+    'Staff'
 ]
 
