@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { InputFieldProps } from '../../../Interfaces/ObjectInterfaces';
 
 export const InputField: FC<InputFieldProps> = ({ formErrors, userInfo, handleChangeInput }) => {
+
     return (
         <div>
             <label>First Name:</label>

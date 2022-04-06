@@ -56,10 +56,3 @@ export let storedCompanyList: Company[] = [
         country: 'USA'
     }
 ];
-
-export let storedPositionList = [
-    'Manager',
-    'Software Developer',
-    'QA engineer',
-    'Staff'
-]
