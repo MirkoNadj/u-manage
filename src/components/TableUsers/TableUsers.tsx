@@ -1,55 +1,26 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import './TableUsers.css'
-import { CompanyInterface, UserInterface } from '../../Interfaces/ObjectInterfaces';
+import { User } from '../../Interfaces/ObjectInterfaces';
+import { getUsers, convertDateString, deleteUserFromTable } from '../../services/StorageRepository';
 
 export const TableUsers: FC = () => {
     let navigate = useNavigate();
     const { currentCompanyId } = useParams();
+    const [tableList, setTableList] = useState(getUsers())
 
-    let fetchedUserList = window.localStorage.getItem("storedUserList");
-    let fetchedCompanyList = window.localStorage.getItem("storedCompanyList");
-    if (!fetchedUserList) {
-        fetchedUserList = '[]';
-    }
+    useEffect(() => {
+        if (currentCompanyId) {
+            setTableList(getUsers().filter(userItem => userItem.companyId === currentCompanyId));
+        }
+    }, [currentCompanyId]);
 
-    let parsedUserList: Array<UserInterface> = JSON.parse(fetchedUserList)
-    if (!fetchedCompanyList) {
-        fetchedCompanyList = '[]';
-    }
-    let parsedCompanyList: Array<CompanyInterface> = JSON.parse(fetchedCompanyList)
-
-    let nowUserList = parsedUserList;
-
-    if (currentCompanyId) {
-        nowUserList = parsedUserList.filter(userItem => userItem.companyId === currentCompanyId);
-    }
-
-    const [tableList, setTableList] = useState(nowUserList)
-
-    const deleteItem = (userIdToDelete: string | undefined, companyIdToDeleteFrom: string | undefined): void => {
-        let newUserList = parsedUserList.filter(userItem => userItem.id !== userIdToDelete);
-        window.localStorage.setItem("storedUserList", JSON.stringify(newUserList));
-        // updating company
-        let newCompanyList = parsedCompanyList.map((companyItem) => {
-            if (companyItem.id === companyIdToDeleteFrom) {
-                companyItem.users = companyItem.users.filter(user => user !== userIdToDelete)
-                return companyItem;
-            }
-            else {
-                return companyItem;
-            };
-        });
-        window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
-        // end of updating company
-        setTableList(nowUserList.filter((listItem: UserInterface) => {
-            return listItem.id !== userIdToDelete;
+    const deleteItem = (userItem: User) => {
+        deleteUserFromTable(tableList, userItem)
+        setTableList(tableList.filter((listItem: User) => {
+            return listItem.id !== userItem.id;
         }));
     };
-
-    const convertDateString = (date: string) => {
-        return date.split('-').reverse().join('-');
-    }
 
     return (
         <table>
@@ -62,14 +33,14 @@ export const TableUsers: FC = () => {
                 </tr>
             </thead>
             <tbody>
-                {tableList.map((userItem: UserInterface) => (
+                {tableList.map((userItem: User) => (
                     <tr>
                         <td>{`${userItem.firstName} ${userItem.lastName}`}</td>
                         <td>{convertDateString(userItem.dOB)}</td>
                         <td>{userItem.companyName}</td>
                         <td>{userItem.position}</td>
                         <td><button className='delEditBtn' onClick={() => { navigate(`/users/${userItem.id}`) }}>Edit</button></td>
-                        <td><button className='delEditBtn' onClick={() => { deleteItem(userItem.id, userItem.companyId) }}>Delete</button></td>
+                        <td><button className='delEditBtn' onClick={() => { deleteItem(userItem) }}>Delete</button></td>
                     </tr>
                 ))}
             </tbody>

@@ -1,3 +1,6 @@
+import { ChangeEventHandler } from "react";
+
+
 export interface WeatherObject {
     tempMax: number | string;
     tempMin: number | string;
@@ -5,8 +8,8 @@ export interface WeatherObject {
     humidity: number | string;
 }
 
-export interface UserInterface {
-    id: string | undefined;
+export interface User {
+    id: string;
     firstName: string;
     lastName: string;
     companyId: string;
@@ -16,7 +19,7 @@ export interface UserInterface {
     phoneNumber: string | number;
 }
 
-export interface CompanyInterface {
+export interface Company {
     id: string;
     name: string;
     users: string[];
@@ -33,4 +36,10 @@ export interface ValidationErrors {
     dOB?: string;
     position?: string;
     phoneNumber?: string | number;
+}
+
+export interface InputFieldProps {
+    formErrors: ValidationErrors,
+    userInfo: User,
+    handleChangeInput: ChangeEventHandler,
 }

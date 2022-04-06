@@ -1,6 +1,6 @@
-import { UserInterface, ValidationErrors } from "../Interfaces/ObjectInterfaces";
+import { User, ValidationErrors } from "../Interfaces/ObjectInterfaces";
 
-export const formValidation = (userInfo: UserInterface) => {
+export const formValidation = (userInfo: User) => {
     let formErrors: ValidationErrors = {};
     formErrors.isValid = true;
 
