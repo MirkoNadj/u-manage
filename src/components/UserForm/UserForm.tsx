@@ -1,16 +1,17 @@
-import React, { FC, useState, ChangeEvent, useEffect } from 'react';
+import React, { FC, useState, ChangeEvent, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './UserForm.css';
-import { Company, User, ValidationErrors } from '../../Interfaces/ObjectInterfaces';
+import { User, ValidationErrors } from '../../Interfaces/ObjectInterfaces';
 import { formValidation } from '../../services/formValidation';
 import { guIdGenerator } from '../../services/guidGenerator';
-import { newUserInfo, getUsers, setUsers, findUserById, updateCompanyUsers, getCompanies, positionsList, editUserById } from '../../services/StorageRepository';
+import { newUserInfo, getUsers, setUsers, findUserById, updateCompanyUsers, getCompanies, positionsList, editUserById, findCompanyById } from '../../services/StorageRepository';
 import { InputField } from '../partials/InputField/InputField';
-
+import { SelectField } from '../partials/SelectField/SelectField';
 
 export const UserForm: FC = () => {
-    console.log('render')
+    //console.log('render')
     const [userInfo, setUserInfo] = useState<User>(newUserInfo);
+    const companiesList = useMemo(() => { return (getCompanies()) }, [])
 
     let { currentUserId } = useParams();
     let navigate = useNavigate();
@@ -24,26 +25,13 @@ export const UserForm: FC = () => {
     const [formErrors, setFormErrors] = useState<ValidationErrors>({ isValid: false });
 
     const handleChangeSelect = (event: ChangeEvent<HTMLSelectElement>): void => {
-
-        if (event.target.name === 'companyName') {
-            setUserInfo({
-                ...userInfo,
-                [event.target.id]: event.target.value,
-                [event.target.name]: event.target.options[event.target.selectedIndex].text,
-            }); console.log(event.target.name, event.target.options[event.target.selectedIndex].text);
-            console.log(event.target.id, event.target.value)
-        };
-
-        if (event.target.name !== 'companyName') {
-            setUserInfo({
-                ...userInfo,
-                [event.target.id]: event.target.value,
-            }); console.log(event.target.name, event.target.value)
-        }
+        setUserInfo({
+            ...userInfo,
+            [event.target.id]: event.target.value,
+        });
     }
 
     const handleChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
-
         setUserInfo({
             ...userInfo,
             [event.target.id]: event.target.value,
@@ -52,21 +40,20 @@ export const UserForm: FC = () => {
 
     const saveUser = () => {
         setFormErrors(formValidation(userInfo));
+        userInfo.companyName = findCompanyById(userInfo.companyId)!.name;
 
+        if (currentUserId && formValidation(userInfo).isValid) {    // for editing old user
+            editUserById(currentUserId, userInfo)
+        }
+        if (formValidation(userInfo).isValid) {                     // saving new user
+            userInfo.id = guIdGenerator();
+            setUsers([...getUsers(), userInfo]);
+            //console.log('newUserAdded', userInfo)
+        };
         if (formValidation(userInfo).isValid) {
-
-            if (currentUserId) {    // for editing old user
-                editUserById(currentUserId, userInfo)
-            }
-            else {                 // new user
-                userInfo.id = guIdGenerator();
-                setUsers([...getUsers(), userInfo])
-                console.log('newUserAdded', userInfo)
-
-            };
             updateCompanyUsers(userInfo);
             navigate('/users')
-        };
+        }
     };
 
     return (
@@ -74,36 +61,63 @@ export const UserForm: FC = () => {
             <h1>User Form</h1>
             <button onClick={saveUser}>Save/Edit</button>
             <form className='form-container'>
-                <InputField formErrors={formErrors} userInfo={userInfo} handleChangeInput={handleChangeInput} />
-                {/* <label>First Name:</label>
-                <input type='text' id='firstName' name='firstName' value={userInfo.firstName} onChange={handleChangeInput}></input>
-                {formErrors.firstName && <p className='errors'>{formErrors.firstName}</p>} */}
-                <label>Last Name:</label>
-                <input type='text' id='lastName' name='lastName' value={userInfo.lastName} onChange={handleChangeInput}></input>
-                {formErrors.lastName && <p className='errors'>{formErrors.lastName}</p>}
-                <label>Company:</label>
-                <select id="companyId" name="companyName" value={userInfo.companyId} onChange={handleChangeSelect}>
-                    <option value='defaultId'>-Company-</option>
-                    {getCompanies().map((companyItem: Company) => {
-                        return <option value={companyItem.id}>{companyItem.name}</option>
-                    })}
-                </select>
-                {formErrors.companyId && <p className='errors'>{formErrors.companyId}</p>}
-                <label>DOB:</label>
-                <input type='date' id='dOB' name='dOB' value={userInfo.dOB} onChange={handleChangeInput}></input>
-                {formErrors.dOB && <p className='errors'>{formErrors.dOB}</p>}
-                <label>Position:</label>
-                <select name="position" id="position" value={userInfo.position} onChange={handleChangeSelect}>
-                    <option value='defaultId'>-Position-</option>
-                    {positionsList.map((positionItem: string) => {
-                        return <option value={positionItem}>{positionItem}</option>
-                    })}
-                </select>
-                {formErrors.position && <p className='errors'>{formErrors.position}</p>}
-                <label>Phone Number:</label>
-                <input type='number' id='phoneNumber' name='phoneNumber' value={userInfo.phoneNumber} onChange={handleChangeInput}></input>
-                {formErrors.phoneNumber && <p className='errors'>{formErrors.phoneNumber}</p>}
+                <InputField
+                    label="First name"
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={userInfo.firstName}
+                    onChange={handleChangeInput}
+                    error={formErrors.firstName}
+                />
+                <InputField
+                    label="Last name"
+                    type="text"
+                    id="lastName"
+                    name="firstName"
+                    value={userInfo.lastName}
+                    onChange={handleChangeInput}
+                    error={formErrors.lastName}
+                />
+                <SelectField
+                    label='Company:'
+                    id='companyId'
+                    name='companyName'
+                    value={userInfo.companyId}
+                    itemArr={companiesList}
+                    onChange={handleChangeSelect}
+                    error={formErrors.companyId}
+                >
+                </SelectField>
+                <InputField
+                    label="Date Of Birth"
+                    type="date"
+                    id="dOB"
+                    name="dOB"
+                    value={userInfo.dOB}
+                    onChange={handleChangeInput}
+                    error={formErrors.dOB}
+                />
+                <SelectField
+                    label='Position:'
+                    id='position'
+                    name='position'
+                    value={userInfo.position}
+                    itemArr={positionsList}
+                    onChange={handleChangeSelect}
+                    error={formErrors.position}
+                >
+                </SelectField>
+                <InputField
+                    label="Phone Number"
+                    type="number"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={userInfo.phoneNumber}
+                    onChange={handleChangeInput}
+                    error={formErrors.phoneNumber}
+                />
             </form>
         </div>
-    )
+    );
 }

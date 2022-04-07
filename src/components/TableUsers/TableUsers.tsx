@@ -33,16 +33,17 @@ export const TableUsers: FC = () => {
                 </tr>
             </thead>
             <tbody>
-                {tableList.map((userItem: User) => (
-                    <tr>
-                        <td>{`${userItem.firstName} ${userItem.lastName}`}</td>
-                        <td>{convertDateString(userItem.dOB)}</td>
-                        <td>{userItem.companyName}</td>
-                        <td>{userItem.position}</td>
-                        <td><button className='delEditBtn' onClick={() => { navigate(`/users/${userItem.id}`) }}>Edit</button></td>
-                        <td><button className='delEditBtn' onClick={() => { deleteItem(userItem) }}>Delete</button></td>
-                    </tr>
-                ))}
+                {tableList.map((userItem: User, key: number) => {
+                    return (
+                        <tr key={userItem.id}>
+                            <td>{`${userItem.firstName} ${userItem.lastName}`}</td>
+                            <td>{convertDateString(userItem.dOB)}</td>
+                            <td>{userItem.companyName}</td>
+                            <td>{userItem.position}</td>
+                            <td><button className='delEditBtn' onClick={() => { navigate(`/users/${userItem.id}`) }}>Edit</button></td>
+                            <td><button className='delEditBtn' onClick={() => { deleteItem(userItem) }}>Delete</button></td>
+                        </tr>)
+                })}
             </tbody>
         </table>
     )

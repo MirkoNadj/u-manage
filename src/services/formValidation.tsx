@@ -21,7 +21,7 @@ export const formValidation = (userInfo: User) => {
         formErrors.isValid = false;
     }
     if (Date.parse(userInfo.dOB) >= Date.now()) {
-        formErrors.phoneNumber = "Date of birth is not valid";
+        formErrors.dOB = "Date of birth is not valid";
         formErrors.isValid = false;
     }
     if (!userInfo.position) {

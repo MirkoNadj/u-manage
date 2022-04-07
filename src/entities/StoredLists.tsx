@@ -1,6 +1,6 @@
-import { User, Company } from "../Interfaces/ObjectInterfaces"
+import { User, Company } from "../Interfaces/ObjectInterfaces";
 
-export let storedUserList: User[] = [
+let storedUserList: User[] = [
     {
         id: 'u1',
         firstName: 'John',
@@ -33,7 +33,7 @@ export let storedUserList: User[] = [
     }
 ];
 
-export let storedCompanyList: Company[] = [
+let storedCompanyList: Company[] = [
     {
         id: 'c4',
         name: 'Microsoft',
@@ -56,3 +56,6 @@ export let storedCompanyList: Company[] = [
         country: 'USA'
     }
 ];
+
+window.localStorage.setItem('storedUserList', JSON.stringify(storedUserList));
+window.localStorage.setItem('storedCompanyList', JSON.stringify(storedCompanyList));

@@ -6,15 +6,22 @@ export function getUsers() {
         fetchedUserList = '[]';
     };
     let parsedUserList: Array<User> = JSON.parse(fetchedUserList);
-    console.log('getUsersFunction', parsedUserList)
+    //console.log('getUsersFunction', parsedUserList)
     return parsedUserList;
 }
 
 export function findUserById(currentUserId: string) {
     let parsedUserList = getUsers()
     let currentUserFoundByID = parsedUserList.find((userFromList: User) => userFromList.id === currentUserId);
-    console.log('findUserByIdFunction', currentUserFoundByID)
+    //console.log('findUserByIdFunction', currentUserFoundByID)
     return currentUserFoundByID;
+}
+
+export function findCompanyById(currentCompanyId: string) {
+    let parsedCompanyList = getCompanies()
+    let currentCompanyFoundByID = parsedCompanyList.find((companyFromList: Company) => companyFromList.id === currentCompanyId);
+    //console.log('findCompanyByIdFunction', currentCompanyFoundByID)
+    return currentCompanyFoundByID;
 }
 
 export function editUserById(currentUserId: string, userInfo: User) {
@@ -25,7 +32,7 @@ export function editUserById(currentUserId: string, userInfo: User) {
 }
 
 export function setUsers(userList: User[]) {
-    console.log('setUsersFunction', userList)
+    //console.log('setUsersFunction', userList)
     window.localStorage.setItem("storedUserList", JSON.stringify(userList));
 }
 
@@ -35,7 +42,7 @@ export function getCompanies() {
         fetchedCompanyList = '[]';
     };
     const parsedCompanyList: Array<Company> = JSON.parse(fetchedCompanyList);
-    console.log('getCompaniesFunction', parsedCompanyList)
+    //console.log('getCompaniesFunction', parsedCompanyList)
     return parsedCompanyList;
 }
 
@@ -48,7 +55,7 @@ export function updateCompanyUsers(userInfo: User) {
         }
         return companyItem;
     });
-    console.log('updateCompanyUsersFunction', newCompanyList)
+    //console.log('updateCompanyUsersFunction', newCompanyList)
     window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
 }
 
@@ -74,8 +81,20 @@ export const newUserInfo: User = {
 };
 
 export const positionsList = [
-    'Manager',
-    'Software Developer',
-    'QA engineer',
-    'Staff'
+    {
+        id: 'Manager',
+        name: 'Manager'
+    },
+    {
+        id: 'Software Developer',
+        name: 'Software Developer'
+    },
+    {
+        id: 'QA engineer',
+        name: 'QA engineer'
+    },
+    {
+        id: 'Staff',
+        name: 'Staff'
+    }
 ]

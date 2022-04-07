@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { InputFieldProps } from '../../../Interfaces/ObjectInterfaces';
 
-export const InputField: FC<InputFieldProps> = ({ formErrors, userInfo, handleChangeInput }) => {
+export const InputField: FC<InputFieldProps> = ({ label, type, id, name, value, onChange, error }) => {
 
     return (
         <div>
-            <label>First Name:</label>
-            <input type='text' id='firstName' name='firstName' value={userInfo.firstName} onChange={handleChangeInput}></input>
-            {formErrors.firstName && <p className='errors'>{formErrors.firstName}</p>}
+            <label>{label}</label>
+            <input type={type} id={id} name={name} value={value} onChange={onChange}></input>
+            {error && <p className='errors'>{error}</p>}
         </div>
     )
 }

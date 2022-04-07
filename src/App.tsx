@@ -5,16 +5,8 @@ import { Header } from './components/partials/Header/Header';
 import { Home } from './components/partials/Home/Home';
 import { Users } from './components/Users/Users';
 import { UserForm } from './components/UserForm/UserForm';
-//import { storedUserList, storedCompanyList, storedPositionList } from './entities/StoredLists';  //temporary
-
-
 
 const App: FC = () => {
-
-  // window.localStorage.setItem('storedUserList', JSON.stringify(storedUserList));
-  // window.localStorage.setItem('storedCompanyList', JSON.stringify(storedCompanyList));
-  // window.localStorage.setItem('storedPositionList', JSON.stringify(storedPositionList))
-
 
   return (
     <>
