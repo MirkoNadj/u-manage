@@ -1,4 +1,4 @@
-import { User, ValidationErrors } from "../Interfaces/ObjectInterfaces";
+import { User, Company, ValidationErrors, CompanyValidationErrors } from "../Interfaces/ObjectInterfaces";
 
 export const formValidation = (userInfo: User) => {
     let formErrors: ValidationErrors = {};
@@ -34,6 +34,23 @@ export const formValidation = (userInfo: User) => {
     }
     if (userInfo.phoneNumber.toString().length !== 9) {
         formErrors.phoneNumber = "Phone number must have 9 digits"
+        formErrors.isValid = false;
+    }
+    return formErrors;
+}
+
+export const companyFormValidation = (companyInfo: Company) => {
+    let formErrors: CompanyValidationErrors = { isValid: true };
+    if (!companyInfo.name) {
+        formErrors.name = "Company name is required";
+        formErrors.isValid = false;
+    }
+    if (!companyInfo.city) {
+        formErrors.city = "City name is required";
+        formErrors.isValid = false;
+    }
+    if (!companyInfo.country) {
+        formErrors.country = "Country name is required";
         formErrors.isValid = false;
     }
     return formErrors;

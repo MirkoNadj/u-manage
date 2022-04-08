@@ -31,9 +31,28 @@ export function editUserById(currentUserId: string, userInfo: User) {
     window.localStorage.setItem("storedUserList", JSON.stringify(parsedUserList));
 }
 
+export function editCompanyById(currentCompanyId: string, companyInfo: Company, companyList: Company[]) {
+    let companyIndex = companyList.findIndex((companyFromList: Company) => companyFromList.id === currentCompanyId);
+    updateCompanyNameForUsers(currentCompanyId, companyInfo);
+    companyList[companyIndex] = companyInfo;
+    window.localStorage.setItem("storedCompanyList", JSON.stringify(companyList));
+}
+
 export function setUsers(userList: User[]) {
     //console.log('setUsersFunction', userList)
     window.localStorage.setItem("storedUserList", JSON.stringify(userList));
+}
+
+export function updateCompanyNameForUsers(currentCompanyId: string, companyInfo: Company) {
+    let newUserList = getUsers().map((user) => {
+        if (user.companyId === currentCompanyId) {
+            user.companyName = companyInfo.name;
+            return user;
+        } else {
+            return user
+        };
+    })
+    window.localStorage.setItem("storedUserList", JSON.stringify(newUserList));
 }
 
 export function getCompanies() {
@@ -52,8 +71,9 @@ export function updateCompanyUsers(userInfo: User) {
             companyItem.users = companyItem.users.filter(user => user !== userInfo.id)
             companyItem.users.push(userInfo.id)
             return companyItem;
-        }
-        return companyItem;
+        } else {
+            return companyItem
+        };
     });
     //console.log('updateCompanyUsersFunction', newCompanyList)
     window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
@@ -78,6 +98,14 @@ export const newUserInfo: User = {
     dOB: '1990-01-01',
     position: '',
     phoneNumber: '',
+};
+
+export const newCompanyInfo: Company = {
+    id: '',
+    name: '',
+    users: [],
+    city: '',
+    country: '',
 };
 
 export const positionsList = [

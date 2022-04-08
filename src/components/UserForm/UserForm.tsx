@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent, useEffect, useMemo } from 'react';
+import React, { FC, useState, ChangeEvent, useEffect, useMemo, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './UserForm.css';
 import { User, ValidationErrors } from '../../Interfaces/ObjectInterfaces';
@@ -7,9 +7,11 @@ import { guIdGenerator } from '../../services/guidGenerator';
 import { newUserInfo, getUsers, setUsers, findUserById, updateCompanyUsers, getCompanies, positionsList, editUserById, findCompanyById } from '../../services/StorageRepository';
 import { InputField } from '../partials/InputField/InputField';
 import { SelectField } from '../partials/SelectField/SelectField';
+import { PropsContext } from '../../App';
 
 export const UserForm: FC = () => {
-    //console.log('render')
+    const { currentCompany } = useContext(PropsContext)
+    console.log('render current company ', currentCompany)
     const [userInfo, setUserInfo] = useState<User>(newUserInfo);
     const companiesList = useMemo(() => { return (getCompanies()) }, [])
 
@@ -39,13 +41,16 @@ export const UserForm: FC = () => {
     }
 
     const saveUser = () => {
+        if (currentCompany) {
+            userInfo.companyId = currentCompany;
+        }
         setFormErrors(formValidation(userInfo));
         userInfo.companyName = findCompanyById(userInfo.companyId)!.name;
 
         if (currentUserId && formValidation(userInfo).isValid) {    // for editing old user
             editUserById(currentUserId, userInfo)
         }
-        if (formValidation(userInfo).isValid) {                     // saving new user
+        if (!currentUserId && formValidation(userInfo).isValid) {                     // saving new user
             userInfo.id = guIdGenerator();
             setUsers([...getUsers(), userInfo]);
             //console.log('newUserAdded', userInfo)
@@ -83,7 +88,8 @@ export const UserForm: FC = () => {
                     label='Company:'
                     id='companyId'
                     name='companyName'
-                    value={userInfo.companyId}
+                    value={currentCompany ? currentCompany : userInfo.companyId}
+                    defaultValue={currentCompany ? currentCompany : 'defaultValue'}
                     itemArr={companiesList}
                     onChange={handleChangeSelect}
                     error={formErrors.companyId}
@@ -103,6 +109,7 @@ export const UserForm: FC = () => {
                     id='position'
                     name='position'
                     value={userInfo.position}
+                    defaultValue={'defaultId'}
                     itemArr={positionsList}
                     onChange={handleChangeSelect}
                     error={formErrors.position}
