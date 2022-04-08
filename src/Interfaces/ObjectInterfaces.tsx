@@ -9,14 +9,6 @@ export interface WeatherObject {
 
 export type User = Required<Omit<ValidationErrors, 'isValid'>>
 
-export interface Company {
-    id: string;
-    name: string;
-    users: string[];
-    city: string;
-    country: string;
-}
-
 export interface ValidationErrors {
     id?: string;
     isValid?: boolean;
@@ -27,6 +19,17 @@ export interface ValidationErrors {
     dOB?: string;
     position?: string;
     phoneNumber?: string | number;
+}
+
+export type Company = Required<Omit<CompanyValidationErrors, 'isValid'>>
+
+export interface CompanyValidationErrors {
+    id?: string;
+    users?: string[];
+    isValid: boolean;
+    name?: string;
+    city?: string;
+    country?: string;
 }
 
 export interface InputFieldProps {
@@ -44,7 +47,9 @@ export interface SelectFieldProps {
     id: string;
     name: string;
     value: string;
+    defaultValue: string;
     itemArr: { id: string, name?: string }[];
     onChange: ChangeEventHandler,
     error: string | number | undefined;
 }
+

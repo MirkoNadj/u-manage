@@ -1,6 +1,6 @@
 import { User, Company } from "../Interfaces/ObjectInterfaces";
 
-let storedUserList: User[] = [
+export let storedUserList: User[] = [
     {
         id: 'u1',
         firstName: 'John',
@@ -33,7 +33,7 @@ let storedUserList: User[] = [
     }
 ];
 
-let storedCompanyList: Company[] = [
+export let storedCompanyList: Company[] = [
     {
         id: 'c4',
         name: 'Microsoft',
