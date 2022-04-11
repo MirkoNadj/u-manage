@@ -79,10 +79,21 @@ export function updateCompanyUsers(userInfo: User) {
     window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList))
 }
 
-export const deleteUserFromTable = (tableList: User[], userInfo: User): void => {
+export function updateUserList(deletedCompanyId: string) {
+    let newUserList = getUsers().filter(userItem => userItem.companyId !== deletedCompanyId);
+    window.localStorage.setItem("storedUserList", JSON.stringify(newUserList));
+}
+
+export function deleteUserFromTable(tableList: User[], userInfo: User): void {
     let newUserList = tableList.filter(userItem => userItem.id !== userInfo.id);
     window.localStorage.setItem("storedUserList", JSON.stringify(newUserList));
     updateCompanyUsers(userInfo)
+}
+
+export function deleteCompanyFromTable(tableList: Company[], idToDelete: string): void {
+    let newCompanyList = tableList.filter(companyItem => companyItem.id !== idToDelete);
+    window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList));
+    updateUserList(idToDelete);
 }
 
 export function convertDateString(date: string = '1990-01-01') {
