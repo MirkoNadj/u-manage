@@ -1,0 +1,20 @@
+.postCard {
+  color: white;
+  background-color: rgb(174, 243, 243);
+  padding: 10px;
+  margin: 15px;
+  border-color: rgb(10, 31, 75);
+  border-style: groove;
+  border-width: 5px;
+}
+
+.postCard h1 {
+  font-size: 26px;
+  color: darkblue;
+  margin: 5px;
+}
+
+.postCard h3 {
+  color: rgb(0, 0, 255);
+  margin: 5px;
+}
