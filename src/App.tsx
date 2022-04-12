@@ -26,6 +26,7 @@ const App: FC = () => {
             <Route path="/companies" element={<Companies />} />
             <Route path="/companies/create" element={<CompanyForm />} />
             <Route path="/companies/:currentCompanyId" element={<CompanyForm />} />
+            <Route path="/newsletterPosts" element={<PostsList />} />
           </Routes>
         </PropsContext.Provider>
       </Router>
