@@ -6,6 +6,7 @@ import { Home } from './components/partials/Home/Home';
 import { Users } from './components/Users/Users';
 import { UserForm } from './components/UserForm/UserForm';
 import { CompanyForm } from './components/CompanyForm/CompanyForm';
+import { Companies } from './components/Companies/Companies';
 import { PropsContextType } from './TypeFiles/ObjectTypes';
 
 export const PropsContext = createContext<PropsContextType>({ currentCompany: '', setCurrentCompany: () => { } });
@@ -22,7 +23,7 @@ const App: FC = () => {
             <Route path="/users/" element={<Users />} />
             <Route path="/users/create" element={<UserForm />} />
             <Route path="/users/:currentUserId" element={<UserForm />} />
-            {/*<Route path="/companies" element={<Companies />} />*/}
+            <Route path="/companies" element={<Companies />} />
             <Route path="/companies/create" element={<CompanyForm />} />
             <Route path="/companies/:currentCompanyId" element={<CompanyForm />} />
           </Routes>
