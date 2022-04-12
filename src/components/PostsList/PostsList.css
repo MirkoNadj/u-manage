@@ -1,0 +1,30 @@
+.list-container {
+  width: 70%;
+  margin: 50px auto;
+  padding: 10px;
+  background-color: blue;
+  border-color: white;
+  border-style: groove;
+  border-width: 5px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgb(174, 243, 243);
+  padding: 5px;
+  margin: 15px auto;
+  border-color: rgb(10, 31, 75);
+  border-style: groove;
+  border-width: 5px;
+  border-radius: 100%;
+}
+
+.error {
+  display: block;
+  margin: 50px auto;
+  text-align: center;
+  color: red;
+  font-size: 26px;
+  font-weight: bold;
+}
