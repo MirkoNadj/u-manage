@@ -18,7 +18,7 @@ export const PostsList: FC = () => {
     const fetchPosts = async <T,>(): Promise<void> => {
         setLoading(true);
         try {
-            const response: AxiosResponse = await axios.get<T, AxiosResponse<T>>('https://jsonplaceholder.typicode.com/posts/');
+            const response: AxiosResponse = await axios.get<T, AxiosResponse<T>>('https://jsonplaceholder.typicode.com/posts');
             setPosts(response.data);
             setError(null);
         }

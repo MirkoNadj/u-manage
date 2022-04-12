@@ -7,6 +7,7 @@ import { Users } from './components/Users/Users';
 import { UserForm } from './components/UserForm/UserForm';
 import { CompanyForm } from './components/CompanyForm/CompanyForm';
 import { Companies } from './components/Companies/Companies';
+import { PostsList } from './components/PostsList/PostsList';
 import { PropsContextType } from './TypeFiles/ObjectTypes';
 
 export const PropsContext = createContext<PropsContextType>({ currentCompany: '', setCurrentCompany: () => { } });
