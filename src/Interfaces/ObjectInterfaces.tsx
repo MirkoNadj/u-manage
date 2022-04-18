@@ -53,3 +53,14 @@ export interface SelectFieldProps {
     error: string | number | undefined;
 }
 
+export interface Post {
+    body: string;
+    id?: number;
+    title: string;
+    userId?: number;
+}
+
+export interface FetchError {
+    statusCode: number;
+    message: string;
+}
