@@ -1,10 +1,9 @@
-import {Dispatch, SetStateAction} from 'react';
 import axios from 'axios';
 import { isAxiosError } from "../Interfaces/TypeGuards";
 import {Post, Comment} from '../Interfaces/ObjectInterfaces';
-import { GetPostDetails } from '../Interfaces/FetchInterface';
+import { PostDetails, EditPost, DeletePost } from '../Interfaces/FetchInterface';
 
-export const getPostDetails:GetPostDetails= async(
+export const getPostDetails:PostDetails<Post>= async(
     setPost, 
     setError, 
     setLoading, 
@@ -24,11 +23,11 @@ export const getPostDetails:GetPostDetails= async(
     }
 }
 
-export const getComments = async(
-        setComments:Dispatch<SetStateAction<Comment[]>>, 
-        setError:Dispatch<SetStateAction<string | undefined>>, 
-        setLoading:Dispatch<SetStateAction<boolean>>, 
-        postDetailsId:string) => {
+export const getComments: PostDetails<Comment[]> = async(
+        setComments, 
+        setError, 
+        setLoading, 
+        postDetailsId) => {
 
     setLoading(true)
     try{
@@ -45,11 +44,12 @@ export const getComments = async(
     }
 }
 
-export const editPost = async(
-    postBody: Post, setPost: Dispatch<SetStateAction<Post>>, 
-    setError:Dispatch<SetStateAction<string | undefined>>, 
-    setLoading:Dispatch<SetStateAction<boolean>>, 
-    postDetailsId:number) => {
+export const editPost: EditPost<Post> = async(
+    postBody,
+    setPost, 
+    setError, 
+    setLoading, 
+    postDetailsId) => {
 
     setLoading(true)
     try{
@@ -70,10 +70,10 @@ export const editPost = async(
     }
 }
 
-export const deletePost = async(
-    setError:Dispatch<SetStateAction<string | undefined>> , 
-    setLoading:Dispatch<SetStateAction<boolean>>, 
-    postDetailsId:number) => {
+export const deletePost: DeletePost = async(
+    setError, 
+    setLoading, 
+    postDetailsId) => {
         
     setLoading(true)
     try{

@@ -55,7 +55,7 @@ export interface SelectFieldProps {
 
 export interface Post {
     body: string;
-    id?: number;
+    id: number;
     title: string;
     userId?: number;
 }

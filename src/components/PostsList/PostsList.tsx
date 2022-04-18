@@ -3,7 +3,7 @@ import './PostsList.css';
 import { Post } from '../../Interfaces/ObjectInterfaces';
 import { PostCard } from '../partials/PostCard/PostCard';
 import { Loading } from '../partials/Loading/Loading';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { isAxiosError } from '../../Interfaces/TypeGuards';
 
 export const PostsList: FC = () => {
@@ -38,7 +38,7 @@ export const PostsList: FC = () => {
             {loading && <Loading />}
             {error && <h1 className='error'>{error}</h1>}
             {posts.map((postsListItem: Post) => {
-                return <PostCard title={postsListItem.title} body={postsListItem.body} />;
+                return <PostCard title={postsListItem.title} body={postsListItem.body} id={postsListItem.id} />;
             })}
             <div className='dot'></div>
             <div className='dot'></div>

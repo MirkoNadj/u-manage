@@ -9,6 +9,7 @@ import { CompanyForm } from './components/CompanyForm/CompanyForm';
 import { Companies } from './components/Companies/Companies';
 import { PostsList } from './components/PostsList/PostsList';
 import { PropsContextType } from './TypeFiles/ObjectTypes';
+import { PostDetails } from './components/PostDetailsPage/PostDetails/PostDetails';
 
 export const PropsContext = createContext<PropsContextType>({ currentCompany: '', setCurrentCompany: () => { } });
 
@@ -28,6 +29,7 @@ const App: FC = () => {
             <Route path="/companies/create" element={<CompanyForm />} />
             <Route path="/companies/:currentCompanyId" element={<CompanyForm />} />
             <Route path="/newsletterPosts" element={<PostsList />} />
+            <Route path="/newsletterPosts/:postDetailsId" element={<PostDetails />} />
           </Routes>
         </PropsContext.Provider>
       </Router>
