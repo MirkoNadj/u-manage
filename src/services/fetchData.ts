@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { isAxiosError } from "../Interfaces/TypeGuards";
 import {Post, Comment} from '../Interfaces/ObjectInterfaces';
-import { PostDetails, EditPost, DeletePost } from '../Interfaces/FetchInterface';
+import { PostComment, EditPost, DeletePost, PostDetails} from '../Interfaces/FetchInterface';
 
-export const getPostDetails:PostDetails<Post>= async(
-    setPost, 
-    setError, 
+export const getPostDetails= async(
+    {setPost, 
+    setError,
     setLoading, 
-    postDetailsId) => {
+    postDetailsId}: PostDetails) => {
+
     setLoading(true)
     try{
         const response = await axios.get<Post>(`https://jsonplaceholder.typicode.com/posts/${postDetailsId}`);
@@ -23,11 +24,11 @@ export const getPostDetails:PostDetails<Post>= async(
     }
 }
 
-export const getComments: PostDetails<Comment[]> = async(
-        setComments, 
+export const getComments = async(
+        {setComments, 
         setError, 
         setLoading, 
-        postDetailsId) => {
+        postDetailsId}:PostComment) => {
 
     setLoading(true)
     try{
@@ -44,12 +45,12 @@ export const getComments: PostDetails<Comment[]> = async(
     }
 }
 
-export const editPost: EditPost<Post> = async(
-    postBody,
+export const editPost= async(
+    {postBody,
     setPost, 
     setError, 
     setLoading, 
-    postDetailsId) => {
+    postDetailsId}:EditPost) => {
 
     setLoading(true)
     try{
@@ -70,10 +71,10 @@ export const editPost: EditPost<Post> = async(
     }
 }
 
-export const deletePost: DeletePost = async(
-    setError, 
+export const deletePost = async(
+    {setError, 
     setLoading, 
-    postDetailsId) => {
+    postDetailsId}: DeletePost) => {
         
     setLoading(true)
     try{

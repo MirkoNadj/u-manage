@@ -11,7 +11,7 @@ export const Comments: FC<CommentInt> = ({ postDetailsId }) => {
     const [comments, setComments] = useState<Comment[]>([])
 
     useEffect(() => {
-        getComments(setComments, setError, setLoading, postDetailsId!)
+        getComments({ setComments, setError, setLoading, postDetailsId })
     }, [postDetailsId])
 
     return (

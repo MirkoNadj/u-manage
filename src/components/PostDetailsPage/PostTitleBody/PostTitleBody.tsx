@@ -12,7 +12,7 @@ export const PostTitleBody: FC<PostTitleBodyInt> = ({ postDetailsId }) => {
     const [post, setPost] = useState<Post>(defaultPost);
 
     const getDetails = useCallback(() => {
-        getPostDetails(setPost, setError, setLoading, postDetailsId!)
+        getPostDetails({ setPost, setError, setLoading, postDetailsId })
     }, [postDetailsId]);
 
     useEffect(() => {
@@ -29,12 +29,12 @@ export const PostTitleBody: FC<PostTitleBodyInt> = ({ postDetailsId }) => {
     const navigate = useNavigate();
 
     const deleteP = (postDetailsId: number) => {
-        deletePost(setError, setLoading, postDetailsId);
+        deletePost({ setError, setLoading, postDetailsId });
         navigate('/newsletterPosts');
     };
 
     const editP = (postBody: Post, postDetailsId: number) => {
-        editPost(postBody, setPost, setError, setLoading, postDetailsId);
+        editPost({ postBody, setPost, setError, setLoading, postDetailsId });
     };
 
     return (
