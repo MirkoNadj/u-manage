@@ -4,7 +4,7 @@ import './App.css';
 import { Header } from './components/partials/Header/Header';
 import { Home } from './components/partials/Home/Home';
 import { Users } from './components/Users/Users';
-import { UserForm } from './components/UserForm/UserForm';
+import UserForm from './components/UserForm/UserForm';
 import { CompanyForm } from './components/CompanyForm/CompanyForm';
 import { Companies } from './components/Companies/Companies';
 import { PostsList } from './components/PostsList/PostsList';

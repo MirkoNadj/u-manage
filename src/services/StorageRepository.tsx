@@ -10,9 +10,8 @@ export function getUsers() {
     return parsedUserList;
 }
 
-export function findUserById(currentUserId: string) {
-    let parsedUserList = getUsers()
-    let currentUserFoundByID = parsedUserList.find((userFromList: User) => userFromList.id === currentUserId);
+export function findUserById(currentUserId: string, userList: User[]) {
+    let currentUserFoundByID = userList.find((userFromList: User) => userFromList.id === currentUserId);
     //console.log('findUserByIdFunction', currentUserFoundByID)
     return currentUserFoundByID;
 }
