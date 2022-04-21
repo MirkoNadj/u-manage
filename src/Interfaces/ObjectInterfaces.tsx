@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, Dispatch, SetStateAction } from "react";
 
 export interface WeatherObject {
     tempMax: number | string;
@@ -55,7 +55,7 @@ export interface SelectFieldProps {
 
 export interface Post {
     body: string;
-    id?: number;
+    id: number;
     title: string;
     userId?: number;
 }
@@ -63,4 +63,37 @@ export interface Post {
 export interface FetchError {
     statusCode: number;
     message: string;
+}
+
+export interface Comment {
+    postId: number;
+    id: number;
+    name: string;
+    email: string;
+    body: string;
+}
+
+export interface CommentCardInt {
+    commentItem: Comment;
+}
+
+export interface CommentInt {
+    postDetailsId: string | undefined;
+}
+
+export interface PostTitleBodyInt extends CommentInt { }
+
+export interface CommentModalInt {
+    commentItem: Comment;
+    setIsModal: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface TextAreaProps {
+    label: string;
+    id: string;
+    name: string,
+    value: string,
+    defaultValue: string,
+    maxLength: number,
+    onChange: ChangeEventHandler;
 }

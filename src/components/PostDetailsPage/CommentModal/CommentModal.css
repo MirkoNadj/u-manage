@@ -1,0 +1,32 @@
+.comment-modal-container {
+  position: fixed;
+  box-sizing: border-box;
+  top: 100px;
+  width: 50%;
+  height: 80vh;
+  padding: 2%;
+  color: blue;
+  border: 12px groove rgb(15, 60, 158);
+  background-color: rgb(174, 243, 243);
+  z-index: 999;
+  text-align: justify;
+}
+.comment-modal-container h1 {
+  font-size: 26px;
+  color: rgb(9, 9, 34);
+}
+
+.comment-modal-container h2 {
+  font-size: 26px;
+  color: rgb(9, 9, 155);
+}
+
+.comment-modal-container h3 {
+  font-size: 22px;
+  color: blue;
+  font-style: italic;
+}
+
+.comment-modal-container p {
+  color: blue;
+}
