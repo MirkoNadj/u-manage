@@ -16,15 +16,27 @@ export const usersSlice = createSlice({
   reducers: {
     addUser: (state, action:PayloadAction<User>) => {      
       state.value.push(action.payload)
+      console.log(state.value)
     },
     
-    deleteUser: (state) => {
-      state.value.pop()
-    },
+    deleteUser: (state, action:PayloadAction<User>) => {        
+        console.log(state.value)
+        
+        let arr = state.value.filter(item => item.id !== action.payload.id)
+        state.value = arr
+        
+        console.log(state.value)
+
+            // if(userItem.id === action.payload.id) {
+            //     state.value.filter(action.payload)
+            // }
+            // console.log('delete', state.value)
+    }
     //editUser: (state, action: PayloadAction<number>) => {
       //state.value += action.payload
     //},
-  },
+},
+
 })
 
 // Action creators are generated for each case reducer function

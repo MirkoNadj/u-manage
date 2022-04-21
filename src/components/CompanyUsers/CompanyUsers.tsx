@@ -1,7 +1,7 @@
 import React, { FC, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import './CompanyUsers.css';
-import { TableUsers } from '../TableUsers/TableUsers';
+import TableUsers from '../TableUsers/TableUsers';
 import { PropsContext } from '../../App';
 
 export const CompanyUsers: FC = () => {
