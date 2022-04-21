@@ -3,17 +3,20 @@ import { useNavigate, useParams } from 'react-router-dom'
 import './TableUsers.css'
 import { User } from '../../Interfaces/ObjectInterfaces';
 import { getUsers, convertDateString, deleteUserFromTable } from '../../services/StorageRepository';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/store';
 
 export const TableUsers: FC = () => {
     let navigate = useNavigate();
     const { currentCompanyId } = useParams();
-    const [tableList, setTableList] = useState(getUsers())
+    const users = useSelector((state: RootState) => state.users.value);
+    const [tableList, setTableList] = useState(users)
 
     useEffect(() => {
         if (currentCompanyId) {
-            setTableList(getUsers().filter(userItem => userItem.companyId === currentCompanyId));
+            setTableList(users.filter(userItem => userItem.companyId === currentCompanyId));
         }
-    }, [currentCompanyId]);
+    }, [currentCompanyId, users]);
 
     const deleteItem = (userItem: User) => {
         deleteUserFromTable(tableList, userItem)

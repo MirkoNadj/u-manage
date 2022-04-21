@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { storedUserList } from '../entities/StoredLists'
 import {User} from '../Interfaces/ObjectInterfaces'
 
 export interface usersState {
@@ -6,17 +7,17 @@ export interface usersState {
 }
 
 const initialState: usersState = {
-  value: [],
+  value: storedUserList,
 }
 
 export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    addUser: (state) => {
-      
-      state.value.push()
+    addUser: (state, action:PayloadAction<User>) => {      
+      state.value.push(action.payload)
     },
+    
     deleteUser: (state) => {
       state.value.pop()
     },
