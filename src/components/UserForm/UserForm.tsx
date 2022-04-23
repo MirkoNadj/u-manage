@@ -1,5 +1,5 @@
-import React, { useState, ChangeEvent, useEffect, useMemo, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState, ChangeEvent, useEffect, useMemo } from 'react';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import './UserForm.css';
 import { User, ValidationErrors } from '../../Interfaces/ObjectInterfaces';
 import { formValidation } from '../../services/formValidation';
@@ -7,16 +7,16 @@ import { guIdGenerator } from '../../services/guidGenerator';
 import { newUserInfo, findUserById, updateCompanyUsers, getCompanies, positionsList, findCompanyById } from '../../services/StorageRepository';
 import { InputField } from '../partials/InputField/InputField';
 import { SelectField } from '../partials/SelectField/SelectField';
-import { PropsContext } from '../../App';
 import { AppDispatch, RootState } from '../../app/store';
 import { connect, ConnectedProps } from 'react-redux';
 import { addUser, editUser } from '../../features/usersSlice';
 
 export const UserForm = (props: PropsFromRedux) => {
-    const { currentCompany } = useContext(PropsContext)
-    //console.log('render current company ', currentCompany)
     const [userInfo, setUserInfo] = useState<User>(newUserInfo);
     const companiesList = useMemo(() => { return (getCompanies()) }, [])
+
+    const location = useLocation();
+    const currentCompany = location.state as string;
 
     let { currentUserId } = useParams();
     let navigate = useNavigate();
@@ -63,6 +63,7 @@ export const UserForm = (props: PropsFromRedux) => {
             updateCompanyUsers(userInfo);
             navigate('/users')
         }
+
     };
 
     return (
