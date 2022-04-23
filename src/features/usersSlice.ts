@@ -19,7 +19,7 @@ export const usersSlice = createSlice({
     },
     
     deleteUser: (state, action:PayloadAction<User>) => {
-        let arr = state.value.filter(item => item.id !== action.payload.id)
+        let arr = state.value.filter(item => item.id !== action.payload.id);
         state.value = arr;
         window.localStorage.setItem("storedUserList", JSON.stringify(state.value));
     },
@@ -28,9 +28,9 @@ export const usersSlice = createSlice({
         let userIndex = state.value.findIndex((userFromList: User) => userFromList.id === action.payload.id);
         state.value[userIndex] = action.payload;
         window.localStorage.setItem("storedUserList", JSON.stringify(state.value));
-},
-
-}})
+    },
+}
+})
 
 export const { addUser, deleteUser, editUser } = usersSlice.actions
 
