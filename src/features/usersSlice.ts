@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import {User} from '../Interfaces/ObjectInterfaces'
+import {User, Company} from '../Interfaces/ObjectInterfaces'
 
 export interface usersState {
   value: User[]
@@ -29,6 +29,17 @@ export const usersSlice = createSlice({
         state.value[userIndex] = action.payload;
         window.localStorage.setItem("storedUserList", JSON.stringify(state.value));
     },
+
+    updateCompanyNameForUsers: (state, action: PayloadAction<Company>) => {
+      let changedUserList = state.value.map((user) => {
+          if (user.companyId === action.payload.id) {
+              user.companyName = action.payload.name;
+              return user;
+          }
+      return user;
+      });
+      window.localStorage.setItem("storedUserList", JSON.stringify(changedUserList));
+  }
 }
 })
 

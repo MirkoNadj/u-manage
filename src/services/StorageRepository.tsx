@@ -67,10 +67,10 @@ export function getCompanies() {
 export function updateCompanyUsers(userInfo: User) {
     let newCompanyList = getCompanies().map((companyItem) => {
         if (companyItem.id === userInfo.companyId) {
-            companyItem.users = companyItem.users.filter(user => user !== userInfo.id)
             companyItem.users.push(userInfo.id)
             return companyItem;
         } else {
+            companyItem.users = companyItem.users.filter(user => user !== userInfo.id)
             return companyItem
         };
     });

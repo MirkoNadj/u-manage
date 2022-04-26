@@ -16,17 +16,17 @@ const TableUsers = (props: PropsFromRedux) => {
     const [tableList, setTableList] = useState(props.users.value)
 
     useEffect(() => {
+        setTableList(props.users.value)
+    }, [props.users.value])
+
+    useEffect(() => {
         if (currentCompanyId) {
             setTableList(props.users.value.filter((userItem: User) => userItem.companyId === currentCompanyId));
         }
     }, [currentCompanyId, props.users.value]);
 
-    useEffect(() => {
-        setTableList(props.users.value)
-    }, [props.users.value])
-
     const deleteItem = (userItem: User) => {
-        props.deleteU(userItem)
+        props.deleteUser(userItem)
         updateCompanyUsers(userItem)
     };
 
@@ -65,7 +65,7 @@ let mapStateToProps = (state: RootState) => {
 
 let mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
-        deleteU: (x: User) => dispatch(deleteUser(x))
+        deleteUser: (user: User) => dispatch(deleteUser(user))
     }
 }
 
