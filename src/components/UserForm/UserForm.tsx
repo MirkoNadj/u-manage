@@ -1,28 +1,31 @@
-import React, { FC, useState, ChangeEvent, useEffect, useMemo, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState, ChangeEvent, useEffect, useMemo } from 'react';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import './UserForm.css';
 import { User, ValidationErrors } from '../../Interfaces/ObjectInterfaces';
 import { formValidation } from '../../services/formValidation';
 import { guIdGenerator } from '../../services/guidGenerator';
-import { newUserInfo, getUsers, setUsers, findUserById, updateCompanyUsers, getCompanies, positionsList, editUserById, findCompanyById } from '../../services/StorageRepository';
+import { newUserInfo, findUserById, updateCompanyUsers, getCompanies, positionsList, findCompanyById } from '../../services/StorageRepository';
 import { InputField } from '../partials/InputField/InputField';
 import { SelectField } from '../partials/SelectField/SelectField';
-import { PropsContext } from '../../App';
+import { AppDispatch, RootState } from '../../app/store';
+import { connect, ConnectedProps } from 'react-redux';
+import { addUser, editUser } from '../../features/usersSlice';
 
-export const UserForm: FC = () => {
-    const { currentCompany } = useContext(PropsContext)
-    console.log('render current company ', currentCompany)
+export const UserForm = (props: PropsFromRedux) => {
     const [userInfo, setUserInfo] = useState<User>(newUserInfo);
     const companiesList = useMemo(() => { return (getCompanies()) }, [])
+
+    const location = useLocation();
+    const currentCompany = location.state as string;
 
     let { currentUserId } = useParams();
     let navigate = useNavigate();
 
     useEffect(() => {
         if (currentUserId) {
-            setUserInfo(findUserById(currentUserId)!)
+            setUserInfo(findUserById(currentUserId, props.users.value)!)
         };
-    }, [currentUserId])
+    }, [currentUserId, props.users.value])
 
     const [formErrors, setFormErrors] = useState<ValidationErrors>({ isValid: false });
 
@@ -47,18 +50,20 @@ export const UserForm: FC = () => {
         setFormErrors(formValidation(userInfo));
         userInfo.companyName = findCompanyById(userInfo.companyId)!.name;
 
-        if (currentUserId && formValidation(userInfo).isValid) {    // for editing old user
-            editUserById(currentUserId, userInfo)
+        if (currentUserId && formValidation(userInfo).isValid) {
+            props.editUser(userInfo)     // for editing old user
+
         }
-        if (!currentUserId && formValidation(userInfo).isValid) {                     // saving new user
-            userInfo.id = guIdGenerator();
-            setUsers([...getUsers(), userInfo]);
-            //console.log('newUserAdded', userInfo)
+        if (!currentUserId && formValidation(userInfo).isValid) {
+            userInfo.id = guIdGenerator();    // saving new user
+            props.addUser(userInfo)
+
         };
         if (formValidation(userInfo).isValid) {
             updateCompanyUsers(userInfo);
             navigate('/users')
         }
+
     };
 
     return (
@@ -128,3 +133,21 @@ export const UserForm: FC = () => {
         </div>
     );
 }
+
+let mapStateToProps = (state: RootState) => {
+    return {
+        users: state.users
+    }
+}
+
+let mapDispatchToProps = (dispatch: AppDispatch) => {
+    return {
+        addUser: (user: User) => dispatch(addUser(user)),
+        editUser: (user: User) => dispatch(editUser(user))
+    }
+}
+
+const connector = connect(mapStateToProps, mapDispatchToProps)
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserForm)

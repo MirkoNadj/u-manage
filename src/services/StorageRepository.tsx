@@ -10,9 +10,8 @@ export function getUsers() {
     return parsedUserList;
 }
 
-export function findUserById(currentUserId: string) {
-    let parsedUserList = getUsers()
-    let currentUserFoundByID = parsedUserList.find((userFromList: User) => userFromList.id === currentUserId);
+export function findUserById(currentUserId: string, userList: User[]) {
+    let currentUserFoundByID = userList.find((userFromList: User) => userFromList.id === currentUserId);
     //console.log('findUserByIdFunction', currentUserFoundByID)
     return currentUserFoundByID;
 }
@@ -68,10 +67,10 @@ export function getCompanies() {
 export function updateCompanyUsers(userInfo: User) {
     let newCompanyList = getCompanies().map((companyItem) => {
         if (companyItem.id === userInfo.companyId) {
-            companyItem.users = companyItem.users.filter(user => user !== userInfo.id)
             companyItem.users.push(userInfo.id)
             return companyItem;
         } else {
+            companyItem.users = companyItem.users.filter(user => user !== userInfo.id)
             return companyItem
         };
     });

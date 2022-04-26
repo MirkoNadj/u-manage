@@ -1,25 +1,33 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import './TableUsers.css'
 import { User } from '../../Interfaces/ObjectInterfaces';
-import { getUsers, convertDateString, deleteUserFromTable } from '../../services/StorageRepository';
+import { convertDateString, updateCompanyUsers } from '../../services/StorageRepository';
+//import { useSelector, useDispatch } from 'react-redux';
+import { AppDispatch, RootState } from '../../app/store';
+import { deleteUser } from '../../features/usersSlice';
+import { connect, ConnectedProps } from 'react-redux';
 
-export const TableUsers: FC = () => {
+const TableUsers = (props: PropsFromRedux) => {
     let navigate = useNavigate();
     const { currentCompanyId } = useParams();
-    const [tableList, setTableList] = useState(getUsers())
+    //const users = useSelector((state: RootState) => state.users.value);
+    //const dispatch = useDispatch();
+    const [tableList, setTableList] = useState(props.users.value)
+
+    useEffect(() => {
+        setTableList(props.users.value)
+    }, [props.users.value])
 
     useEffect(() => {
         if (currentCompanyId) {
-            setTableList(getUsers().filter(userItem => userItem.companyId === currentCompanyId));
+            setTableList(props.users.value.filter((userItem: User) => userItem.companyId === currentCompanyId));
         }
-    }, [currentCompanyId]);
+    }, [currentCompanyId, props.users.value]);
 
     const deleteItem = (userItem: User) => {
-        deleteUserFromTable(tableList, userItem)
-        setTableList(tableList.filter((listItem: User) => {
-            return listItem.id !== userItem.id;
-        }));
+        props.deleteUser(userItem)
+        updateCompanyUsers(userItem)
     };
 
     return (
@@ -48,3 +56,20 @@ export const TableUsers: FC = () => {
         </table>
     )
 }
+
+let mapStateToProps = (state: RootState) => {
+    return {
+        users: state.users
+    }
+}
+
+let mapDispatchToProps = (dispatch: AppDispatch) => {
+    return {
+        deleteUser: (user: User) => dispatch(deleteUser(user))
+    }
+}
+
+const connector = connect(mapStateToProps, mapDispatchToProps)
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connect(mapStateToProps, mapDispatchToProps)(TableUsers)
