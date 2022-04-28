@@ -19,9 +19,9 @@ export const CommentsList = (props: PropsFromRedux) => {
             {comments.status === 'loading' && <Loading />}
             {comments.status === 'failed' && <h1 className='error'>{comments.error}</h1>}
             <h1>Comments:</h1>
-            {comments.commentsList.map((commentItem: Comment, index = commentItem.id) => {
+            {comments.commentsList.map((commentItem: Comment) => {
                 return (
-                    <CommentCard commentItem={commentItem} />
+                    <CommentCard commentItem={commentItem} key={commentItem.id} />
                 )
             })}
         </div>

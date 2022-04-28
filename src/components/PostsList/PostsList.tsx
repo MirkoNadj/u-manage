@@ -11,8 +11,10 @@ export const PostsList = (props: PropsFromRedux) => {
     const { fetchPosts, posts } = props;
 
     useEffect(() => {
-        fetchPosts('')
-    }, [fetchPosts]);
+        if (posts.status === 'idle') {
+            fetchPosts('')
+        }
+    }, [fetchPosts, posts.status]);
 
     return (
         <div className='list-container'>
@@ -36,7 +38,7 @@ let mapStateToProps = (state: RootState) => {
 
 let mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
-        fetchPosts: (postDetailsId: string) => dispatch(fetchPosts(postDetailsId))
+        fetchPosts: (postDetailsId: string) => dispatch(fetchPosts(postDetailsId)),
     };
 };
 
