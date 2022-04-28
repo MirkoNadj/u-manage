@@ -1,48 +1,42 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import {User, Company} from '../Interfaces/ObjectInterfaces'
+import { createSlice, PayloadAction, } from '@reduxjs/toolkit';
+import {User, Company} from '../Interfaces/ObjectInterfaces';
+import { UsersState} from '../Interfaces/SliceInterfaces';
 
-export interface usersState {
-  value: User[]
-}
-
-const initialState: usersState = {
-  value: window.localStorage.getItem("storedUserList") ? JSON.parse(window.localStorage.getItem("storedUserList")!) : []
-}
+const initialState: UsersState = {
+  usersList: []
+};
 
 export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
     addUser: (state, action:PayloadAction<User>) => {      
-        state.value.push(action.payload);
-        window.localStorage.setItem("storedUserList", JSON.stringify(state.value));
+        state.usersList.push(action.payload);
     },
     
     deleteUser: (state, action:PayloadAction<User>) => {
-        let arr = state.value.filter(item => item.id !== action.payload.id);
-        state.value = arr;
-        window.localStorage.setItem("storedUserList", JSON.stringify(state.value));
+        let changedUserList = state.usersList.filter(userItem => userItem.id !== action.payload.id);
+        state.usersList = changedUserList;
     },
 
     editUser: (state, action: PayloadAction<User>) => {
-        let userIndex = state.value.findIndex((userFromList: User) => userFromList.id === action.payload.id);
-        state.value[userIndex] = action.payload;
-        window.localStorage.setItem("storedUserList", JSON.stringify(state.value));
+        let userIndex = state.usersList.findIndex((userFromList: User) => userFromList.id === action.payload.id);
+        state.usersList[userIndex] = action.payload;
     },
 
     updateCompanyNameForUsers: (state, action: PayloadAction<Company>) => {
-      let changedUserList = state.value.map((user) => {
-          if (user.companyId === action.payload.id) {
-              user.companyName = action.payload.name;
-              return user;
-          }
-      return user;
-      });
-      window.localStorage.setItem("storedUserList", JSON.stringify(changedUserList));
+        let changedUserList = state.usersList.map((userItem) => {
+            if (userItem.companyId === action.payload.id) {
+                userItem.companyName = action.payload.name;
+                return userItem;
+            }
+        return userItem;
+        });
+        state.usersList = changedUserList;
+    }
   }
-}
-})
+});
 
-export const { addUser, deleteUser, editUser } = usersSlice.actions
+export const { addUser, deleteUser, editUser, updateCompanyNameForUsers } = usersSlice.actions;
 
-export default usersSlice.reducer
+export default usersSlice.reducer;

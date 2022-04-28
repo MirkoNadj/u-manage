@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './CompanyForm.css';
 import { Company, CompanyValidationErrors } from '../../Interfaces/ObjectInterfaces';
@@ -6,24 +6,24 @@ import { companyFormValidation } from '../../services/formValidation';
 import { guIdGenerator } from '../../services/guidGenerator';
 import { CompanyUsers } from '../CompanyUsers/CompanyUsers';
 import { InputField } from '../partials/InputField/InputField';
-import { getCompanies, findCompanyById, newCompanyInfo, editCompanyById } from '../../services/StorageRepository';
+import { findCompanyById, newCompanyInfo } from '../../services/StorageRepository';
+import { AppDispatch, RootState } from '../../app/store';
+import { connect, ConnectedProps } from 'react-redux';
+import { addCompany, editCompany } from '../../features/companiesSlice';
+import { updateCompanyNameForUsers } from '../../features/usersSlice';
 
-export const CompanyForm: FC = () => {
-    console.log('render company form')
+export const CompanyForm = (props: PropsFromRedux) => {
     const [companyInfo, setCompanyInfo] = useState<Company>(newCompanyInfo);
+    const [companyFormErrors, setCompanyFormErrors] = useState<CompanyValidationErrors>({ isValid: false });
 
     let navigate = useNavigate();
     let { currentCompanyId } = useParams();
-    let newCompanyList = getCompanies();
+
     useEffect(() => {
         if (currentCompanyId) {
-            setCompanyInfo(findCompanyById(currentCompanyId)!)
+            setCompanyInfo(findCompanyById(currentCompanyId, props.companies.companiesList)!)
         };
-    }, [currentCompanyId])
-
-    //const [companyList, updateCompanyList] = useState(getCompanies());
-
-    const [companyFormErrors, setCompanyFormErrors] = useState<CompanyValidationErrors>({ isValid: false });
+    }, [currentCompanyId, props.companies.companiesList])
 
     const handleChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
         setCompanyInfo({
@@ -32,27 +32,21 @@ export const CompanyForm: FC = () => {
         });
     }
 
-    // useEffect(() => {
-    //     window.localStorage.setItem("storedCompanyList", JSON.stringify(companyList));
-    // }, [companyList]);
-
     const saveCompany = () => {
         setCompanyFormErrors(companyFormValidation(companyInfo));
 
         if (companyFormValidation(companyInfo).isValid) {
-
-            if (currentCompanyId) {     // editing old company
-                editCompanyById(currentCompanyId, companyInfo, getCompanies());
-            }
-            if (!currentCompanyId) {                      // new company
-                companyInfo.id = guIdGenerator();
-
-                newCompanyList[newCompanyList.length] = companyInfo; console.log('save', companyInfo, newCompanyList)
-                window.localStorage.setItem("storedCompanyList", JSON.stringify(newCompanyList));
-                navigate(`/companies/${companyInfo.id}`)
-            }
+            if (currentCompanyId) {                       // editing old company
+                companyInfo.id = currentCompanyId;
+                props.editCompany(companyInfo);
+                props.updateCompanyNameForUsers(companyInfo)
+                return;
+            };                                           // new company
+            companyInfo.id = guIdGenerator();
+            props.addCompany(companyInfo)
+            navigate(`/companies/${companyInfo.id}`)
         };
-    }
+    };
 
     return (
         <>
@@ -92,4 +86,23 @@ export const CompanyForm: FC = () => {
             {(currentCompanyId) && <CompanyUsers />}
         </>
     )
-}
+};
+
+let mapStateToProps = (state: RootState) => {
+    return {
+        companies: state.companies
+    }
+};
+
+let mapDispatchToProps = (dispatch: AppDispatch) => {
+    return {
+        addCompany: (company: Company) => dispatch(addCompany(company)),
+        editCompany: (company: Company) => dispatch(editCompany(company)),
+        updateCompanyNameForUsers: (company: Company) => dispatch(updateCompanyNameForUsers(company))
+    };
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyForm);

@@ -2,32 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import './TableUsers.css'
 import { User } from '../../Interfaces/ObjectInterfaces';
-import { convertDateString, updateCompanyUsers } from '../../services/StorageRepository';
-//import { useSelector, useDispatch } from 'react-redux';
+import { convertDateString } from '../../services/StorageRepository';
 import { AppDispatch, RootState } from '../../app/store';
 import { deleteUser } from '../../features/usersSlice';
+import { updateCompanyUsers } from '../../features/companiesSlice';
 import { connect, ConnectedProps } from 'react-redux';
 
 const TableUsers = (props: PropsFromRedux) => {
     let navigate = useNavigate();
     const { currentCompanyId } = useParams();
-    //const users = useSelector((state: RootState) => state.users.value);
-    //const dispatch = useDispatch();
-    const [tableList, setTableList] = useState(props.users.value)
+    const [tableList, setTableList] = useState(props.users.usersList);
 
     useEffect(() => {
-        setTableList(props.users.value)
-    }, [props.users.value])
+        setTableList(props.users.usersList)
+    }, [props.users.usersList])
 
     useEffect(() => {
         if (currentCompanyId) {
-            setTableList(props.users.value.filter((userItem: User) => userItem.companyId === currentCompanyId));
+            setTableList(props.users.usersList.filter((userItem: User) => userItem.companyId === currentCompanyId));
         }
-    }, [currentCompanyId, props.users.value]);
+    }, [currentCompanyId, props.users.usersList]);
 
     const deleteItem = (userItem: User) => {
-        props.deleteUser(userItem)
-        updateCompanyUsers(userItem)
+        props.deleteUser(userItem);
+        props.updateCompanyUsers(userItem);
     };
 
     return (
@@ -60,16 +58,17 @@ const TableUsers = (props: PropsFromRedux) => {
 let mapStateToProps = (state: RootState) => {
     return {
         users: state.users
-    }
-}
+    };
+};
 
 let mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
-        deleteUser: (user: User) => dispatch(deleteUser(user))
-    }
-}
+        deleteUser: (user: User) => dispatch(deleteUser(user)),
+        updateCompanyUsers: (user: User) => dispatch(updateCompanyUsers(user))
+    };
+};
 
-const connector = connect(mapStateToProps, mapDispatchToProps)
-type PropsFromRedux = ConnectedProps<typeof connector>
+const connector = connect(mapStateToProps, mapDispatchToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableUsers)
+export default connect(mapStateToProps, mapDispatchToProps)(TableUsers);
