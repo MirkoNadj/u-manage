@@ -7,16 +7,16 @@ const initialState: PostsState = {
     postsList: [],
     status: 'idle', 
     error: null
-}
+};
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (postDetailsId:string) => {
-    const response = await axios.get<Post[]>(`https://jsonplaceholder.typicode.com/posts/${postDetailsId}`); console.log('fetc new post ')
+    const response = await axios.get<Post[]>(`https://jsonplaceholder.typicode.com/posts/${postDetailsId}`);
     return response.data;
-})
+});
 
 export const deletePost = createAsyncThunk('posts/deletePost', async (postId:number) => {
-    await axios.delete<Post>(`https://jsonplaceholder.typicode.com/posts/${postId}`);console.log('del post')
-})
+    await axios.delete<Post>(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+});
 
 export const editPost = createAsyncThunk('posts/editPost', async (post: Post) => {
     const response = await axios.patch<Post>(`https://jsonplaceholder.typicode.com/posts/${post.id}`,
@@ -24,15 +24,14 @@ export const editPost = createAsyncThunk('posts/editPost', async (post: Post) =>
         id: post.id,
         title: post.title,
         userId: post.userId
-    });console.log('patch post')
+    });
     return response.status;
-})
+});
 
 const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers:{  
-
+    reducers:{
     },
     extraReducers(builder) {
         builder
@@ -56,8 +55,8 @@ const postsSlice = createSlice({
             state.status = 'patched';
         })
     }
-})
+});
 
-//export const {} = postsSlice.actions
+//export const {} = postsSlice.actions;
 
-export default postsSlice.reducer
+export default postsSlice.reducer;

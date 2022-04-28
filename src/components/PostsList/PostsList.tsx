@@ -18,8 +18,8 @@ export const PostsList = (props: PropsFromRedux) => {
         <div className='list-container'>
             {posts.status === 'loading' && <Loading />}
             {posts.status === 'failed' && <h1 className='error'>{posts.error}</h1>}
-            {posts.postsList.map((postsListItem: Post, index = postsListItem.id) => {
-                return <PostCard title={postsListItem.title} body={postsListItem.body} id={postsListItem.id} />;
+            {posts.postsList.map((postsListItem: Post, key: number) => {
+                return <PostCard title={postsListItem.title} body={postsListItem.body} id={postsListItem.id} key={postsListItem.id} />;
             })}
             <div className='dot'></div>
             <div className='dot'></div>

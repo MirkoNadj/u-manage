@@ -2,8 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import usersReducer from '../features/usersSlice';
 import companiesReducer from '../features/companiesSlice';
 import postsReducer from '../features/postsSlice';
-
-
+import commentsReducer from '../features/commentsSlice';
 
 function saveToLocalStorage(state:Partial<RootState>) {
   try {
@@ -30,6 +29,7 @@ export const store = configureStore({
       users: usersReducer,
       companies: companiesReducer,
       posts:postsReducer,
+      comments: commentsReducer,
   },
   preloadedState: loadFromLocalStorage()
 });
@@ -37,7 +37,7 @@ export const store = configureStore({
 store.subscribe(()=>{
   saveToLocalStorage({
     users: store.getState().users,
-    companies: store.getState().companies
+    companies: store.getState().companies,
   });
 });
 

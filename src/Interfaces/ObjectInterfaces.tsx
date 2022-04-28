@@ -97,3 +97,7 @@ export interface TextAreaProps {
     maxLength: number,
     onChange: ChangeEventHandler;
 }
+
+export interface OwnPropsId {
+    postDetailsId: string | undefined
+}

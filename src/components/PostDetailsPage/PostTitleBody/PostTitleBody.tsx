@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import './PostTitleBody.css';
 import { Loading } from '../../partials/Loading/Loading';
 import { TextAreaField } from '../../partials/TextAreaField/TextAreaField';
-import { Post } from '../../../Interfaces/ObjectInterfaces';
+import { Post, OwnPropsId } from '../../../Interfaces/ObjectInterfaces';
 import { AppDispatch, RootState } from '../../../app/store';
 import { connect, ConnectedProps } from 'react-redux';
 import { deletePost, editPost } from '../../../features/postsSlice';
 
 export const PostTitleBody = (props: PropsFromRedux) => {
     const { posts, postDetailsId } = props;
-    const [post, setPost] = useState<Post>(posts.postsList[postDetailsId - 1]);
+    const [post, setPost] = useState<Post>(posts.postsList[parseInt(postDetailsId!) - 1]);
     const navigate = useNavigate();
 
     const handleChangeInput = (event: ChangeEvent<HTMLTextAreaElement>): void => {
@@ -56,24 +56,24 @@ export const PostTitleBody = (props: PropsFromRedux) => {
                 {posts.error && <h1 className='error'>{posts.error}</h1>}
             </div>
         </div>
-    )
-}
+    );
+};
 
-let mapStateToProps = (state: RootState, ownProps: any) => {
+let mapStateToProps = (state: RootState, ownProps: OwnPropsId) => {
     return {
         posts: state.posts,
         postDetailsId: ownProps.postDetailsId
-    }
-}
+    };
+};
 
 let mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
         deletePost: (postId: number) => dispatch(deletePost(postId)),
         editPost: (postBody: Post) => dispatch(editPost(postBody))
-    }
-}
+    };
+};
 
-const connector = connect(mapStateToProps, mapDispatchToProps)
-type PropsFromRedux = ConnectedProps<typeof connector>
+const connector = connect(mapStateToProps, mapDispatchToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostTitleBody)
+export default connect(mapStateToProps, mapDispatchToProps)(PostTitleBody);
