@@ -9,7 +9,7 @@ export interface CompaniesState {
 };
 
 export interface PostsState {
-  posts: Post[];
+  postsList: Post[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed' | 'patched';
   error: string | null | undefined;
 };

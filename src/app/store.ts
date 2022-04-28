@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import usersReducer from '../features/usersSlice';
 import companiesReducer from '../features/companiesSlice';
+import postsReducer from '../features/postsSlice';
 
 function saveToLocalStorage(state:RootState) {
   try {
@@ -25,7 +26,8 @@ function loadFromLocalStorage() {
 export const store = configureStore({
   reducer: {
       users: usersReducer,
-      companies: companiesReducer, 
+      companies: companiesReducer,
+      posts:postsReducer,
   },
   preloadedState: loadFromLocalStorage()
 });

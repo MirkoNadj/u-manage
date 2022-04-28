@@ -4,7 +4,7 @@ import {Post} from '../Interfaces/ObjectInterfaces';
 import { PostsState } from '../Interfaces/SliceInterfaces';
 
 const initialState: PostsState = {
-    posts: [],
+    postsList: [],
     status: 'idle', 
     error: null
 }
@@ -42,7 +42,7 @@ const postsSlice = createSlice({
         .addCase(fetchPosts.fulfilled, (state, action) => {            
             state.status = 'succeeded'
             if(action.payload && typeof action.payload !== 'string'){
-            state.posts = action.payload            
+            state.postsList = action.payload            
             }
         })
         .addCase(fetchPosts.rejected, (state, action) => {
