@@ -10,6 +10,6 @@ export interface CompaniesState {
 
 export interface PostsState {
   postsList: Post[];
-  status: 'idle' | 'loading' | 'succeeded' | 'failed' | 'patched';
+  status: 'idle' | 'loading' | 'succeeded' | 'failed' | 'deleted' | 'patched';
   error: string | null | undefined;
 };

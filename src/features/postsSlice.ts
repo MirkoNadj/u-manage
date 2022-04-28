@@ -10,12 +10,12 @@ const initialState: PostsState = {
 }
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (postDetailsId:string) => {
-    const response = await axios.get<Post[]>(`https://jsonplaceholder.typicode.com/posts/${postDetailsId}`);
+    const response = await axios.get<Post[]>(`https://jsonplaceholder.typicode.com/posts/${postDetailsId}`); console.log('fetc new post ')
     return response.data;
 })
 
 export const deletePost = createAsyncThunk('posts/deletePost', async (postId:number) => {
-    await axios.delete<Post>(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+    await axios.delete<Post>(`https://jsonplaceholder.typicode.com/posts/${postId}`);console.log('del post')
 })
 
 export const editPost = createAsyncThunk('posts/editPost', async (post: Post) => {
@@ -24,7 +24,7 @@ export const editPost = createAsyncThunk('posts/editPost', async (post: Post) =>
         id: post.id,
         title: post.title,
         userId: post.userId
-    });
+    });console.log('patch post')
     return response.status;
 })
 
@@ -48,6 +48,9 @@ const postsSlice = createSlice({
         .addCase(fetchPosts.rejected, (state, action) => {
             state.status = 'failed';           
             state.error = action.error.message;
+        })
+        .addCase(deletePost.fulfilled, (state,action) => {
+            state.status = 'deleted';
         })
         .addCase(editPost.fulfilled, (state,action) => {
             state.status = 'patched';

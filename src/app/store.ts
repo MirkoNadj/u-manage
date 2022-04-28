@@ -3,7 +3,9 @@ import usersReducer from '../features/usersSlice';
 import companiesReducer from '../features/companiesSlice';
 import postsReducer from '../features/postsSlice';
 
-function saveToLocalStorage(state:RootState) {
+
+
+function saveToLocalStorage(state:Partial<RootState>) {
   try {
     const serialisedState = JSON.stringify(state);
     localStorage.setItem('persistantState', serialisedState);
@@ -32,7 +34,12 @@ export const store = configureStore({
   preloadedState: loadFromLocalStorage()
 });
 
-store.subscribe(()=>saveToLocalStorage(store.getState()));
+store.subscribe(()=>{
+  saveToLocalStorage({
+    users: store.getState().users,
+    companies: store.getState().companies
+  });
+});
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

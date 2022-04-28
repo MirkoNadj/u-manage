@@ -22,7 +22,7 @@ export const PostTitleBody = (props: PropsFromRedux) => {
 
     const deleteP = (postId: number) => {
         props.deletePost(postId);
-        navigate('/newsletterPosts');
+        setTimeout(() => { navigate('/newsletterPosts') }, 1000);
     };
 
     return (
@@ -51,7 +51,8 @@ export const PostTitleBody = (props: PropsFromRedux) => {
                     onChange={handleChangeInput}
                 />
                 {posts.status === 'loading' && <Loading />}
-                {posts.status === 'patched' && <h1>Data changed</h1>}
+                {posts.status === 'deleted' && <h1>Post deleted</h1>}
+                {posts.status === 'patched' && <h1>Post changed</h1>}
                 {posts.error && <h1 className='error'>{posts.error}</h1>}
             </div>
         </div>

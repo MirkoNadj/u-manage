@@ -11,11 +11,8 @@ export const PostsList = (props: PropsFromRedux) => {
     const { fetchPosts, posts } = props;
 
     useEffect(() => {
-        if (posts.status === 'idle') {
-            console.log('fetch posts')
-            fetchPosts('')
-        }
-    }, [posts.status, fetchPosts]);
+        fetchPosts('')
+    }, [fetchPosts]);
 
     return (
         <div className='list-container'>
