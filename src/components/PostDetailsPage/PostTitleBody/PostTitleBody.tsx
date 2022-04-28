@@ -1,23 +1,17 @@
-import React, { FC, useState, useEffect, useCallback, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './PostTitleBody.css';
 import { Loading } from '../../partials/Loading/Loading';
 import { TextAreaField } from '../../partials/TextAreaField/TextAreaField';
-import { getPostDetails, deletePost, editPost, defaultPost } from '../../../services/fetchData';
-import { Post, PostTitleBodyInt } from '../../../Interfaces/ObjectInterfaces';
+import { Post } from '../../../Interfaces/ObjectInterfaces';
+import { AppDispatch, RootState } from '../../../app/store';
+import { connect, ConnectedProps } from 'react-redux';
+import { deletePost, editPost } from '../../../features/postsSlice';
 
-export const PostTitleBody: FC<PostTitleBodyInt> = ({ postDetailsId }) => {
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | undefined>();
-    const [post, setPost] = useState<Post>(defaultPost);
-
-    const getDetails = useCallback(() => {
-        getPostDetails({ setPost, setError, setLoading, postDetailsId })
-    }, [postDetailsId]);
-
-    useEffect(() => {
-        getDetails()
-    }, [getDetails]);
+export const PostTitleBody = (props: PropsFromRedux) => {
+    const { posts, postDetailsId } = props;
+    const [post, setPost] = useState<Post>(posts.postsList[postDetailsId - 1]);
+    const navigate = useNavigate();
 
     const handleChangeInput = (event: ChangeEvent<HTMLTextAreaElement>): void => {
         setPost({
@@ -26,21 +20,15 @@ export const PostTitleBody: FC<PostTitleBodyInt> = ({ postDetailsId }) => {
         });
     };
 
-    const navigate = useNavigate();
-
-    const deleteP = (postDetailsId: number) => {
-        deletePost({ setError, setLoading, postDetailsId });
+    const deleteP = (postId: number) => {
+        props.deletePost(postId);
         navigate('/newsletterPosts');
-    };
-
-    const editP = (postBody: Post, postDetailsId: number) => {
-        editPost({ postBody, setPost, setError, setLoading, postDetailsId });
     };
 
     return (
         <div className='postDetails'>
             <h1>Post Details</h1>
-            <button onClick={() => editP(post, post.id)}>Edit</button>
+            <button onClick={() => { props.editPost(post) }}>Edit</button>
             <button onClick={() => { deleteP(post.id) }}>Delete</button>
             <div className='details-container'>
 
@@ -62,10 +50,29 @@ export const PostTitleBody: FC<PostTitleBodyInt> = ({ postDetailsId }) => {
                     maxLength={100}
                     onChange={handleChangeInput}
                 />
-                {loading && <Loading />}
-                {error && <h1 className='error'>{error}</h1>}
-
+                {posts.status === 'loading' && <Loading />}
+                {posts.status === 'patched' && <h1>Data changed</h1>}
+                {posts.error && <h1 className='error'>{posts.error}</h1>}
             </div>
         </div>
     )
 }
+
+let mapStateToProps = (state: RootState, ownProps: any) => {
+    return {
+        posts: state.posts,
+        postDetailsId: ownProps.postDetailsId
+    }
+}
+
+let mapDispatchToProps = (dispatch: AppDispatch) => {
+    return {
+        deletePost: (postId: number) => dispatch(deletePost(postId)),
+        editPost: (postBody: Post) => dispatch(editPost(postBody))
+    }
+}
+
+const connector = connect(mapStateToProps, mapDispatchToProps)
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostTitleBody)

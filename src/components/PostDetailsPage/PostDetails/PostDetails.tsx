@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
-import { PostTitleBody } from '../PostTitleBody/PostTitleBody';
+import PostTitleBody from '../PostTitleBody/PostTitleBody';
 import { Comments } from '../Comments/Comments';
 
 export const PostDetails: FC = () => {
