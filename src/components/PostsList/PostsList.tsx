@@ -1,48 +1,48 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './PostsList.css';
 import { Post } from '../../Interfaces/ObjectInterfaces';
 import { PostCard } from '../partials/PostCard/PostCard';
 import { Loading } from '../partials/Loading/Loading';
-import axios from 'axios';
-import { isAxiosError } from '../../Interfaces/TypeGuards';
+import { AppDispatch, RootState } from '../../app/store';
+import { connect, ConnectedProps } from 'react-redux';
+import { fetchPosts } from '../../features/postsSlice';
 
-export const PostsList: FC = () => {
-    const [posts, setPosts] = useState<Post[]>([])
-    const [loading, setLoading] = useState<boolean>(true)
-    const [error, setError] = useState<string | null>();
+export const PostsList = (props: PropsFromRedux) => {
+    const { fetchPosts, posts } = props;
 
     useEffect(() => {
-        fetchPosts()
-    }, [])
-
-    const fetchPosts = async () => {
-        setLoading(true);
-        try {
-            const response = await axios.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
-            setPosts(response.data);
-            setError(null);
+        if (posts.status === 'idle') {
+            fetchPosts('')
         }
-        catch (err) {
-            if (isAxiosError(err)) {
-                setError(err.message);
-                setPosts([]);
-            }
-        }
-        finally {
-            setLoading(false);
-        }
-    }
+    }, [fetchPosts, posts.status]);
 
     return (
         <div className='list-container'>
-            {loading && <Loading />}
-            {error && <h1 className='error'>{error}</h1>}
-            {posts.map((postsListItem: Post) => {
-                return <PostCard title={postsListItem.title} body={postsListItem.body} id={postsListItem.id} />;
+            {posts.status === 'loading' && <Loading />}
+            {posts.status === 'failed' && <h1 className='error'>{posts.error}</h1>}
+            {posts.postsList.map((postsListItem: Post, key: number) => {
+                return <PostCard title={postsListItem.title} body={postsListItem.body} id={postsListItem.id} key={postsListItem.id} />;
             })}
             <div className='dot'></div>
             <div className='dot'></div>
             <div className='dot'></div>
         </div>
-    )
-}
+    );
+};
+
+let mapStateToProps = (state: RootState) => {
+    return {
+        posts: state.posts
+    };
+};
+
+let mapDispatchToProps = (dispatch: AppDispatch) => {
+    return {
+        fetchPosts: (postDetailsId: string) => dispatch(fetchPosts(postDetailsId)),
+    };
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsList);

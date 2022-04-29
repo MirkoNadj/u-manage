@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import usersReducer from '../features/usersSlice';
 import companiesReducer from '../features/companiesSlice';
+import postsReducer from '../features/postsSlice';
+import commentsReducer from '../features/commentsSlice';
 
-function saveToLocalStorage(state:RootState) {
+function saveToLocalStorage(state:Partial<RootState>) {
   try {
     const serialisedState = JSON.stringify(state);
     localStorage.setItem('persistantState', serialisedState);
@@ -25,12 +27,19 @@ function loadFromLocalStorage() {
 export const store = configureStore({
   reducer: {
       users: usersReducer,
-      companies: companiesReducer, 
+      companies: companiesReducer,
+      posts:postsReducer,
+      comments: commentsReducer,
   },
   preloadedState: loadFromLocalStorage()
 });
 
-store.subscribe(()=>saveToLocalStorage(store.getState()));
+store.subscribe(()=>{
+  saveToLocalStorage({
+    users: store.getState().users,
+    companies: store.getState().companies,
+  });
+});
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

@@ -29,8 +29,8 @@ export const TableCompanies = (props: PropsFromRedux) => {
                 </tr>
             </thead>
             <tbody>
-                {tableList.map((companyItem: Company) => (
-                    <tr>
+                {tableList.map((companyItem: Company, key: number) => (
+                    <tr key={companyItem.id}>
                         <td>{companyItem.name}</td>
                         <td>{companyItem.city}</td>
                         <td>{companyItem.country}</td>
