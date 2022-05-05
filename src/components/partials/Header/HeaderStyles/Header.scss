@@ -5,9 +5,20 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 65px;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 15%, rgba(0,61,255,1) 100%);
+}
+
+.title {
+    width: 200px;
+    margin-left: 15px;
+    border-right: 2px solid rgb(3, 41, 165);
+}
+
+.title h1 {
+    font-size: 24px;
+    vertical-align: 10%;
 }
 
 .header ul {
@@ -21,47 +32,51 @@
     color: rgb(203, 215, 255);
     cursor: pointer;
 }
-
+.title img {    
+    width: 40px;
+    margin: 0px 0px 0px 0px;
+  }
 .header button {
+    width: 55px;
+    height: 55px;
 	box-shadow:inset 0px 1px 0px 0px #97c4fe;
 	background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
 	background-color:#3d94f6;
-	border-radius:6px;
+	border-radius: 50px;
 	border:1px solid #337fed;
-	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	padding:6px 24px;
+    font-size: 32px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #1570cd;
-    margin: 0px 10px;
-    vertical-align: 0px;
+	text-shadow:10px 11px 10px #1570cd;
+    margin: 0px 15px 0px;
+    padding: 3px 0px 0px 0.5px
 }
 .header button:hover {
 	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
 	background-color:#1957bb;
+    font-size: 26px;
 }
 
 .header button:active {
 	position:relative;
-	top:1px;
+    font-size: 30px;
+    border-radius: 65px;
 }
 
 .header a {
     text-decoration: none;
     display: inline-block;
-    //margin: 3px 0px;
     padding: 0px 15px;
     font-size: 24px;
-    color: whitesmoke;   
+    color: whitesmoke;
+    //text-shadow: #1570cd 0px 0px 5px, #1570cd 0px 0px 10px, #1570cd 0px 0px 15px, #1570cd 0px 0px 20px, #1570cd 0px 0px 30px, #1570cd 0px 0px 40px, #1570cd 0px 0px 50px, #1570cd 0px 0px 75px, 2px 2px 2px rgba(0,96,206,0);
 }
 
 .header a:hover {
     color: rgb(203, 215, 255);
     cursor: pointer;
+    text-shadow: #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, 2px 2px 2px rgb(5, 121, 255);
 }
 
 a.active {

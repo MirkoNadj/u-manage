@@ -2,13 +2,17 @@ import React, { FC, useState } from 'react';
 import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
 import { WeatherModal } from '../WeatherModal/WeatherModal';
 import './HeaderStyles/Header.css';
+import { GlobalOutlined, SyncOutlined } from '@ant-design/icons';
 
 export const Header: FC = () => {
     let [isWeather, setIsWeather] = useState(false);
     return (
         <>
             <div className='header'>
-                <h1> <Link to='/' className='link'>U-manage</Link></h1>
+                <div className='title'>
+                    <img className='img' src="./mngLogo.png" alt='LOGO'></img>
+                    <Link to='/'><h1>U-manage</h1></Link>
+                </div>
                 <nav>
                     <ul>
                         <NavLink to='/users'><li>Users</li></NavLink>
@@ -16,7 +20,8 @@ export const Header: FC = () => {
                         <NavLink to='/newsletterPosts'><li>Newsletter</li></NavLink>
                     </ul>
                 </nav>
-                <button onClick={() => window.open('https://www.metaweather.com')} onMouseOver={() => { setIsWeather(true) }} onMouseOut={() => { setIsWeather(false) }}>Weather</button>
+
+                <button onClick={() => window.open('https://www.metaweather.com')} onMouseOver={() => { setIsWeather(true) }} onMouseOut={() => { setIsWeather(false) }}>{isWeather ? <SyncOutlined spin /> : <GlobalOutlined />}</button>
                 {isWeather && <WeatherModal />}
             </div>
         </>

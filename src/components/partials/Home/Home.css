@@ -1,5 +1,5 @@
 .home {
-  width: 100%;
+  grid-column: span 12;
   text-align: center;
 }
 

@@ -13,10 +13,21 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 60px;
+  height: 65px;
   background: #020024;
   background: -webkit-gradient(linear, left top, right top, from(#020024), color-stop(15%, #090979), to(#003dff));
   background: linear-gradient(90deg, #020024 0%, #090979 15%, #003dff 100%);
+}
+
+.title {
+  width: 200px;
+  margin-left: 15px;
+  border-right: 2px solid #0329a5;
+}
+
+.title h1 {
+  font-size: 24px;
+  vertical-align: 10%;
 }
 
 .header ul {
@@ -31,36 +42,41 @@
   cursor: pointer;
 }
 
+.title img {
+  width: 40px;
+  margin: 0px 0px 0px 0px;
+}
+
 .header button {
+  width: 55px;
+  height: 55px;
   -webkit-box-shadow: inset 0px 1px 0px 0px #97c4fe;
           box-shadow: inset 0px 1px 0px 0px #97c4fe;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #3d94f6), to(#1e62d0));
   background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
   background-color: #3d94f6;
-  border-radius: 6px;
+  border-radius: 50px;
   border: 1px solid #337fed;
-  display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Arial;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 6px 24px;
+  font-size: 32px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #1570cd;
-  margin: 0px 10px;
-  vertical-align: 0px;
+  text-shadow: 10px 11px 10px #1570cd;
+  margin: 0px 15px 0px;
+  padding: 3px 0px 0px 0.5px;
 }
 
 .header button:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #1e62d0), to(#3d94f6));
   background: linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
   background-color: #1957bb;
+  font-size: 26px;
 }
 
 .header button:active {
   position: relative;
-  top: 1px;
+  font-size: 30px;
+  border-radius: 65px;
 }
 
 .header a {
@@ -74,6 +90,7 @@
 .header a:hover {
   color: #cbd7ff;
   cursor: pointer;
+  text-shadow: #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, 2px 2px 2px #0579ff;
 }
 
 a.active {
