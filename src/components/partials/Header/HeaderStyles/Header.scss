@@ -1,46 +1,20 @@
 .header {
-    position: relative;
-    display: block;;
-    position: relative;
+    grid-column: span 12;
+    //position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     height: 60px;
-    width: 100%;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 15%, rgba(0,61,255,1) 100%);
 }
 
-.header h1 {
-    display: inline-block;
-    
-    color: whitesmoke;
-    margin: 5px;
-}
-
-.header nav {
-    float:right;
-    width: 70%;
-    text-align: right;
-    margin-top: 8px;
-}
-
 .header ul {
-    text-align: right;
     display: inline;
     list-style-type: none;
     margin: 0;
     padding: 0;    
-}
-
-.header li {
-    display: inline-block;
-    margin: 3px 0px;
-    padding: 0px 10px;
-    border-right: 2px solid rgb(3, 41, 165);
-    font-size: 24px;
-    color: whitesmoke;    
-}
-
-.header li:last-child {
-    border-right: none;
 }
 
 .header li:hover {
@@ -68,8 +42,9 @@
 }
 .header button:hover {
 	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
-	background-color:#1e62d0;
+	background-color:#1957bb;
 }
+
 .header button:active {
 	position:relative;
 	top:1px;
@@ -78,9 +53,8 @@
 .header a {
     text-decoration: none;
     display: inline-block;
-    margin: 3px 0px;
-    padding: 0px 10px;
-    border-right: 2px solid rgb(3, 41, 165);
+    //margin: 3px 0px;
+    padding: 0px 15px;
     font-size: 24px;
     color: whitesmoke;   
 }
