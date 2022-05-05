@@ -88,9 +88,9 @@
 }
 
 .header a:hover {
-  color: #cbd7ff;
+  color: #4671fd;
   cursor: pointer;
-  text-shadow: #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, #1570cd 0px 0px 5px, 2px 2px 2px #0579ff;
+  text-shadow: #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, 2px 2px 2px #479dff;
 }
 
 a.active {
