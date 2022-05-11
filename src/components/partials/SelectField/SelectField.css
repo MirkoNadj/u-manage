@@ -1,10 +1,10 @@
-label {
+/* label {
   display: block;
-  margin: 6px 0px;
+  margin: 0px 0px;
 }
 
 select {
-  margin-bottom: 16px;
+  margin-bottom: 0px;
   padding: 3px;
 }
 .errors {
@@ -13,4 +13,4 @@ select {
   font-style: bold;
   font-size: 16px;
   margin-top: -14px;
-}
+} */

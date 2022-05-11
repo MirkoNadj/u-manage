@@ -1,14 +1,14 @@
-table {
+/* table {
   margin: 20px auto;
   border-style: solid;
   border-color: white;
   border-width: 5px;
   padding: 15px;
-  width: 100%;
+  
   border-spacing: 0px 10px;
-}
+} */
 
-td {
+/* td {
   color: rgb(0, 0, 0);
   background-color: rgb(174, 243, 243);
   font-size: 20px;
@@ -18,9 +18,9 @@ td {
   border-width: 2px 2px;
   padding: 10px;
   margin: 10px 10px;
-}
+} */
 
-th {
+/* th {
   color: white;
   font-size: 20px;
-}
+} */

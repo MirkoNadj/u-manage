@@ -1,10 +1,5 @@
 .companies-page {
-  width: 100%;
-}
-
-.companies-table-container {
-  width: 80%;
-  margin: 80px auto;
+  grid-column: 3/11;
 }
 
 .addBtn {

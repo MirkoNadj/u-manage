@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import './SelectField.css';
 import { SelectFieldProps } from '../../../Interfaces/ObjectInterfaces';
 
-export const SelectField: FC<SelectFieldProps> = ({ label, id, name, value, defaultValue, itemArr, onChange, error }) => {
+export const SelectField: FC<SelectFieldProps> = ({ label, id, name, value, defaultValue, itemArr, onChange, onFocus, onBlur, error, isDisabled }) => {
 
     return (<div>
         <label>{label}</label>
@@ -11,8 +11,12 @@ export const SelectField: FC<SelectFieldProps> = ({ label, id, name, value, defa
             name={name}
             value={value}
             defaultValue={defaultValue}
-            onChange={onChange}>
-            <option value='defaultId'>-Choose:-</option>
+            onChange={onChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            disabled={isDisabled}
+        >
+            <option value='defaultId' className='placeholder'>Choose here...</option>
             {itemArr!.map((item) => (
                 <option
                     key={item.id}

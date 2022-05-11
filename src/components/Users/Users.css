@@ -1,17 +1,18 @@
 .users-page {
-  width: 100%;
-}
-
-.user-table-container {
-  width: 80%;
-  margin: 80px auto;
+  grid-column: 3/11;
+  margin: 50px 0px;
 }
 
 .delEditBtn {
   width: 100%;
   margin: 0px auto;
+  color: rgb(17, 24, 56);
+  border-radius: 5px;
+  border-color: white;
 }
 
 .addBtn {
   float: right;
+  border-color: white;
+  border-radius: 5px;
 }

@@ -49,10 +49,10 @@ export const Header: FC = () => {
                 animate='endMotion'
             >
                 <motion.div
-                    className='title'
+                    className='header-title'
                     variants={itemVariant}
                 >
-                    <img className='img' src="./mngLogo.png" alt='LOGO'></img>
+                    <img src="./mngLogo.png" alt='LOGO'></img>
                     <Link to='/'><h1>U-manage</h1></Link>
                 </motion.div>
                 <nav>
@@ -62,7 +62,7 @@ export const Header: FC = () => {
                         <NavLink to='/newsletterPosts'><motion.li variants={itemVariant}>Newsletter</motion.li></NavLink>
                     </ul>
                 </nav>
-                <motion.button
+                <motion.button className='weather-btn'
                     variants={itemVariant}
                     onClick={() => window.open('https://www.metaweather.com')}
                     onMouseOver={() => { setIsWeather(true) }}

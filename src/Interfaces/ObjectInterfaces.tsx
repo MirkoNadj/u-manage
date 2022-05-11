@@ -37,8 +37,11 @@ export interface InputFieldProps {
     type: string;
     id: string;
     name: string;
+    placeholder?: string;
     value: string | number | readonly string[] | undefined,
     onChange: ChangeEventHandler,
+    onFocus?: any;
+    onBlur?: any;
     error: string | number | undefined;
 }
 
@@ -49,7 +52,10 @@ export interface SelectFieldProps {
     value: string;
     defaultValue: string;
     itemArr: { id: string, name?: string }[];
-    onChange: ChangeEventHandler,
+    onChange: ChangeEventHandler;
+    onFocus?: any;
+    onBlur?: any;
+    isDisabled?: boolean;
     error: string | number | undefined;
 }
 
@@ -100,4 +106,15 @@ export interface TextAreaProps {
 
 export interface OwnPropsId {
     postDetailsId: string | undefined
+}
+
+export interface LocationProps {
+    state: {
+        currentCompanyId: string;
+        isUserFormModal: boolean;
+    }
+}
+
+export interface SetIsModal {
+    setIsModall: Dispatch<SetStateAction<boolean>>;
 }

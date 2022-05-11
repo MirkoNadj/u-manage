@@ -13,28 +13,63 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 65px;
+  height: 50px;
   background: #020024;
   background: -webkit-gradient(linear, left top, right top, from(#020024), color-stop(15%, #090979), to(#003dff));
   background: linear-gradient(90deg, #020024 0%, #090979 15%, #003dff 100%);
 }
 
-.title {
-  width: 200px;
+.header .header-title {
+  width: 160px;
+  height: 50px;
   margin-left: 15px;
   border-right: 2px solid #0329a5;
 }
 
-.title h1 {
-  font-size: 24px;
-  vertical-align: 10%;
+.header .header-title img {
+  height: 24px;
+  margin-top: 10px;
 }
 
-.header ul {
+.header .header-title a {
+  text-decoration: none;
+  display: inline;
+  padding: 0px 5px;
+  vertical-align: 3px;
+}
+
+.header .header-title h1 {
+  display: inline;
+  font-size: 20px;
+  margin: 0px;
+  color: whitesmoke;
+}
+
+.header nav ul {
   display: inline;
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.header nav ul a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0px 15px;
+  font-size: 24px;
+  color: whitesmoke;
+}
+
+.header nav ul a:hover {
+  color: #4671fd;
+  cursor: pointer;
+  text-shadow: #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, 2px 2px 2px #479dff;
+}
+
+.header a.active {
+  height: 34px;
+  background-color: #1957bb;
+  border-radius: 8px;
 }
 
 .header li:hover {
@@ -42,14 +77,9 @@
   cursor: pointer;
 }
 
-.title img {
-  width: 40px;
-  margin: 0px 0px 0px 0px;
-}
-
-.header button {
-  width: 55px;
-  height: 55px;
+.weather-btn {
+  width: 45px;
+  height: 45px;
   -webkit-box-shadow: inset 0px 1px 0px 0px #97c4fe;
           box-shadow: inset 0px 1px 0px 0px #97c4fe;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #3d94f6), to(#1e62d0));
@@ -66,34 +96,16 @@
   padding: 3px 0px 0px 0.5px;
 }
 
-.header button:hover {
+.weather-btn:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #1e62d0), to(#3d94f6));
   background: linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
   background-color: #1957bb;
   font-size: 26px;
 }
 
-.header button:active {
+.weather-btn:active {
   position: relative;
   font-size: 30px;
   border-radius: 65px;
-}
-
-.header a {
-  text-decoration: none;
-  display: inline-block;
-  padding: 0px 15px;
-  font-size: 24px;
-  color: whitesmoke;
-}
-
-.header a:hover {
-  color: #4671fd;
-  cursor: pointer;
-  text-shadow: #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, 2px 2px 2px #479dff;
-}
-
-a.active {
-  background-color: #00217c;
 }
 /*# sourceMappingURL=Header.css.map */
