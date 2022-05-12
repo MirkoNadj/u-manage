@@ -5,14 +5,14 @@
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 15%, rgba(0,61,255,1) 100%);
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(136,136,136,1) 100%);
 
 .header-title {
     width: 160px;
     height: 50px;
     margin-left: 15px;
-    border-right: 2px solid rgb(3, 41, 165);
+    border-right: 2px solid rgba(136,136,136,1);
     
     img {
         height: 24px;
@@ -45,24 +45,20 @@ nav ul {
         display: inline-block;
         padding: 0px 15px;
         font-size: 24px;
-        color: whitesmoke;
+        font-weight: bold;
+        color: rgb(0, 22, 82);
     }
     
-    a:hover {
-        color: rgb(70, 113, 253);
+    a:hover {        
         cursor: pointer;
-        text-shadow: #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, 2px 2px 2px rgb(71, 157, 255);
+        text-shadow: rgba(136,136,136,1) 0px 0px 1px, rgb(136, 136, 136) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, 1px 1px 1px rgb(0, 41, 155);
     }}
     
     a.active {
         height:34px;
-        background-color:#1957bb;
+        background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(136,136,136,1) 100%);
         border-radius: 8px;
-    }
-
-    li:hover {
-        color: rgb(203, 215, 255);
-        cursor: pointer;
     }
 }
 
@@ -70,7 +66,7 @@ nav ul {
     width: 45px;
     height: 45px;
 	box-shadow:inset 0px 1px 0px 0px #97c4fe;
-	background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+	background:linear-gradient(to bottom, #3d94f6 5%, rgb(0, 22, 82) 100%);
 	background-color:#3d94f6;
 	border-radius: 50px;
 	border:1px solid #337fed;
@@ -84,7 +80,7 @@ nav ul {
 }
 
 .weather-btn:hover {
-	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+	background:linear-gradient(to bottom, #1e62d0 5%, rgb(0, 22, 82) 100%);
 	background-color:#1957bb;
     font-size: 26px;
 }

@@ -2,10 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width:100%;
+    width:100%;
     height: 34px;
-    background-color: rgb(103, 207, 255);
-    padding: 0 14px;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(136,136,136,1) 100%);
+    padding: 0 0px;
     border-radius: 5px;
 
     p {
@@ -24,6 +25,7 @@
         margin: 0 10px;
         border-radius: 5px;
         color: rgb(17, 24, 56);
+        outline:none;
     }
 }
 .page-info {

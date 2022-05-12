@@ -16,7 +16,7 @@ export const SelectField: FC<SelectFieldProps> = ({ label, id, name, value, defa
             onBlur={onBlur}
             disabled={isDisabled}
         >
-            <option value='defaultId' className='placeholder'>Choose here...</option>
+            <option value='defaultId' className='placeholder' >Choose here...</option>
             {itemArr!.map((item) => (
                 <option
                     key={item.id}

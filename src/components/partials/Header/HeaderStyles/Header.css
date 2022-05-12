@@ -14,16 +14,16 @@
       -ms-flex-align: center;
           align-items: center;
   height: 50px;
-  background: #020024;
-  background: -webkit-gradient(linear, left top, right top, from(#020024), color-stop(15%, #090979), to(#003dff));
-  background: linear-gradient(90deg, #020024 0%, #090979 15%, #003dff 100%);
+  background: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#888888));
+  background: linear-gradient(180deg, white 0%, #888888 100%);
 }
 
 .header .header-title {
   width: 160px;
   height: 50px;
   margin-left: 15px;
-  border-right: 2px solid #0329a5;
+  border-right: 2px solid #888888;
 }
 
 .header .header-title img {
@@ -57,24 +57,21 @@
   display: inline-block;
   padding: 0px 15px;
   font-size: 24px;
-  color: whitesmoke;
+  font-weight: bold;
+  color: #001652;
 }
 
 .header nav ul a:hover {
-  color: #4671fd;
   cursor: pointer;
-  text-shadow: #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, #2f97ff 0px 0px 5px, 2px 2px 2px #479dff;
+  text-shadow: #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, 1px 1px 1px #00299b;
 }
 
 .header a.active {
   height: 34px;
-  background-color: #1957bb;
+  background: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#888888));
+  background: linear-gradient(180deg, white 0%, #888888 100%);
   border-radius: 8px;
-}
-
-.header li:hover {
-  color: #cbd7ff;
-  cursor: pointer;
 }
 
 .weather-btn {
@@ -82,8 +79,8 @@
   height: 45px;
   -webkit-box-shadow: inset 0px 1px 0px 0px #97c4fe;
           box-shadow: inset 0px 1px 0px 0px #97c4fe;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #3d94f6), to(#1e62d0));
-  background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #3d94f6), to(#001652));
+  background: linear-gradient(to bottom, #3d94f6 5%, #001652 100%);
   background-color: #3d94f6;
   border-radius: 50px;
   border: 1px solid #337fed;
@@ -97,8 +94,8 @@
 }
 
 .weather-btn:hover {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #1e62d0), to(#3d94f6));
-  background: linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #1e62d0), to(#001652));
+  background: linear-gradient(to bottom, #1e62d0 5%, #001652 100%);
   background-color: #1957bb;
   font-size: 26px;
 }

@@ -44,20 +44,19 @@ export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: any) {
                     <option value={50}>50</option>
                     <option value={100}>100</option>
                 </select>
-
                 <button
-                    disabled={(toPageF() >= pagingRange)}
-                    onClick={() => { setPage(page + 1) }}
-                >{'>'}</button>
+                    disabled={!(toPageF() > perPage)}
+                    onClick={() => { setPage(page - 1) }}
+                >{'<'}
+                </button>
 
                 <button className='page' onClick={() => { setPage(page) }}>{page + 1}</button>
 
                 <button
-                    disabled={!(toPageF() > perPage)}
-                    onClick={() => { setPage(page - 1) }}
-                >{'<'}</button>
-
-
+                    disabled={(toPageF() >= pagingRange)}
+                    onClick={() => { setPage(page + 1) }}
+                >{'>'}
+                </button>
             </div>
         </div>
     )

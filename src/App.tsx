@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './AppStyles/App.css';
 import { Header } from './components/partials/Header/Header';
 import { Home } from './components/partials/Home/Home';
-import Users from './components/Users/Users';
+import Users from './components/UsersPage/Users/Users';
 import UserFormModal from './components/UsersPage/UserFormModal/UserFormModal';
 import CompanyForm from './components/CompanyForm/CompanyForm';
 import { Companies } from './components/Companies/Companies';

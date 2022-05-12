@@ -94,7 +94,9 @@
         color:black;
         margin-left: 10px;
       }    
-    }  
+    }  .placeholder{
+      color:rgb(133, 133, 133);
+}
     
     input, select {
       box-sizing: border-box;
@@ -108,9 +110,8 @@
       color: rgb(0, 14, 53);;
       font-size: 16px;
     }    
-      select {
-      color:rgb(133, 133, 133);
-}
+      
+
     input:focus, select:focus {
       border-style: solid;
       border-width: 1px;

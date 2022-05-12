@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom'
-import './Users.css';
+import './UsersStyles/UsersStyles.css';
 import { TableUsers } from '../TableUsers/TableUsers';
-import { User, LocationProps } from '../../Interfaces/ObjectInterfaces';
-import { AppDispatch, RootState } from '../../app/store';
-import { deleteUser } from '../../features/usersSlice';
+import { User, LocationProps } from '../../../Interfaces/ObjectInterfaces';
+import { AppDispatch, RootState } from '../../../app/store';
+import { deleteUser } from '../../../features/usersSlice';
 import { connect, ConnectedProps } from 'react-redux';
-import { updateCompanyUsers } from '../../features/companiesSlice';
-import UserFormModal from '../UsersPage/UserFormModal/UserFormModal';
+import { updateCompanyUsers } from '../../../features/companiesSlice';
+import UserFormModal from '../UserFormModal/UserFormModal';
+import { PlusOutlined } from '@ant-design/icons';
 
 export const Users = (props: PropsFromRedux) => {
     const [isModal, setIsModall] = useState(false);
@@ -22,15 +23,16 @@ export const Users = (props: PropsFromRedux) => {
 
     return (
         <div className='users-page'>
-            <h1>Users</h1>
-            <button className='addBtn'><Link
+            <Link
                 to='/users/create/'
                 state={{
                     currentCompanyId: '',
                     isUserFormModal: true
-                }}>Add
-            </Link></button>
-            <TableUsers usersList={props.users.usersList} deleteUser={props.deleteUser} updateCompanyUsers={props.updateCompanyUsers} />
+                }}><button className='addUserBtn' title=' Add'><PlusOutlined /></button></Link>
+            <div className='table-container'>
+                <h2>Users</h2>
+                <TableUsers usersList={props.users.usersList} deleteUser={props.deleteUser} updateCompanyUsers={props.updateCompanyUsers} />
+            </div>
             {isModal && <UserFormModal setIsModall={setIsModall} />}
         </div>
     );

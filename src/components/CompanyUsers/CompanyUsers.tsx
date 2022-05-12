@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom'
 import './CompanyUsers.css';
-import { TableUsers } from '../TableUsers/TableUsers';
+import { TableUsers } from '../UsersPage/TableUsers/TableUsers';
 import { User } from '../../Interfaces/ObjectInterfaces';
 import { AppDispatch, RootState } from '../../app/store';
 import { deleteUser } from '../../features/usersSlice';
