@@ -47,6 +47,7 @@ export const CompanyFormModal = (props: PropsFromRedux) => {
             companyInfo.id = guIdGenerator();
             props.addCompany(companyInfo)
             navigate(`/companies/${companyInfo.id}`)
+
         };
     };
 

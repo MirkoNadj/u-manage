@@ -33,10 +33,20 @@ export const usersSlice = createSlice({
         return userItem;
         });
         state.usersList = changedUserList;
-    }
+    },
+    removeCompanyNameForUsers: (state, action: PayloadAction<Company>) => {
+      let changedUserList = state.usersList.map((userItem) => {
+          if (userItem.companyId === action.payload.id) {
+              userItem.companyName = '---';
+              return userItem;
+          }
+      return userItem;
+      });
+      state.usersList = changedUserList;
+  },
   }
 });
 
-export const { addUser, deleteUser, editUser, updateCompanyNameForUsers } = usersSlice.actions;
+export const { addUser, deleteUser, editUser, updateCompanyNameForUsers, removeCompanyNameForUsers } = usersSlice.actions;
 
 export default usersSlice.reducer;

@@ -1,5 +1,5 @@
 .user-form-backdrop {
-    position:absolute;
+    position:fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -12,6 +12,7 @@
 
   .user-form-container {
     position: relative;
+   
     border-radius: 10px;
     min-width: 350px;
     max-width: 30%;

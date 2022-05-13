@@ -6,7 +6,7 @@ import { Company } from '../../../Interfaces/ObjectInterfaces';
 import { PagingLine } from '../../partials/PagingLine/PagingLine';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
-export const TableCompanies = ({ companiesList, deleteCompany }: any) => {
+export const TableCompanies = ({ companiesList, deleteCompany, removeCompanyNameForUsers }: any) => {
 
     const [pagingStart, setPagingStart] = useState(0);
     const [pagingEnd, setPagingEnd] = useState(companiesList.length);
@@ -14,8 +14,9 @@ export const TableCompanies = ({ companiesList, deleteCompany }: any) => {
     const tableList = companiesList.slice(pagingStart, pagingEnd)
 
     const deleteItem = (companyItem: Company): void => {
-        deleteCompany(companyItem)
-    }
+        deleteCompany(companyItem);
+        removeCompanyNameForUsers(companyItem);
+    };
 
     return (
         <table className='table-users'>

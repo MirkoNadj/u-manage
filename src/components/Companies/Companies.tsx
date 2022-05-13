@@ -8,6 +8,7 @@ import { AppDispatch, RootState } from '../../app/store';
 import { connect, ConnectedProps } from 'react-redux';
 import { Company, LocationProps } from '../../Interfaces/ObjectInterfaces';
 import { PlusOutlined } from '@ant-design/icons';
+import { removeCompanyNameForUsers } from '../../features/usersSlice';
 
 export const Companies = (props: PropsFromRedux) => {
 
@@ -22,6 +23,11 @@ export const Companies = (props: PropsFromRedux) => {
         }
     }, [location.state]);
 
+    // useEffect(() => {
+    //     if (isModal) document.body.style.overflow = 'hidden';
+    //     else document.body.style.overflow = 'visible';
+    // }, [isModal]);
+
     return (
         <div className='companies-page'>
             <Link
@@ -32,7 +38,7 @@ export const Companies = (props: PropsFromRedux) => {
                 }}><button className='addCompanyBtn' title=' Add'><PlusOutlined /></button></Link>
             <div className='c-table-container'>
                 <h2>Companies</h2>
-                <TableCompanies companiesList={props.companies.companiesList} deleteUser={props.deleteCompany} />
+                <TableCompanies companiesList={props.companies.companiesList} deleteCompany={props.deleteCompany} removeCompanyNameForUsers={props.removeCompanyNameForUsers} />
             </div>
             {isModal && <CompanyFormModal setIsModall={setIsModall} />}
         </div>
@@ -47,7 +53,8 @@ let mapStateToProps = (state: RootState) => {
 
 let mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
-        deleteCompany: (company: Company) => dispatch(deleteCompany(company))
+        deleteCompany: (company: Company) => dispatch(deleteCompany(company)),
+        removeCompanyNameForUsers: (company: Company) => dispatch(removeCompanyNameForUsers(company))
     }
 };
 
