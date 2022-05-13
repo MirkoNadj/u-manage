@@ -4,7 +4,7 @@ import './CompanyForm.css';
 import { Company, CompanyValidationErrors } from '../../Interfaces/ObjectInterfaces';
 import { companyFormValidation } from '../../services/formValidation';
 import { guIdGenerator } from '../../services/guidGenerator';
-import CompanyUsers from '../CompanyUsers/CompanyUsers';
+import CompanyUsers from '../CompaniesPage/CompanyUsers/CompanyUsers';
 import { InputField } from '../partials/InputField/InputField';
 import { findCompanyById, newCompanyInfo } from '../../services/StorageRepository';
 import { AppDispatch, RootState } from '../../app/store';

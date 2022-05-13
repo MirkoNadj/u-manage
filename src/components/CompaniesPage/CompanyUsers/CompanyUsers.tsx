@@ -1,12 +1,12 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom'
 import './CompanyUsers.css';
-import { TableUsers } from '../UsersPage/TableUsers/TableUsers';
-import { User } from '../../Interfaces/ObjectInterfaces';
-import { AppDispatch, RootState } from '../../app/store';
-import { deleteUser } from '../../features/usersSlice';
+import { TableUsers } from '../../UsersPage/TableUsers/TableUsers';
+import { User } from '../../../Interfaces/ObjectInterfaces';
+import { AppDispatch, RootState } from '../../../app/store';
+import { deleteUser } from '../../../features/usersSlice';
 import { connect, ConnectedProps } from 'react-redux';
-import { updateCompanyUsers } from '../../features/companiesSlice';
+import { updateCompanyUsers } from '../../../features/companiesSlice';
 
 export const CompanyUsers = (props: PropsFromRedux) => {
     let { currentCompanyId } = useParams();

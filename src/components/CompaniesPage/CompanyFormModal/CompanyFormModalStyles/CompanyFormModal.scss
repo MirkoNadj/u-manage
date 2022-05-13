@@ -1,0 +1,131 @@
+.company-form-backdrop {
+    position:absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #003775f3;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+  }  
+
+  .company-form-container {
+    position: relative;
+    border-radius: 10px;
+    min-width: 350px;
+    max-width: 30%;
+    height: auto;
+    
+  }
+
+.form-title {
+    height: 90px;
+    color: rgb(0, 14, 53);
+    background-color: rgb(219, 219, 219);
+    border-radius: 10px 10px 0px 0px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+
+    button {
+      display: block;
+      padding: 10px 10px 0px 0px;
+      margin-top: 0px;
+      margin-left: auto;
+      font-size: 18px;
+      border: none;
+      border-radius: 100%;
+      color: grey;
+      background-color:rgb(219, 219, 219);
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+}
+
+  .form-footer {
+    height: 40px;
+    padding: 20px 30px;
+    background-color: rgb(201, 201, 201);
+    border-radius: 0px 0px 10px 10px;    
+  }
+  .save-btn {
+    width: 100px;
+    height: 45px;
+    padding: 5px 20px;
+    float: right;
+    font-size: 16px;
+    color: white;
+    background-color: blue;
+    border: solid 1px blue;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 1px rgb(0, 28, 151);
+  }
+
+  .cancel-btn { 
+    width: 100px; 
+    height: 45px;
+    padding: 5px 20px;
+    margin-right: auto;
+    font-size: 16px;
+    color: blue;
+    background-color: white;
+    border: solid 1px blue;
+    border-radius: 5px;
+  }
+
+  .save-btn:active, .cancel-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0px 0px 3px 1px rgb(0, 28, 151);
+  } 
+
+.form-body {
+    background-color: white;
+    padding: 10px 30px;
+
+    div{
+      position: relative;
+      width: 100%;
+      background-color: none;
+    
+      label {      
+        color:black;
+        margin-left: 10px;
+      }    
+    }  .placeholder{
+      color:rgb(133, 133, 133);
+}
+    
+    input, select {
+      box-sizing: border-box;
+      width: 100%;
+      height: 40px;
+      margin-bottom: 15px;
+      border: solid 1px lightgrey;
+      border-radius: 5px;
+      outline:none;
+      padding: 0px 10px;      
+      color: rgb(0, 14, 53);;
+      font-size: 16px;
+    }    
+      
+
+    input:focus, select:focus {
+      border-style: solid;
+      border-width: 1px;
+      border-color: blue;
+    }
+}
+  .errors {
+    position: absolute;
+    right: 0px;
+    top: 96px;
+    color: rgb(255, 4, 4);
+    font-style: bold;
+    font-size: 14px;
+    margin-top: -34px;
+  }
+  
+  

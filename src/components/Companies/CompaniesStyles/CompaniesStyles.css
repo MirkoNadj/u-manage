@@ -1,0 +1,70 @@
+.companies-page {
+  grid-column: span 12;
+  height: 100vh;
+  margin: 0px 0px;
+}
+
+.companies-page .addCompanyBtn {
+  position: relative;
+  top: 50px;
+  right: 20px;
+  display: block;
+  margin-left: auto;
+  border-color: white;
+  border-radius: 5px;
+  height: 30px;
+  padding: 5px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: blue;
+  border: solid 1px blue;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 3px 1px #001c97;
+          box-shadow: 2px 2px 3px 1px #001c97;
+}
+
+.companies-page .addCompanyBtn a:link {
+  text-decoration: none;
+  color: white;
+}
+
+.companies-page .addCompanyBtn a:visited {
+  text-decoration: none;
+}
+
+.companies-page .addCompanyBtn:active {
+  -webkit-transform: scale(0.985);
+          transform: scale(0.985);
+  -webkit-box-shadow: 0px 0px 2px 1px #001c97;
+          box-shadow: 0px 0px 2px 1px #001c97;
+}
+
+.companies-page .addCompanyBtn:after {
+  content: " " attr(title);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
+  font-size: 0;
+}
+
+.companies-page .addCompanyBtn:hover:after {
+  content: " " attr(title);
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  font-size: 16px;
+}
+
+.companies-page .c-table-container {
+  width: 80%;
+  margin: auto;
+}
+
+.companies-page .c-table-container h2 {
+  text-align: right;
+  color: #001652;
+  margin-right: auto;
+}
+/*# sourceMappingURL=CompaniesStyles.css.map */

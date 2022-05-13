@@ -5,8 +5,8 @@ import { Header } from './components/partials/Header/Header';
 import { Home } from './components/partials/Home/Home';
 import Users from './components/UsersPage/Users/Users';
 import UserFormModal from './components/UsersPage/UserFormModal/UserFormModal';
-import CompanyForm from './components/CompanyForm/CompanyForm';
-import { Companies } from './components/Companies/Companies';
+import CompanyFormModal from './components/CompanyForm/CompanyForm';
+import Companies from './components/Companies/Companies';
 import PostsList from './components/PostsList/PostsList';
 import { PostDetails } from './components/PostDetailsPage/PostDetails/PostDetails';
 
@@ -22,9 +22,10 @@ const App: FC = () => {
               <Route path="/users/create" element={<UserFormModal />} />
               <Route path="/users/:currentUserId" element={<UserFormModal />} />
             </Route>
-            <Route path="/companies" element={<Companies />} />
-            <Route path="/companies/create" element={<CompanyForm />} />
-            <Route path="/companies/:currentCompanyId" element={<CompanyForm />} />
+            <Route path="/companies" element={<Companies />} >
+              <Route path="/companies/create" element={<CompanyFormModal />} />
+              <Route path="/companies/:currentCompanyId" element={<CompanyFormModal />} />
+            </Route>
             <Route path="/newsletterPosts" element={<PostsList />} />
             <Route path="/newsletterPosts/:postDetailsId" element={<PostDetails />} />
           </Routes></div>
