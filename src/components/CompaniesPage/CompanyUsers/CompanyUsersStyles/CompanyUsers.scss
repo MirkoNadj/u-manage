@@ -4,10 +4,6 @@
     margin: 0px 0px;
 
   .addUserBtn {
-    display:inline;
-    // position: relative;
-    // top: 55px;
-    // right: 20px;
     display: block;
     margin-left: auto;
     border-color: white;
@@ -59,6 +55,9 @@
   }  
   
 
-h2 {             
-    color: white;        
+h2 {
+  display:inline;
+  position:relative;
+  top:30px;       
+  color: white;        
 }}

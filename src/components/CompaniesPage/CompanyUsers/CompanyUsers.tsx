@@ -15,15 +15,16 @@ export const CompanyUsers = (props: PropsFromRedux) => {
     const usersList = props.users.usersList.filter(userItem => userItem.companyId === currentCompanyId);
 
     return (
-        <div className='co-users-page'><button className='addUserBtn' title=' Add'><PlusOutlined />
-            <Link
-                to='/users/create/'
-                state={{
-                    currentCompanyId: currentCompanyId,
-                    isUserFormModal: true
-                }}>
-            </Link>
-        </button><h2>Company Users:</h2>
+        <div className='co-users-page'><h2>Company Users:</h2>
+            <button className='addUserBtn' title=' Add'><PlusOutlined />
+                <Link
+                    to='/users/create/'
+                    state={{
+                        currentCompanyId: currentCompanyId,
+                        isUserFormModal: true
+                    }}>
+                </Link>
+            </button>
             <div className='user-table-container'>
 
 

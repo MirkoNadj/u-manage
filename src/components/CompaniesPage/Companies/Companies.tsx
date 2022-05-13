@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom'
 import './CompaniesStyles/CompaniesStyles.css';
-import { TableCompanies } from '../CompaniesPage/TableCompanies/TableCompanies';
-import CompanyFormModal from '../CompaniesPage/CompanyFormModal/CompanyFormModal'
-import { deleteCompany } from '../../features/companiesSlice';
-import { AppDispatch, RootState } from '../../app/store';
+import { TableCompanies } from '../TableCompanies/TableCompanies';
+import CompanyFormModal from '../CompanyFormModal/CompanyFormModal'
+import { deleteCompany } from '../../../features/companiesSlice';
+import { AppDispatch, RootState } from '../../../app/store';
 import { connect, ConnectedProps } from 'react-redux';
-import { Company, LocationProps } from '../../Interfaces/ObjectInterfaces';
+import { Company, LocationProps } from '../../../Interfaces/ObjectInterfaces';
 import { PlusOutlined } from '@ant-design/icons';
-import { removeCompanyNameForUsers } from '../../features/usersSlice';
+import { removeCompanyNameForUsers } from '../../../features/usersSlice';
 
 export const Companies = (props: PropsFromRedux) => {
 

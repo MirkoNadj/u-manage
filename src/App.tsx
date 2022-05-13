@@ -5,8 +5,8 @@ import { Header } from './components/partials/Header/Header';
 import { Home } from './components/partials/Home/Home';
 import Users from './components/UsersPage/Users/Users';
 import UserFormModal from './components/UsersPage/UserFormModal/UserFormModal';
-import CompanyFormModal from './components/CompanyForm/CompanyForm';
-import Companies from './components/Companies/Companies';
+import CompanyFormModal from './components/CompaniesPage/CompanyFormModal/CompanyFormModal';
+import Companies from './components/CompaniesPage/Companies/Companies'
 import PostsList from './components/PostsList/PostsList';
 import { PostDetails } from './components/PostDetailsPage/PostDetails/PostDetails';
 
