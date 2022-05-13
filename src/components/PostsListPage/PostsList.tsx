@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './PostsList.css';
 import { Post } from '../../Interfaces/ObjectInterfaces';
-import { PostCard } from '../partials/PostCard/PostCard';
+import { PostCard } from './PostCard/PostCard';
 import { Loading } from '../partials/Loading/Loading';
 import { AppDispatch, RootState } from '../../app/store';
 import { connect, ConnectedProps } from 'react-redux';

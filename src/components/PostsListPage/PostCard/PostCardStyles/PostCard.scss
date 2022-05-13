@@ -1,0 +1,43 @@
+.postCard {
+    min-width: 300px;
+    width: 30%;
+    max-width: 500px;
+    height: 300px;
+    color: black;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+
+    div {
+        width: 35px;
+        height: 25px;
+        font-size: 24px;
+        border-radius: 5px;
+        margin-left: auto;
+        text-align: center;
+        padding-bottom: 5px;       
+    }
+
+    div:hover{
+        background-color: rgb(131, 146, 168);
+    }
+
+    img {
+        margin: 0px 30px;
+        border-radius: 100%;;
+    }
+
+    h1 {
+        font-size: 26px;
+        color: black;
+        margin: 5px;
+        padding: 5px;
+        text-align: center;
+      }
+
+    h3 {
+        color: grey;
+        margin: 5px;
+        text-align: justify;
+    }
+}

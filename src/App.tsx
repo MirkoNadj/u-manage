@@ -7,7 +7,7 @@ import Users from './components/UsersPage/Users/Users';
 import UserFormModal from './components/UsersPage/UserFormModal/UserFormModal';
 import CompanyFormModal from './components/CompaniesPage/CompanyFormModal/CompanyFormModal';
 import Companies from './components/CompaniesPage/Companies/Companies'
-import PostsList from './components/PostsList/PostsList';
+import PostsList from './components/PostsListPage/PostsList';
 import { PostDetails } from './components/PostDetailsPage/PostDetails/PostDetails';
 
 const App: FC = () => {

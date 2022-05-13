@@ -1,11 +1,11 @@
 .list-container {
-  width: 70%;
-  margin: 50px auto;
-  padding: 10px;
-  background-color: blue;
-  border-color: white;
-  border-style: groove;
-  border-width: 5px;
+  grid-column: span 12;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  row-gap: 20px;
+  padding: 20px;
 }
 
 .dot {
