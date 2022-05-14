@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './CommentsList.css';
+import './CommentsListStyles/CommentsList.css';
 import { CommentCard } from '../CommentCard/CommentCard';
 import { Comment, OwnPropsId } from '../../../Interfaces/ObjectInterfaces';
 import { Loading } from '../../partials/Loading/Loading';
@@ -14,17 +14,17 @@ export const CommentsList = (props: PropsFromRedux) => {
         fetchComments(postDetailsId!);
     }, [postDetailsId, fetchComments]);
 
-    return (
-        <div className='comments-container'>
-            {comments.status === 'loading' && <Loading />}
-            {comments.status === 'failed' && <h1 className='error'>{comments.error}</h1>}
-            <h1>Comments:</h1>
-            {comments.commentsList.map((commentItem: Comment) => {
-                return (
-                    <CommentCard commentItem={commentItem} key={commentItem.id} />
-                )
-            })}
-        </div>
+    return (<div className='comments'>
+        <h1>Comments:</h1>
+        {comments.status === 'loading' && <Loading />}
+        {comments.status === 'failed' && <h1 className='error'>{comments.error}</h1>}
+
+        {comments.commentsList.map((commentItem: Comment) => {
+            return (
+                <CommentCard commentItem={commentItem} key={commentItem.id} />
+            )
+        })}
+    </div>
     );
 };
 

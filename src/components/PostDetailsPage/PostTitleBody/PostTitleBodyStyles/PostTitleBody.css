@@ -1,0 +1,71 @@
+.title-body-container {
+  min-width: 300px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: silver;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.title-body-container .del-post-btn, .title-body-container .edit-post-btn {
+  padding: 3px 5px;
+  color: #111838;
+  border-radius: 5px;
+  border-color: white;
+}
+
+.title-body-container .del-post-btn:after, .title-body-container .edit-post-btn:after {
+  content: " " attr(title);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
+  font-size: 0;
+}
+
+.title-body-container .del-post-btn:hover:after, .title-body-container .edit-post-btn:hover:after {
+  content: " " attr(title);
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  font-size: 14px;
+}
+
+.title-body-container label {
+  color: white;
+  font-size: 24px;
+  margin: 0px 0px;
+}
+
+.title-body-container .post-status {
+  float: right;
+  color: red;
+}
+
+#title,
+#body {
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-size: 26px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+}
+
+#body {
+  height: 250px;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.loadingErrors {
+  height: 20px;
+}
+/*# sourceMappingURL=PostTitleBody.css.map */

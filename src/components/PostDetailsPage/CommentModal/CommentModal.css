@@ -1,14 +1,23 @@
+.comment-modal-backdrop {
+  position:fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #003775f3;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+}
+
 .comment-modal-container {
-  position: fixed;
-  box-sizing: border-box;
-  top: 100px;
   width: 50%;
   height: 80vh;
   padding: 2%;
-  color: blue;
-  border: 12px groove rgb(15, 60, 158);
-  background-color: rgb(174, 243, 243);
-  z-index: 999;
+  color: silver;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
   text-align: justify;
 }
 .comment-modal-container h1 {
@@ -28,5 +37,5 @@
 }
 
 .comment-modal-container p {
-  color: blue;
+  color: black;
 }

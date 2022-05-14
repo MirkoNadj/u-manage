@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EAGN,MAAM,EAAC,WAAW;EAClB,SAAS,EAAE,KAAK;EAEhB,gBAAgB,EAAE,MAAM;EACxB,aAAa,EAAE,IAAI;EACnB,OAAO,EAAE,IAAI;CAChB",
+    "sources": [
+        "CommentsList.scss"
+    ],
+    "names": [],
+    "file": "CommentsList.css"
+}

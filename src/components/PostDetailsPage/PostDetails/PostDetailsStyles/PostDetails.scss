@@ -1,0 +1,14 @@
+.post-details {
+    grid-column: span 12;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    
+    h1 {
+        font-size: 28px;
+    }
+}

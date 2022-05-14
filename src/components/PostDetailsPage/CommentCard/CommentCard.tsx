@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import './CommentCard.css';
+import './CommentCardStyles/CommentCard.css';
 import { CommentCardInt } from '../../../Interfaces/ObjectInterfaces';
 import { CommentModal } from '../CommentModal/CommentModal';
 

@@ -1,0 +1,22 @@
+.post-details {
+  grid-column: span 12;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: space-around;
+      -ms-flex-align: space-around;
+          align-items: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.post-details h1 {
+  font-size: 28px;
+}
+/*# sourceMappingURL=PostDetails.css.map */

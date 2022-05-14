@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EACV,WAAW,EAAE,OAAO;EACpB,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAE,YAAY;EACzB,SAAS,EAAE,IAAI;EACf,GAAG,EAAE,IAAI;EACT,OAAO,EAAE,IAAI;CAKhB;;AAbD,AAUI,aAVS,CAUT,EAAE,CAAC;EACC,SAAS,EAAE,IAAI;CAClB",
+    "sources": [
+        "PostDetails.scss"
+    ],
+    "names": [],
+    "file": "PostDetails.css"
+}

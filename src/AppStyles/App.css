@@ -1,8 +1,4 @@
 body {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 0px;
-  margin: 0px;
   background: white;
   background: linear-gradient(45deg, white 0%, #e9e9e9 100%);
 }

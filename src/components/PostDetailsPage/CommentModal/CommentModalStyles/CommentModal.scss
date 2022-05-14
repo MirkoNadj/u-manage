@@ -1,0 +1,62 @@
+.comment-modal-backdrop {
+    position:fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #003775f3;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+  }
+  
+  .comment-modal-container {
+    width: 50%;
+    height: 80vh;
+    padding: 2%;
+    color: silver;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    text-align: justify;
+
+    button {
+        display: block;
+        padding: 10px;
+        margin-top: 0px;
+        margin-left: auto;
+        font-size: 18px;
+        border: none;
+        border-radius: 100%;
+        color: grey;
+        background-color:rgba(219, 219, 219, 0.568);
+    }
+  
+    button:hover {
+        cursor: pointer;
+    }
+                
+    h1 {
+        font-size: 26px;
+        color: rgb(9, 9, 34);
+    }
+
+    h2 {
+        font-size: 26px;
+        color: rgb(9, 9, 34);
+    }
+
+    h3 {
+        font-size: 22px;
+        color: black;
+        font-style: italic;
+    }
+
+    p {
+        margin: 10px 0px;
+        padding: 15px;
+        border: solid 1px black;
+        border-radius: 10px;
+        color: black;
+    }
+}

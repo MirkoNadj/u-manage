@@ -1,12 +1,13 @@
 import React, { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './PostTitleBody.css';
+import './PostTitleBodyStyles/PostTitleBody.css';
 import { Loading } from '../../partials/Loading/Loading';
 import { TextAreaField } from '../../partials/TextAreaField/TextAreaField';
 import { Post, OwnPropsId } from '../../../Interfaces/ObjectInterfaces';
 import { AppDispatch, RootState } from '../../../app/store';
 import { connect, ConnectedProps } from 'react-redux';
 import { deletePost, editPost } from '../../../features/postsSlice';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 export const PostTitleBody = (props: PropsFromRedux) => {
     const { posts, postDetailsId } = props;
@@ -26,35 +27,34 @@ export const PostTitleBody = (props: PropsFromRedux) => {
     };
 
     return (
-        <div className='postDetails'>
+        <div className='title-body-container'>
             <h1>Post Details</h1>
-            <button onClick={() => { props.editPost(post) }}>Edit</button>
-            <button onClick={() => { deleteP(post.id) }}>Delete</button>
-            <div className='details-container'>
 
-                <TextAreaField
-                    label={'Title'}
-                    id={'title'}
-                    name={'title'}
-                    value={post.title}
-                    defaultValue={post.title}
-                    maxLength={50}
-                    onChange={handleChangeInput}
-                />
-                <TextAreaField
-                    label={'Body'}
-                    id={'body'}
-                    name={'body'}
-                    value={post.body}
-                    defaultValue={post.body}
-                    maxLength={100}
-                    onChange={handleChangeInput}
-                />
-                {posts.status === 'loading' && <Loading />}
-                {posts.status === 'deleted' && <h1>Post deleted</h1>}
-                {posts.status === 'patched' && <h1>Post changed</h1>}
-                {posts.error && <h1 className='error'>{posts.error}</h1>}
-            </div>
+
+            <TextAreaField
+                label={'Title'}
+                id={'title'}
+                name={'title'}
+                value={post.title}
+                defaultValue={post.title}
+                maxLength={50}
+                onChange={handleChangeInput}
+            />
+            <TextAreaField
+                label={'Body'}
+                id={'body'}
+                name={'body'}
+                value={post.body}
+                defaultValue={post.body}
+                maxLength={100}
+                onChange={handleChangeInput}
+            />
+            <button className='edit-post-btn' title='Edit Post' onClick={() => { props.editPost(post) }}><EditOutlined /></button>
+            <button className='del-post-btn' title='Delete Post' onClick={() => { deleteP(post.id) }}><DeleteOutlined /></button>
+            {posts.status === 'loading' && <Loading />}
+            {posts.status === 'deleted' && <span className='post-status'>Post deleted</span>}
+            {posts.status === 'patched' && <span className='post-status'>Post changed</span>}
+            {posts.error && <h1 className='error'>{posts.error}</h1>}
         </div>
     );
 };
