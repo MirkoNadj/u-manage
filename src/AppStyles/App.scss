@@ -1,6 +1,27 @@
-body {   
-    background: rgb(255,255,255);
-    background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(233,233,233,1) 100%);
+ @use '../styles/color-light';
+ @use '../styles/color-dark';
+
+.theme-light {
+    background: color-light.$background;
+    background: color-light.$background-gradient;
+
+    h1, h2, h3, h4, h5, h6, p, th, td {color: black}
+
+    .theme {        
+        background: color-light.$background;
+        background: color-light.$background-gradient;
+    }
+}
+
+.theme-dark {
+    background: color-dark.$background;
+    background: color-dark.$background-gradient;
+    h1, h2, h3, h4, h5, h6, p, th, td {color: white};
+
+    .theme {
+        background: color-dark.$background;
+        background: color-dark.$background-gradient;
+    }
 }
 
 .grid-container {
@@ -8,3 +29,17 @@ body {
     grid-template-columns: repeat(12, 1fr);  
     grid-auto-rows: minmax(50px, auto);
 }
+
+
+
+// h6 {
+//     color: white;
+// }
+// .theme-palevioletred .tema {
+//     background: palevioletred;
+//     color:red;
+// }
+// .theme-blueviolet h6 {
+//     background: blueviolet;
+// }
+

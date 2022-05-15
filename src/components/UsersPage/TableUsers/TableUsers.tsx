@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import './TableUsers.css'
+import './TableUsersStyles/TableUsersCo.css'
 import { User } from '../../../Interfaces/ObjectInterfaces';
 import { convertDateString } from '../../../services/StorageRepository';
 import { PagingLine } from '../../partials/PagingLine/PagingLine';
@@ -20,9 +20,8 @@ export const TableUsers = ({ usersList, deleteUser, updateCompanyUsers }: any) =
 
     return (
         <>
-            <table className='table-users'>
+            <table className='table-users-co theme'>
                 <thead>
-                    <tr className='table-header'></tr>
                     <tr>
                         <th>Full name:</th>
                         <th>Date Of Birth:</th>

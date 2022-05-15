@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './AppStyles/App.css';
 import { Header } from './components/partials/Header/Header';
@@ -11,11 +11,14 @@ import PostsList from './components/PostsListPage/PostsList';
 import { PostDetails } from './components/PostDetailsPage/PostDetails/PostDetails';
 
 const App: FC = () => {
+
+  const [theme, setTheme] = useState(true);
+
   return (
     <>
       <Router>
-        <div className='grid-container'>
-          <Header />
+        <div className={`grid-container ${(theme) ? 'theme-light' : 'theme-dark'} `}>
+          <Header theme={theme} setTheme={setTheme} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/users/" element={<Users />} >

@@ -1,11 +1,15 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
 import { WeatherModal } from '../WeatherModal/WeatherModal';
 import './HeaderStyles/Header.css';
 import { GlobalOutlined, LoadingOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon, faCloudSun } from '@fortawesome/free-solid-svg-icons';
 
-export const Header: FC = () => {
+
+
+export const Header = ({ theme, setTheme }: any) => {
     let [isWeather, setIsWeather] = useState(false);
 
     const headerVariant = {
@@ -43,7 +47,7 @@ export const Header: FC = () => {
     return (
         <>
             <motion.div
-                className='header'
+                className='header tema'
                 variants={headerVariant}
                 initial='startMotion'
                 animate='endMotion'
@@ -54,6 +58,7 @@ export const Header: FC = () => {
                 >
                     <img src="./mngLogo.png" alt='LOGO'></img>
                     <Link to='/'><h1>U-manage</h1></Link>
+
                 </motion.div>
                 <nav>
                     <ul>
@@ -62,14 +67,18 @@ export const Header: FC = () => {
                         <NavLink to='/newsletterPosts'><motion.li variants={itemVariant}>Newsletter</motion.li></NavLink>
                     </ul>
                 </nav>
-                <motion.button className='weather-btn'
+                <motion.div
                     variants={itemVariant}
-                    onClick={() => window.open('https://www.metaweather.com')}
-                    onMouseOver={() => { setIsWeather(true) }}
-                    onMouseOut={() => { setIsWeather(false) }}
                 >
-                    {isWeather ? <LoadingOutlined spin /> : <GlobalOutlined />}
-                </motion.button>
+                    <button onClick={() => { setTheme(!theme) }}>{theme ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faCloudSun} />}</button>
+                    <button className='weather-btn'
+                        onClick={() => window.open('https://www.metaweather.com')}
+                        onMouseOver={() => { setIsWeather(true) }}
+                        onMouseOut={() => { setIsWeather(false) }}
+                    >
+                        {isWeather ? <LoadingOutlined spin /> : <GlobalOutlined />}
+                    </button>
+                </motion.div>
                 {isWeather && <WeatherModal />}
             </motion.div>
         </>

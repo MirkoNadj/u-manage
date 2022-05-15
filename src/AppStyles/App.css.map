@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,IAAI,CAAC;EACD,UAAU,EAAE,KAAgB;EAC5B,UAAU,EAAE,8CAAwE;CACvF;;AAED,AAAA,eAAe,CAAC;EACZ,OAAO,EAAC,IAAI;EACZ,qBAAqB,EAAE,eAAe;EACtC,cAAc,EAAE,kBAAkB;CACrC",
-    "sources": [
-        "App.scss"
-    ],
-    "names": [],
-    "file": "App.css"
-}
+{"version":3,"sources":["App.scss","../styles/_color-light.scss","App.css","../styles/_color-dark.scss"],"names":[],"mappings":"AAGA;EACI,8BCJS;EDKT,kICJkB;ACEtB;AFII;EAAmC,YAAA;AEDvC;AFGI;EACI,8BCVK;EDWL,kICVc;ACStB;;AFKA;EACI,yBGhBS;EHiBT,+GGhBkB;ADctB;AFGI;EAAmC,YAAA;AEAvC;AFEI;EACI,yBGrBK;EHsBL,+GGrBc;ADqBtB;;AFIA;EACI,aAAA;EACA,sCAAA;EACA,kCAAA;AEDJ","file":"App.css"}

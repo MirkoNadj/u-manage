@@ -12,7 +12,7 @@
   width: -moz-fit-content;
   width: fit-content;
   padding: 3px 10px;
-  color: #111838;
+  color: rgb(17, 24, 56);
   font-weight: bold;
   font-size: 16px;
   border: 1px solid black;
@@ -24,9 +24,8 @@
   height: 70px;
   width: 100%;
   padding: 0px 10px;
-  color: #111838;
+  color: rgb(17, 24, 56);
   border: 1px solid black;
   border-radius: 0px 0px 5px 5px;
   background-color: white;
-}
-/*# sourceMappingURL=CommentCard.css.map */
+}/*# sourceMappingURL=CommentCard.css.map */

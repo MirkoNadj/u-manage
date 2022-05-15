@@ -1,86 +1,61 @@
 .header {
   grid-column: span 12;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   height: 50px;
-  background: white;
-  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#888888));
-  background: linear-gradient(180deg, white 0%, #888888 100%);
 }
-
 .header .header-title {
   width: 160px;
   height: 50px;
   margin-left: 15px;
-  border-right: 2px solid #888888;
+  border-right: 2px solid rgb(136, 136, 136);
 }
-
 .header .header-title img {
   height: 24px;
   margin-top: 10px;
 }
-
 .header .header-title a {
   text-decoration: none;
   display: inline;
   padding: 0px 5px;
   vertical-align: 3px;
 }
-
 .header .header-title h1 {
   display: inline;
   font-size: 20px;
   margin: 0px;
-  color: whitesmoke;
 }
-
 .header nav ul {
   display: inline;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-
 .header nav ul a {
   text-decoration: none;
   display: inline-block;
   padding: 0px 15px;
   font-size: 24px;
   font-weight: bold;
-  color: #001652;
 }
-
 .header nav ul a:hover {
   cursor: pointer;
-  text-shadow: #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, #888888 0px 0px 1px, 1px 1px 1px #00299b;
+  text-shadow: rgb(136, 136, 136) 0px 0px 1px, rgb(136, 136, 136) 0px 0px 1px, rgb(136, 136, 136) 0px 0px 1px, rgb(136, 136, 136) 0px 0px 1px, rgb(136, 136, 136) 0px 0px 1px, rgb(136, 136, 136) 0px 0px 1px, rgb(136, 136, 136) 0px 0px 1px, rgb(136, 136, 136) 0px 0px 1px, 1px 1px 1px rgb(0, 41, 155);
 }
-
 .header a.active {
   height: 34px;
-  background: white;
-  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#888888));
-  background: linear-gradient(180deg, white 0%, #888888 100%);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(136, 136, 136) 100%);
   border-radius: 8px;
 }
 
 .weather-btn {
   width: 45px;
   height: 45px;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #97c4fe;
-          box-shadow: inset 0px 1px 0px 0px #97c4fe;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #3d94f6), to(#001652));
-  background: linear-gradient(to bottom, #3d94f6 5%, #001652 100%);
+  box-shadow: inset 0px 1px 0px 0px #97c4fe;
+  background: linear-gradient(to bottom, #3d94f6 5%, rgb(0, 22, 82) 100%);
   background-color: #3d94f6;
   border-radius: 50px;
   border: 1px solid #337fed;
@@ -94,8 +69,7 @@
 }
 
 .weather-btn:hover {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #1e62d0), to(#001652));
-  background: linear-gradient(to bottom, #1e62d0 5%, #001652 100%);
+  background: linear-gradient(to bottom, #1e62d0 5%, rgb(0, 22, 82) 100%);
   background-color: #1957bb;
   font-size: 26px;
 }
@@ -104,5 +78,4 @@
   position: relative;
   font-size: 30px;
   border-radius: 65px;
-}
-/*# sourceMappingURL=Header.css.map */
+}/*# sourceMappingURL=Header.css.map */

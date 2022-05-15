@@ -8,7 +8,6 @@
   padding: 10px;
   border-radius: 10px;
 }
-
 .postCard div {
   width: 35px;
   height: 25px;
@@ -18,16 +17,13 @@
   text-align: center;
   padding-bottom: 5px;
 }
-
 .postCard div:hover {
-  background-color: #8392a8;
+  background-color: rgb(131, 146, 168);
 }
-
 .postCard img {
   margin: 0px 30px;
   border-radius: 100%;
 }
-
 .postCard h1 {
   font-size: 26px;
   color: black;
@@ -35,10 +31,8 @@
   padding: 5px;
   text-align: center;
 }
-
 .postCard h3 {
   color: grey;
   margin: 5px;
   text-align: justify;
-}
-/*# sourceMappingURL=PostCard.css.map */
+}/*# sourceMappingURL=PostCard.css.map */

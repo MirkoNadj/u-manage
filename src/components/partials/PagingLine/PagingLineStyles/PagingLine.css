@@ -1,40 +1,23 @@
 .paging-line {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: 34px;
-  background: white;
-  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#888888));
-  background: linear-gradient(180deg, white 0%, #888888 100%);
-  padding: 0 0px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0px;
   border-radius: 5px;
-}
-
-.paging-line p {
-  display: inline;
-  color: #111838;
   font-size: 14px;
 }
-
+.paging-line p {
+  display: inline;
+}
 .paging-line button {
   height: 24px;
   margin: 0 5px;
   padding: 1px 5px;
-  font-size: 14px;
 }
-
 .paging-line select {
   height: 24px;
   margin: 0 10px;
   border-radius: 5px;
-  color: #111838;
   outline: none;
 }
 
@@ -43,15 +26,15 @@
   margin-left: 5px;
 }
 
-.page-btns {
+.page-btns-container {
   width: 320px;
 }
 
 .paging-line button:enabled {
-  color: #111838;
+  color: rgb(17, 24, 56);
+  font-weight: bold;
 }
 
 .paging-line button:disabled {
-  color: #4d536d;
-}
-/*# sourceMappingURL=PagingLine.css.map */
+  background-color: white;
+}/*# sourceMappingURL=PagingLine.css.map */

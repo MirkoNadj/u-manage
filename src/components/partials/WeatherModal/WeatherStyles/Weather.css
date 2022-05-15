@@ -3,19 +3,16 @@
   position: absolute;
   top: 70px;
   right: 10px;
-  z-index: +100;
+  z-index: 100;
   width: 200px;
   height: 150px;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #97c4fe;
-          box-shadow: inset 0px 1px 0px 0px #97c4fe;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #3d94f6), to(#001652));
-  background: linear-gradient(to bottom, #3d94f6 5%, #001652 100%);
+  box-shadow: inset 0px 1px 0px 0px #97c4fe;
+  background: linear-gradient(to bottom, #3d94f6 5%, rgb(0, 22, 82) 100%);
   background-color: #3d94f6;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 12px;
   border-radius: 5px;
   border-style: solid;
   border-color: white;
   text-align: center;
-}
-/*# sourceMappingURL=Weather.css.map */
+}/*# sourceMappingURL=Weather.css.map */

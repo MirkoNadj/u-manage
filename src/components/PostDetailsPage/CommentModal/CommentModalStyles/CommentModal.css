@@ -4,16 +4,10 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #003775f3;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  background-color: rgba(0, 55, 117, 0.9529411765);
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .comment-modal-container {
@@ -26,7 +20,6 @@
   background-color: white;
   text-align: justify;
 }
-
 .comment-modal-container button {
   display: block;
   padding: 10px;
@@ -38,32 +31,26 @@
   color: grey;
   background-color: rgba(219, 219, 219, 0.568);
 }
-
 .comment-modal-container button:hover {
   cursor: pointer;
 }
-
 .comment-modal-container h1 {
   font-size: 26px;
-  color: #090922;
+  color: rgb(9, 9, 34);
 }
-
 .comment-modal-container h2 {
   font-size: 26px;
-  color: #090922;
+  color: rgb(9, 9, 34);
 }
-
 .comment-modal-container h3 {
   font-size: 22px;
   color: black;
   font-style: italic;
 }
-
 .comment-modal-container p {
   margin: 10px 0px;
   padding: 15px;
   border: solid 1px black;
   border-radius: 10px;
   color: black;
-}
-/*# sourceMappingURL=CommentModal.css.map */
+}/*# sourceMappingURL=CommentModal.css.map */

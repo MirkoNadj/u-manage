@@ -26,11 +26,11 @@ export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: any) {
     setPagingEnd(toPageF());
 
     return (
-        <div className='paging-line'>
+        <div className='paging-line theme'>
             <div className='page-info'>
                 <p>Showing {page * perPage + 1} - {toPageF()} of {pagingRange} results</p>
             </div>
-            <div className='page-btns'>
+            <div className='page-btns-container'>
                 <p>Results per page:</p>
                 <select
                     id='results-range'
@@ -50,7 +50,7 @@ export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: any) {
                 >{'<'}
                 </button>
 
-                <button className='page' onClick={() => { setPage(page) }}>{page + 1}</button>
+                <button onClick={() => { setPage(page) }}>{page + 1}</button>
 
                 <button
                     disabled={(toPageF() >= pagingRange)}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import './TableCompanies.css'
+import '../../UsersPage/TableUsers/TableUsersStyles/TableUsersCo.css';
 import { Company } from '../../../Interfaces/ObjectInterfaces';
 
 import { PagingLine } from '../../partials/PagingLine/PagingLine';
@@ -19,7 +19,7 @@ export const TableCompanies = ({ companiesList, deleteCompany, removeCompanyName
     };
 
     return (
-        <table className='table-users'>
+        <table className='table-users-co theme'>
             <thead>
                 <tr className='table-header'></tr>
                 <tr>

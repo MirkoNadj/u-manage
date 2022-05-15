@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,SAAS,CAAC;EAGN,MAAM,EAAC,WAAW;EAClB,SAAS,EAAE,KAAK;EAEhB,gBAAgB,EAAE,MAAM;EACxB,aAAa,EAAE,IAAI;EACnB,OAAO,EAAE,IAAI;CAChB",
-    "sources": [
-        "CommentsList.scss"
-    ],
-    "names": [],
-    "file": "CommentsList.css"
-}
+{"version":3,"sources":["CommentsList.scss","CommentsList.css"],"names":[],"mappings":"AAAA;EAGI,2BAAA;EAAA,wBAAA;EAAA,mBAAA;EACA,gBAAA;EAEA,wBAAA;EACA,mBAAA;EACA,aAAA;ACFJ","file":"CommentsList.css"}

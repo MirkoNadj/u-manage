@@ -6,19 +6,10 @@
   height: auto;
   width: 100vw;
   background-color: rgba(0, 17, 43, 0.897);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .company-form-container {
@@ -32,14 +23,13 @@
 
 .form-title {
   height: 90px;
-  color: #000e35;
-  background-color: #dbdbdb;
+  color: rgb(0, 14, 53);
+  background-color: rgb(219, 219, 219);
   border-radius: 10px 10px 0px 0px;
   text-align: center;
   font-size: 22px;
   font-weight: bold;
 }
-
 .form-title button {
   display: block;
   padding: 10px 10px 0px 0px;
@@ -49,9 +39,8 @@
   border: none;
   border-radius: 100%;
   color: grey;
-  background-color: #dbdbdb;
+  background-color: rgb(219, 219, 219);
 }
-
 .form-title button:hover {
   cursor: pointer;
 }
@@ -59,7 +48,7 @@
 .form-footer {
   height: 40px;
   padding: 20px 30px;
-  background-color: #c9c9c9;
+  background-color: rgb(201, 201, 201);
   border-radius: 0px 0px 10px 10px;
 }
 
@@ -73,8 +62,7 @@
   background-color: blue;
   border: solid 1px blue;
   border-radius: 5px;
-  -webkit-box-shadow: 2px 2px 5px 1px #001c97;
-          box-shadow: 2px 2px 5px 1px #001c97;
+  box-shadow: 2px 2px 5px 1px rgb(0, 28, 151);
 }
 
 .cancel-btn {
@@ -90,35 +78,28 @@
 }
 
 .save-btn:active, .cancel-btn:active {
-  -webkit-transform: scale(0.98);
-          transform: scale(0.98);
-  -webkit-box-shadow: 0px 0px 3px 1px #001c97;
-          box-shadow: 0px 0px 3px 1px #001c97;
+  transform: scale(0.98);
+  box-shadow: 0px 0px 3px 1px rgb(0, 28, 151);
 }
 
 .form-body {
   background-color: white;
   padding: 10px 30px;
 }
-
 .form-body div {
   position: relative;
   width: 100%;
   background-color: none;
 }
-
 .form-body div label {
   color: black;
   margin-left: 10px;
 }
-
 .form-body .placeholder {
-  color: #858585;
+  color: rgb(133, 133, 133);
 }
-
 .form-body input, .form-body select {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%;
   height: 40px;
   margin-bottom: 15px;
@@ -126,10 +107,9 @@
   border-radius: 5px;
   outline: none;
   padding: 0px 10px;
-  color: #000e35;
+  color: rgb(0, 14, 53);
   font-size: 16px;
 }
-
 .form-body input:focus, .form-body select:focus {
   border-style: solid;
   border-width: 1px;
@@ -140,9 +120,8 @@
   position: absolute;
   right: 0px;
   top: 96px;
-  color: #ff0404;
+  color: rgb(255, 4, 4);
   font-style: bold;
   font-size: 14px;
   margin-top: -34px;
-}
-/*# sourceMappingURL=CompanyFormModal.css.map */
+}/*# sourceMappingURL=CompanyFormModal.css.map */

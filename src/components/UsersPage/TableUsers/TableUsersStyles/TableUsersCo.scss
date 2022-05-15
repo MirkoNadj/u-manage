@@ -1,0 +1,64 @@
+@use '../../../../styles/color-light';
+@use '../../../../styles/color-dark';
+
+.table-users-co {
+    width: 100%;  
+    margin: 20px auto;
+    font-size: 18px;
+    border-style: solid;
+    border-color: color-light.$primary;
+    border-width: 0.5px;
+    border-radius: 15px;    
+    border-spacing: 0px 0px;  
+
+    th {
+        text-align: left;
+        padding: 0px 15px;
+    }
+  
+    tr {
+        height: 55px;  
+    }
+  
+    td {
+        text-align: left;
+        font-weight: 600;
+        padding: 0px 15px;
+        margin: 0px 0px;            
+        border-top-style: solid;
+        border-color: color-light.$primary;        
+        border-width: 2px 2px;
+    }
+    
+    .td-edit {
+        width: 70px;
+    }
+
+    .td-del {
+        width: 85px;
+    }
+}
+
+.del-btn, .edit-btn {
+    
+    padding: 3px 5px;
+    color: color-dark.$primary;
+    border-radius: 5px;
+    border-color: color-light.$primary;
+}
+  
+.del-btn:after, .edit-btn:after {
+    content:' ' attr(title);
+    visibility: hidden; 
+    opacity: 0;
+    transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
+    font-size:0;
+}
+  
+.del-btn:hover:after, .edit-btn:hover:after {
+    content:' ' attr(title);
+    visibility: visible;
+    opacity:1;
+    transition-delay: 0s;
+    font-size:14px;  
+}

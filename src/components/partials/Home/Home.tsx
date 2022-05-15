@@ -6,7 +6,7 @@ export const Home: FC = () => {
     return (
         <div className="home">
             <img src="./mngLogo.png" alt='LOGO'></img>
-            <h1>Welcome to the worlds best management app</h1>
+            <h6>Welcome to the worlds best management app</h6>
         </div>
     )
 }
