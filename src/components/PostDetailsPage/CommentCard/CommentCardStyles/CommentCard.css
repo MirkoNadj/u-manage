@@ -4,9 +4,8 @@
 }
 
 .comment-name {
-  text-align: left;
   overflow: hidden;
-  margin-right: auto;
+  margin-left: auto;
   height: 30px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -15,17 +14,16 @@
   color: rgb(17, 24, 56);
   font-weight: bold;
   font-size: 16px;
-  border: 1px solid black;
-  border-radius: 5px 5px 0px 0px;
-  background-color: white;
+  border: 1px solid rgb(17, 24, 56);
+  border-radius: 10px 10px 0px 0px;
+  background-color: rgb(234, 234, 234);
 }
 
 .comment-area {
   height: 70px;
-  width: 100%;
-  padding: 0px 10px;
+  padding: 10px 10px;
   color: rgb(17, 24, 56);
-  border: 1px solid black;
-  border-radius: 0px 0px 5px 5px;
-  background-color: white;
+  border: 2px solid rgb(17, 24, 56);
+  border-radius: 0px 0px 10px 10px;
+  background-color: rgb(234, 234, 234);
 }/*# sourceMappingURL=CommentCard.css.map */

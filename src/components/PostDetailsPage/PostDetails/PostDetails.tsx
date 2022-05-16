@@ -6,7 +6,7 @@ import CommentsList from '../CommentsList/CommentsList';
 
 export const PostDetails: FC = () => {
     let { postDetailsId } = useParams();
-    return (<div className='post-details'>
+    return (<div className='post-details theme'>
         <PostTitleBody postDetailsId={postDetailsId} />
         <CommentsList postDetailsId={postDetailsId} />
     </div>

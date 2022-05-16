@@ -5,8 +5,8 @@ import { CloseOutlined } from '@ant-design/icons';
 
 export const CommentModal: FC<CommentModalInt> = ({ commentItem, setIsModal }) => {
     return (
-        <div className='comment-modal-backdrop'>
-            <div className='comment-modal-container'>
+        <div className='comment-modal-backdrop backdrop'>
+            <div className='comment-modal-container postcard-theme'>
                 <button type='button' onClick={() => { setIsModal(false) }}><CloseOutlined /></button>
                 <h1>Name:</h1>
                 <h2>{commentItem.name}</h2>

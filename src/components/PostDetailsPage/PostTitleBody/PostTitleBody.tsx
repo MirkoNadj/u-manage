@@ -27,7 +27,7 @@ export const PostTitleBody = (props: PropsFromRedux) => {
     };
 
     return (
-        <div className='title-body-container'>
+        <div className='title-body-container postcard-theme'>
             <h1>Post Details</h1>
 
 

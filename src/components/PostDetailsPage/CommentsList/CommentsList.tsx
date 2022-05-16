@@ -14,7 +14,7 @@ export const CommentsList = (props: PropsFromRedux) => {
         fetchComments(postDetailsId!);
     }, [postDetailsId, fetchComments]);
 
-    return (<div className='comments'>
+    return (<div className='comments postcard-theme'>
         <h1>Comments:</h1>
         {comments.status === 'loading' && <Loading />}
         {comments.status === 'failed' && <h1 className='error'>{comments.error}</h1>}

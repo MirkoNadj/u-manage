@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import '../../UsersPage/UserFormModal/UserCoFormModalStyles/UserCoFormModal.css';
 import { Company, CompanyValidationErrors } from '../../../Interfaces/ObjectInterfaces';
 import { companyFormValidation } from '../../../services/formValidation';
@@ -17,6 +17,7 @@ import { motion } from 'framer-motion';
 export const CompanyFormModal = (props: PropsFromRedux) => {
     const [companyInfo, setCompanyInfo] = useState<Company>(newCompanyInfo);
     const [companyFormErrors, setCompanyFormErrors] = useState<CompanyValidationErrors>({ isValid: false });
+    const [isUsers, setIsUsers] = useState(false);
 
     let navigate = useNavigate();
     let { currentCompanyId } = useParams();
@@ -46,7 +47,9 @@ export const CompanyFormModal = (props: PropsFromRedux) => {
             };                                           // new company
             companyInfo.id = guIdGenerator();
             props.addCompany(companyInfo)
-            navigate(`/companies/${companyInfo.id}`)
+            setIsUsers(true)
+            navigate(`/companies/`)
+
 
         };
     };
@@ -90,7 +93,6 @@ export const CompanyFormModal = (props: PropsFromRedux) => {
                     animate='visible'
                     exit='exit'
                 >
-
                     <div className='form-title'>
                         <h1 onClick={cancelCompany}><CloseOutlined /></h1>
                         <label>{(!companyInfo.id) ? 'Create New Company' : 'Edit Company Info'}</label>
@@ -129,7 +131,7 @@ export const CompanyFormModal = (props: PropsFromRedux) => {
                         <button className='save-btn' type='button' onClick={saveCompany}>Save</button>
                     </div>
                 </motion.form>
-                {(currentCompanyId) && <CompanyUsers />}
+                {(currentCompanyId || isUsers) && <CompanyUsers />}
             </motion.div>
         </>
     )

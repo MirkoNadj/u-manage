@@ -6,14 +6,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: fit-content;
     //box-shadow: 2px 2px 8px 0.5px color-dark.$btn-blue-shadow;
 
 .header-title {
     width: 160px;
     height: 50px;
     margin-left: 15px;
-    border-right: 2px solid rgba(136,136,136,1);
+    border-right: 2px solid color-dark.$primary;
     
     img {
         height: 24px;
@@ -35,7 +35,7 @@
 }
 
 nav ul {
-    display: inline;
+    display: block;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -84,4 +84,10 @@ nav ul {
 	text-shadow:10px 11px 10px color-dark.$btn-blue-shadow;
     margin: 0px 10px 0px;
     padding: 1px 0px 0px 0.5px
+}
+
+@media screen and (max-width: 480px) {
+    .header-title {
+        display: none;
+    }
 }

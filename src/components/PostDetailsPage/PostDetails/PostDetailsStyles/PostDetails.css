@@ -2,11 +2,11 @@
   grid-column: span 12;
   height: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: space-around;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
+  gap: 100px;
+  padding: 40px 20px;
 }
 .post-details h1 {
   font-size: 28px;

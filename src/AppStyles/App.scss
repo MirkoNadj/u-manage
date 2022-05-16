@@ -27,7 +27,7 @@
     }
 
     .postcard-theme {
-        h1, h2, h3 {color: color-dark.$primary}
+        h1, h2, h3, label, textarea {color: color-dark.$primary}
         background-color: color-light.$primary;      
     }
     
@@ -57,7 +57,7 @@
     }
 
     .postcard-theme {
-        h1, h2, h3 {color: color-light.$primary}
+        h1, h2, h3, input, textarea, .comment-name, .comment-area {color: color-light.$primary;background-color: color-dark.$btn-blue-shadow}
         background-color: color-dark.$btn-blue-shadow;        
     }
 }

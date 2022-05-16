@@ -1,12 +1,15 @@
 .title-body-container {
-  min-width: 300px;
-  flex-grow: 1;
+  max-width: 40%;
+  min-width: 200px;
+  flex-grow: 2;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  background-color: silver;
   border-radius: 10px;
   padding: 20px;
+}
+.title-body-container h1 {
+  margin-bottom: 16px;
 }
 .title-body-container .del-post-btn, .title-body-container .edit-post-btn {
   padding: 3px 5px;
@@ -29,25 +32,28 @@
   font-size: 14px;
 }
 .title-body-container label {
-  color: white;
   font-size: 24px;
-  margin: 0px 0px;
 }
 .title-body-container .post-status {
   float: right;
   color: red;
 }
 
+@media screen and (max-width: 992px) {
+  .title-body-container {
+    max-width: 100%;
+  }
+}
 #title,
 #body {
   width: 100%;
+  padding: 20px;
+  margin: 10px 0px;
   text-align: center;
-  color: black;
   font-size: 26px;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: white;
-  padding: 10px;
+  border: 3px solid rgb(17, 24, 56);
+  border-radius: 30px 0px 0px 0px;
+  background-color: rgb(234, 234, 234);
 }
 
 #body {

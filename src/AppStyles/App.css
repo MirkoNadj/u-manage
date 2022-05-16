@@ -22,7 +22,7 @@
 .theme-light .postcard-theme {
   background-color: lightgrey;
 }
-.theme-light .postcard-theme h1, .theme-light .postcard-theme h2, .theme-light .postcard-theme h3 {
+.theme-light .postcard-theme h1, .theme-light .postcard-theme h2, .theme-light .postcard-theme h3, .theme-light .postcard-theme label, .theme-light .postcard-theme textarea {
   color: rgb(17, 24, 56);
 }
 
@@ -50,8 +50,9 @@
 .theme-dark .postcard-theme {
   background-color: rgb(0, 0, 132);
 }
-.theme-dark .postcard-theme h1, .theme-dark .postcard-theme h2, .theme-dark .postcard-theme h3 {
+.theme-dark .postcard-theme h1, .theme-dark .postcard-theme h2, .theme-dark .postcard-theme h3, .theme-dark .postcard-theme input, .theme-dark .postcard-theme textarea, .theme-dark .postcard-theme .comment-name, .theme-dark .postcard-theme .comment-area {
   color: lightgrey;
+  background-color: rgb(0, 0, 132);
 }
 
 .grid-container {
