@@ -95,10 +95,10 @@ export const WeatherModal: FC = () => {
                 animate='endMotion'
             >
                 <motion.p variants={itemVariant}>Weather today:</motion.p>
-                <motion.h5 variants={itemVariant}>Max temperature: {weather.tempMax}</motion.h5>
-                <motion.h5 variants={itemVariant}>Min temperature: {weather.tempMin}</motion.h5>
-                <motion.h5 variants={itemVariant}>Pressure: {weather.pressure}</motion.h5>
-                <motion.h5 variants={itemVariant}>Humidity: {weather.humidity}</motion.h5>
+                <motion.h4 variants={itemVariant}>Max temperature: {weather.tempMax} C</motion.h4>
+                <motion.h4 variants={itemVariant}>Min temperature: {weather.tempMin} C</motion.h4>
+                <motion.h4 variants={itemVariant}>Pressure: {weather.pressure} mmHg</motion.h4>
+                <motion.h4 variants={itemVariant}>Humidity: {weather.humidity} %</motion.h4>
             </motion.div>
         );
     }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom'
-import './CompanyUsersStyles/CompanyUsers.css';
+import { useParams, Link } from 'react-router-dom';
+import '../../UsersPage/Users/UsersStyles/Users.css';
 import { TableUsers } from '../../UsersPage/TableUsers/TableUsers';
 import { User } from '../../../Interfaces/ObjectInterfaces';
 import { AppDispatch, RootState } from '../../../app/store';
@@ -15,21 +15,19 @@ export const CompanyUsers = (props: PropsFromRedux) => {
     const usersList = props.users.usersList.filter(userItem => userItem.companyId === currentCompanyId);
 
     return (
-        <div className='co-users-page'><h2>Company Users:</h2>
-            <button className='addUserBtn' title=' Add'><PlusOutlined />
+        <div className='users-co-page'>
+            <div className='toolbar'>
+                <h2>Company Users:</h2>
                 <Link
                     to='/users/create/'
                     state={{
                         currentCompanyId: currentCompanyId,
                         isUserFormModal: true
                     }}>
+                    <button className='addUserCoBtn' title='Add New User'><PlusOutlined /></button>
                 </Link>
-            </button>
-            <div className='user-table-container'>
-
-
-                <TableUsers usersList={usersList} deleteUser={props.deleteUser} updateCompanyUsers={props.updateCompanyUsers} />
             </div>
+            <TableUsers usersList={usersList} deleteUser={props.deleteUser} updateCompanyUsers={props.updateCompanyUsers} />
         </div>
     )
 }

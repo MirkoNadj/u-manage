@@ -4,30 +4,68 @@
 .theme-light {
     background: color-light.$background;
     background: color-light.$background-gradient;
+    
 
-    h1, h2, h3, h4, h5, h6, p, th, td {color: black}
+    h1, h2, h3, h4, h5, h6, p, th, td, label, li {color: color-dark.$primary}
 
     .theme {        
         background: color-light.$background;
         background: color-light.$background-gradient;
     }
+
+    .backdrop {
+        background-color: rgba(38, 48, 116, 0.801);
+    }
+
+    .form-body-theme {
+        background-color: rgb(188, 188, 208);
+    }
+
+    .weather-btn-theme {
+        color: color-dark.$btn-blue;
+        background-color: rgb(188, 188, 208);
+    }
+
+    .postcard-theme {
+        h1, h2, h3 {color: color-dark.$primary}
+        background-color: color-light.$primary;      
+    }
+    
 }
 
 .theme-dark {
     background: color-dark.$background;
     background: color-dark.$background-gradient;
-    h1, h2, h3, h4, h5, h6, p, th, td {color: white};
+    h1, h2, h3, h4, h5, h6, p, th, td, label, li {color: color-light.$primary};
 
     .theme {
         background: color-dark.$background;
         background: color-dark.$background-gradient;
+    }
+
+    .backdrop {
+        background-color: rgba(0, 4, 86, 0.801);
+    }
+
+    .form-body-theme {
+        background-color: rgb(32, 24, 120);
+    }
+
+    .weather-btn-theme {
+        color: color-light.$primary;
+        background-color: color-dark.$primary;;
+    }
+
+    .postcard-theme {
+        h1, h2, h3 {color: color-light.$primary}
+        background-color: color-dark.$btn-blue-shadow;        
     }
 }
 
 .grid-container {
     display:grid;
     grid-template-columns: repeat(12, 1fr);  
-    grid-auto-rows: minmax(50px, auto);
+    grid-auto-rows: fit-content;
 }
 
 

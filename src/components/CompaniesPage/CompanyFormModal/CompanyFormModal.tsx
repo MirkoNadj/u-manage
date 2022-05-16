@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import './CompanyFormModalStyles/CompanyFormModal.css';
+import '../../UsersPage/UserFormModal/UserCoFormModalStyles/UserCoFormModal.css';
 import { Company, CompanyValidationErrors } from '../../../Interfaces/ObjectInterfaces';
 import { companyFormValidation } from '../../../services/formValidation';
 import { guIdGenerator } from '../../../services/guidGenerator';
@@ -79,12 +79,12 @@ export const CompanyFormModal = (props: PropsFromRedux) => {
 
     return (
         <>
-            <motion.div className='company-form-backdrop'
+            <motion.div className='user-co-form-backdrop backdrop'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
             >
-                <motion.form className='company-form-container'
+                <motion.form className='user-co-form-container theme'
                     variants={modalDropIn}
                     initial='hidden'
                     animate='visible'
@@ -92,10 +92,10 @@ export const CompanyFormModal = (props: PropsFromRedux) => {
                 >
 
                     <div className='form-title'>
-                        <button type='button' onClick={cancelCompany}><CloseOutlined /></button>
+                        <h1 onClick={cancelCompany}><CloseOutlined /></h1>
                         <label>{(!companyInfo.id) ? 'Create New Company' : 'Edit Company Info'}</label>
                     </div>
-                    <div className='form-body'>
+                    <div className='form-body form-body-theme'>
                         <InputField
                             label="Company Name:"
                             type="text"

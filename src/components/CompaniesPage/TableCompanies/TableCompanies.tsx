@@ -21,7 +21,6 @@ export const TableCompanies = ({ companiesList, deleteCompany, removeCompanyName
     return (
         <table className='table-users-co theme'>
             <thead>
-                <tr className='table-header'></tr>
                 <tr>
                     <th>Name:</th>
                     <th>City:</th>

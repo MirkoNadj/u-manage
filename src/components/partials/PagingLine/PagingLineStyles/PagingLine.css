@@ -27,7 +27,7 @@
 }
 
 .page-btns-container {
-  width: 320px;
+  width: 303px;
 }
 
 .paging-line button:enabled {
@@ -36,5 +36,5 @@
 }
 
 .paging-line button:disabled {
-  background-color: white;
+  background-color: rgb(206, 206, 206);
 }/*# sourceMappingURL=PagingLine.css.map */

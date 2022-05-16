@@ -1,37 +1,37 @@
-.postCard {
+.postcard {
   min-width: 300px;
   width: 30%;
   max-width: 500px;
   height: 300px;
-  color: black;
-  background-color: white;
   padding: 10px;
   border-radius: 10px;
+  border: 2px solid white;
 }
-.postCard div {
-  width: 35px;
-  height: 25px;
+.postcard div {
+  float: right;
+  width: 45px;
+  height: 35px;
   font-size: 24px;
+  font-weight: bold;
   border-radius: 5px;
-  margin-left: auto;
   text-align: center;
   padding-bottom: 5px;
 }
-.postCard div:hover {
-  background-color: rgb(131, 146, 168);
+.postcard div:hover {
+  background-color: rgb(72, 89, 113);
 }
-.postCard img {
-  margin: 0px 30px;
+.postcard img {
+  margin: 10px 35px;
   border-radius: 100%;
 }
-.postCard h1 {
-  font-size: 26px;
+.postcard h2 {
+  font-size: 20px;
   color: black;
   margin: 5px;
   padding: 5px;
   text-align: center;
 }
-.postCard h3 {
+.postcard h4 {
   color: grey;
   margin: 5px;
   text-align: justify;

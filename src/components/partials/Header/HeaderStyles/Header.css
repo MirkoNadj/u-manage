@@ -46,36 +46,32 @@
 }
 .header a.active {
   height: 34px;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(136, 136, 136) 100%);
   border-radius: 8px;
+  background-color: rgba(245, 245, 245, 0.11);
+}
+
+.theme-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border-width: 1px;
+  border-color: rgb(0, 0, 175);
+  cursor: pointer;
+  font-size: 18px;
+  margin: 0px 10px 0px;
+  padding: 1px 0px 0px 0.5px;
 }
 
 .weather-btn {
-  width: 45px;
-  height: 45px;
-  box-shadow: inset 0px 1px 0px 0px #97c4fe;
-  background: linear-gradient(to bottom, #3d94f6 5%, rgb(0, 22, 82) 100%);
-  background-color: #3d94f6;
-  border-radius: 50px;
-  border: 1px solid #337fed;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border-width: 1px;
+  border-color: rgb(0, 0, 175);
   cursor: pointer;
-  color: #ffffff;
-  font-size: 32px;
+  font-size: 18px;
   text-decoration: none;
-  text-shadow: 10px 11px 10px #1570cd;
-  margin: 0px 15px 0px;
-  padding: 3px 0px 0px 0.5px;
-}
-
-.weather-btn:hover {
-  background: linear-gradient(to bottom, #1e62d0 5%, rgb(0, 22, 82) 100%);
-  background-color: #1957bb;
-  font-size: 26px;
-}
-
-.weather-btn:active {
-  position: relative;
-  font-size: 30px;
-  border-radius: 65px;
+  text-shadow: 10px 11px 10px rgb(0, 0, 132);
+  margin: 0px 10px 0px;
+  padding: 1px 0px 0px 0.5px;
 }/*# sourceMappingURL=Header.css.map */

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './PostsList.css';
+import './PostsListStyles/PostsList.css';
 import { Post } from '../../Interfaces/ObjectInterfaces';
 import { PostCard } from './PostCard/PostCard';
 import { Loading } from '../partials/Loading/Loading';
@@ -17,15 +17,18 @@ export const PostsList = (props: PropsFromRedux) => {
     }, [fetchPosts, posts.status]);
 
     return (
-        <div className='list-container'>
-            {posts.status === 'loading' && <Loading />}
-            {posts.status === 'failed' && <h1 className='error'>{posts.error}</h1>}
-            {posts.postsList.map((postsListItem: Post, key: number) => {
-                return <PostCard title={postsListItem.title} body={postsListItem.body} id={postsListItem.id} key={postsListItem.id} />;
-            })}
-            <div className='dot'></div>
-            <div className='dot'></div>
-            <div className='dot'></div>
+        <div className='post-list-page theme'>
+            <div className='newsletters'>
+                <h1>Read the latest Newsletters here...</h1><br></br>
+                <h3>Click on more to see the details</h3><br></br>
+            </div>
+            <div className='list-container'>
+                {posts.status === 'loading' && <Loading />}
+                {posts.status === 'failed' && <h1 className='error'>{posts.error}</h1>}
+                {posts.postsList.map((postsListItem: Post, key: number) => {
+                    return <PostCard title={postsListItem.title} body={postsListItem.body} id={postsListItem.id} key={postsListItem.id} />;
+                })}
+            </div>
         </div>
     );
 };

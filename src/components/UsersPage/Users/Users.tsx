@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom'
-import './UsersStyles/UsersStyles.css';
+import './UsersStyles/Users.css';
 import { TableUsers } from '../TableUsers/TableUsers';
 import { User, LocationProps } from '../../../Interfaces/ObjectInterfaces';
 import { AppDispatch, RootState } from '../../../app/store';
@@ -22,17 +22,20 @@ export const Users = (props: PropsFromRedux) => {
     }, [location.state]);
 
     return (
-        <div className='users-page'>
-            <Link
-                to='/users/create/'
-                state={{
-                    currentCompanyId: '',
-                    isUserFormModal: true
-                }}><button className='addUserBtn' title=' Add'><PlusOutlined /></button></Link>
-            <div className='table-container'>
+        <div className='users-co-page'>
+            <div className='toolbar'>
                 <h2>Users</h2>
-                <TableUsers usersList={props.users.usersList} deleteUser={props.deleteUser} updateCompanyUsers={props.updateCompanyUsers} />
+                <Link
+                    to='/users/create/'
+                    state={{
+                        currentCompanyId: '',
+                        isUserFormModal: true
+                    }}>
+                    <button className='addUserCoBtn' title='Add New User'><PlusOutlined /></button>
+                </Link>
             </div>
+            <TableUsers usersList={props.users.usersList} deleteUser={props.deleteUser} updateCompanyUsers={props.updateCompanyUsers} />
+
             {isModal && <UserFormModal setIsModall={setIsModall} />}
         </div>
     );

@@ -31,16 +31,17 @@
     }
     
     .td-edit {
-        width: 70px;
+        width: 60px;
+        padding: 0px;
     }
 
     .td-del {
-        width: 85px;
+        width: 75px;
+        padding: 0px;
     }
 }
 
-.del-btn, .edit-btn {
-    
+.del-btn, .edit-btn {    
     padding: 3px 5px;
     color: color-dark.$primary;
     border-radius: 5px;

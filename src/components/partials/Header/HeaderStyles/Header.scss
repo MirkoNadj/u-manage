@@ -1,3 +1,5 @@
+@use '../../../../styles/color-dark';
+
 .header {
     grid-column: span 12;    
     display: flex;
@@ -5,8 +7,7 @@
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    // background: rgb(255,255,255);
-    // background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(136,136,136,1) 100%);
+    //box-shadow: 2px 2px 8px 0.5px color-dark.$btn-blue-shadow;
 
 .header-title {
     width: 160px;
@@ -29,8 +30,7 @@
     h1 {
         display: inline;
         font-size: 20px;
-        margin: 0px;
-        // color: whitesmoke; 
+        margin: 0px; 
     }
 }
 
@@ -46,7 +46,6 @@ nav ul {
         padding: 0px 15px;
         font-size: 24px;
         font-weight: bold;
-        //color: rgb(0, 22, 82);
     }
     
     a:hover {        
@@ -56,37 +55,33 @@ nav ul {
     
     a.active {
         height:34px;
-        background: rgb(255,255,255);
-        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(136,136,136,1) 100%);
         border-radius: 8px;
+        background-color: rgba(245, 245, 245, 0.11);
     }
 }
 
-.weather-btn {
-    width: 45px;
-    height: 45px;
-	box-shadow:inset 0px 1px 0px 0px #97c4fe;
-	background:linear-gradient(to bottom, #3d94f6 5%, rgb(0, 22, 82) 100%);
-	background-color:#3d94f6;
-	border-radius: 50px;
-	border:1px solid #337fed;
+.theme-btn {
+    width: 40px;
+    height: 40px;
+	border-radius: 100%;
+    border-width: 1px;
+    border-color: color-dark.$btn-blue;
 	cursor:pointer;
-	color:#ffffff;
-    font-size: 32px;
+    font-size: 18px;
+    margin: 0px 10px 0px;
+    padding: 1px 0px 0px 0.5px
+}
+
+.weather-btn {
+    width: 40px;
+    height: 40px;
+	border-radius: 100%;
+	border-width: 1px;
+    border-color: color-dark.$btn-blue;
+	cursor:pointer;
+    font-size: 18px;
 	text-decoration:none;
-	text-shadow:10px 11px 10px #1570cd;
-    margin: 0px 15px 0px;
-    padding: 3px 0px 0px 0.5px
-}
-
-.weather-btn:hover {
-	background:linear-gradient(to bottom, #1e62d0 5%, rgb(0, 22, 82) 100%);
-	background-color:#1957bb;
-    font-size: 26px;
-}
-
-.weather-btn:active {
-	position:relative;
-    font-size: 30px;
-    border-radius: 65px;
+	text-shadow:10px 11px 10px color-dark.$btn-blue-shadow;
+    margin: 0px 10px 0px;
+    padding: 1px 0px 0px 0.5px
 }

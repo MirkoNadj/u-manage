@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import './UserFormModalStyles/UserFormmodal.css';
+import './UserCoFormModalStyles/UserCoFormModal.css';
 import { User, ValidationErrors, LocationProps, SetIsModal } from '../../../Interfaces/ObjectInterfaces';
 import { formValidation } from '../../../services/formValidation';
 import { guIdGenerator } from '../../../services/guidGenerator';
@@ -100,22 +100,22 @@ export const UserFormModal = (props: PropsFromRedux) => {
     }
 
     return (
-        <motion.div className='user-form-backdrop'
+        <motion.div className='user-co-form-backdrop backdrop'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <motion.form className='user-form-container'
+            <motion.form className='user-co-form-container theme'
                 variants={modalDropIn}
                 initial='hidden'
                 animate='visible'
                 exit='exit'
             >
                 <div className='form-title'>
-                    <button type='button' onClick={cancelUser}><CloseOutlined /></button>
+                    <h1 onClick={cancelUser}><CloseOutlined /></h1>
                     <label>{(!userInfo.id) ? 'Create New User' : 'Edit User Info'}</label>
                 </div>
-                <div className='form-body'>
+                <div className='form-body form-body-theme'>
                     <InputField
                         label="First name"
                         type="text"

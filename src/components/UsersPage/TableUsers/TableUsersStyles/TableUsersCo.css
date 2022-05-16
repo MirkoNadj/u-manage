@@ -25,10 +25,12 @@
   border-width: 2px 2px;
 }
 .table-users-co .td-edit {
-  width: 70px;
+  width: 60px;
+  padding: 0px;
 }
 .table-users-co .td-del {
-  width: 85px;
+  width: 75px;
+  padding: 0px;
 }
 
 .del-btn, .edit-btn {

@@ -1,51 +1,50 @@
-.user-form-backdrop {
-  position: fixed;
+.user-co-form-backdrop {
+  position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 55, 117, 0.9529411765);
+  min-height: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+.user-co-form-backdrop .users-co-page {
+  width: 100%;
+  margin: 20px;
+}
 
-.user-form-container {
-  position: relative;
-  border-radius: 10px;
+.user-co-form-container {
+  height: auto;
   min-width: 350px;
   max-width: 30%;
-  height: auto;
+  margin: 20px;
+  border-radius: 10px;
 }
 
 .form-title {
   height: 90px;
-  color: rgb(0, 14, 53);
-  background-color: rgb(219, 219, 219);
   border-radius: 10px 10px 0px 0px;
   text-align: center;
   font-size: 22px;
   font-weight: bold;
 }
-.form-title button {
-  display: block;
-  padding: 10px 10px 0px 0px;
-  margin-top: 0px;
+.form-title h1 {
+  width: 30px;
+  height: 30px;
   margin-left: auto;
-  font-size: 18px;
-  border: none;
-  border-radius: 100%;
-  color: grey;
-  background-color: rgb(219, 219, 219);
+  font-size: 24px;
 }
 .form-title button:hover {
   cursor: pointer;
 }
 
 .form-footer {
-  height: 40px;
+  height: 90px;
   padding: 20px 30px;
-  background-color: rgb(201, 201, 201);
   border-radius: 0px 0px 10px 10px;
 }
 
@@ -56,10 +55,10 @@
   float: right;
   font-size: 16px;
   color: white;
-  background-color: blue;
-  border: solid 1px blue;
+  background-color: rgb(0, 0, 175);
+  border: solid 1px rgb(0, 0, 175);
   border-radius: 5px;
-  box-shadow: 2px 2px 5px 1px rgb(0, 28, 151);
+  box-shadow: 2px 2px 5px 1px rgb(0, 0, 132);
 }
 
 .cancel-btn {
@@ -68,19 +67,18 @@
   padding: 5px 20px;
   margin-right: auto;
   font-size: 16px;
-  color: blue;
+  color: rgb(0, 0, 175);
   background-color: white;
-  border: solid 1px blue;
+  border: solid 1px rgb(0, 0, 175);
   border-radius: 5px;
 }
 
 .save-btn:active, .cancel-btn:active {
   transform: scale(0.98);
-  box-shadow: 0px 0px 3px 1px rgb(0, 28, 151);
+  box-shadow: 0px 0px 3px 1px rgb(0, 0, 132);
 }
 
 .form-body {
-  background-color: white;
   padding: 10px 30px;
 }
 .form-body div {
@@ -89,36 +87,33 @@
   background-color: none;
 }
 .form-body div label {
-  color: black;
   margin-left: 10px;
 }
 .form-body .placeholder {
   color: rgb(133, 133, 133);
 }
 .form-body input, .form-body select {
-  box-sizing: border-box;
   width: 100%;
   height: 40px;
   margin-bottom: 15px;
+  padding: 0px 10px;
   border: solid 1px lightgrey;
   border-radius: 5px;
   outline: none;
-  padding: 0px 10px;
-  color: rgb(0, 14, 53);
+  color: rgb(17, 24, 56);
   font-size: 16px;
 }
 .form-body input:focus, .form-body select:focus {
   border-style: solid;
   border-width: 1px;
-  border-color: blue;
+  border-color: rgb(0, 0, 175);
 }
-
-.errors {
+.form-body .errors {
   position: absolute;
   right: 0px;
   top: 96px;
-  color: rgb(255, 4, 4);
+  color: rgb(177, 0, 0);
   font-style: bold;
   font-size: 14px;
   margin-top: -34px;
-}/*# sourceMappingURL=UserFormModal.css.map */
+}/*# sourceMappingURL=UserCoFormModal.css.map */

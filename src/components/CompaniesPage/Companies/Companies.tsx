@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom'
-import './CompaniesStyles/CompaniesStyles.css';
+import '../../UsersPage/Users/UsersStyles/Users.css'
 import { TableCompanies } from '../TableCompanies/TableCompanies';
 import CompanyFormModal from '../CompanyFormModal/CompanyFormModal'
 import { deleteCompany } from '../../../features/companiesSlice';
@@ -12,7 +12,6 @@ import { removeCompanyNameForUsers } from '../../../features/usersSlice';
 
 export const Companies = (props: PropsFromRedux) => {
 
-
     const [isModal, setIsModall] = useState(false);
 
     const location = useLocation() as LocationProps;
@@ -23,23 +22,20 @@ export const Companies = (props: PropsFromRedux) => {
         }
     }, [location.state]);
 
-    // useEffect(() => {
-    //     if (isModal) document.body.style.overflow = 'hidden';
-    //     else document.body.style.overflow = 'visible';
-    // }, [isModal]);
-
     return (
-        <div className='companies-page'>
-            <Link
-                to='/companies/create/'
-                state={{
-                    currentCompanyId: '',
-                    isUserFormModal: true
-                }}><button className='addCompanyBtn' title=' Add'><PlusOutlined /></button></Link>
-            <div className='c-table-container'>
+        <div className='users-co-page'>
+            <div className='toolbar'>
                 <h2>Companies</h2>
-                <TableCompanies companiesList={props.companies.companiesList} deleteCompany={props.deleteCompany} removeCompanyNameForUsers={props.removeCompanyNameForUsers} />
+                <Link
+                    to='/companies/create/'
+                    state={{
+                        currentCompanyId: '',
+                        isUserFormModal: true
+                    }}>
+                    <button className='addUserCoBtn' title='Add New Company'><PlusOutlined /></button>
+                </Link>
             </div>
+            <TableCompanies companiesList={props.companies.companiesList} deleteCompany={props.deleteCompany} removeCompanyNameForUsers={props.removeCompanyNameForUsers} />
             {isModal && <CompanyFormModal setIsModall={setIsModall} />}
         </div>
     )

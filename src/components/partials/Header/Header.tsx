@@ -5,9 +5,7 @@ import './HeaderStyles/Header.css';
 import { GlobalOutlined, LoadingOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon, faCloudSun } from '@fortawesome/free-solid-svg-icons';
-
-
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 export const Header = ({ theme, setTheme }: any) => {
     let [isWeather, setIsWeather] = useState(false);
@@ -47,7 +45,7 @@ export const Header = ({ theme, setTheme }: any) => {
     return (
         <>
             <motion.div
-                className='header tema'
+                className='header theme'
                 variants={headerVariant}
                 initial='startMotion'
                 animate='endMotion'
@@ -70,8 +68,8 @@ export const Header = ({ theme, setTheme }: any) => {
                 <motion.div
                     variants={itemVariant}
                 >
-                    <button onClick={() => { setTheme(!theme) }}>{theme ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faCloudSun} />}</button>
-                    <button className='weather-btn'
+                    <button className='theme-btn weather-btn-theme' onClick={() => { setTheme(!theme) }}>{theme ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}</button>
+                    <button className='weather-btn weather-btn-theme'
                         onClick={() => window.open('https://www.metaweather.com')}
                         onMouseOver={() => { setIsWeather(true) }}
                         onMouseOut={() => { setIsWeather(false) }}
