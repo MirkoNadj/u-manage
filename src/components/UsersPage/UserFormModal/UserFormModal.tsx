@@ -13,12 +13,24 @@ import { addUser, editUser } from '../../../features/usersSlice';
 import { updateCompanyUsers } from '../../../features/companiesSlice';
 import { motion } from 'framer-motion';
 import { CloseOutlined } from '@ant-design/icons';
+import { Form, Button, Input, Select, DatePicker } from 'antd';
+import moment from 'moment'
 
 export const UserFormModal = (props: PropsFromRedux) => {
-    const [userInfo, setUserInfo] = useState<User>(newUserInfo);
+    //let [userInfo, setUserInfo] = useState<User>(newUserInfo);
     const companiesList = props.companies.companiesList;
+    const [date, setDate] = useState<any>();
+
+    let nekidob;
+
+    function onChange(date: any, dateString: any) {
+        nekidob = moment(date).toDate()
+        console.log('dooob2 ,', nekidob)
+    }
 
     const location = useLocation() as LocationProps;
+    const [form] = Form.useForm();
+
 
     let currentCompany = '';
     if (location.state) {
@@ -27,49 +39,80 @@ export const UserFormModal = (props: PropsFromRedux) => {
 
     let { currentUserId } = useParams();
     let navigate = useNavigate();
-
-    useEffect(() => {
-        if (currentUserId) {
-            setUserInfo(findUserById(currentUserId, props.users.usersList)!);
-        };
-    }, [currentUserId, props.users.usersList])
-
-    const [formErrors, setFormErrors] = useState<ValidationErrors>({ isValid: false });
-
-    const handleChangeSelect = (event: ChangeEvent<HTMLSelectElement>): void => {
-        setUserInfo({
-            ...userInfo,
-            [event.target.id]: event.target.value,
-        });
+    let userInfo = { ...newUserInfo };
+    if (currentUserId) {
+        userInfo = { ...(findUserById(currentUserId, props.users.usersList)!) };
     };
+    console.log('userInfo start ', userInfo)
 
-    const handleChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
-        setUserInfo({
-            ...userInfo,
-            [event.target.id]: event.target.value,
-        });
-    };
+
+    // useEffect(() => {
+    //     if (currentUserId) {
+    //         setUserInfo(findUserById(currentUserId, props.users.usersList)!);
+    //     };
+    // }, [currentUserId, props.users.usersList])
+
+    // const [formErrors, setFormErrors] = useState<ValidationErrors>({ isValid: false });
+
+    // const handleChangeSelect = (event: ChangeEvent<HTMLSelectElement>): void => {
+    //     setUserInfo({
+    //         ...userInfo,
+    //         [event.target.id]: event.target.value,
+    //     });
+    // };
+
+    // const handleChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
+    //     setUserInfo({
+    //         ...userInfo,
+    //         [event.target.id]: event.target.value,
+    //     });
+    // };
 
     const saveUser = () => {
+        console.log('userInfo stari ', userInfo);
+        const formValues = form.getFieldsValue();
+        console.log('form values', formValues);
+
+        // setUserInfo({
+        //     ...userInfo,
+        //     [userInfo.firstName]: formValues.firstName,
+        //     [userInfo.lastName]: formValues.lastName,
+        // })
+
+
+        userInfo = { ...userInfo, ...formValues }
+        // userInfo.firstName = formValues.firstName;
+        // userInfo.lastName = formValues.lastName;
+        // userInfo.companyId = formValues.companyId;
+        userInfo.dOB = moment(formValues.dOB).toDate().toDateString();
+        // userInfo.position = formValues.position;
+        // userInfo.phoneNumber = formValues.phoneNumber;
+
+        console.log('userInfo posle set ', userInfo);
+
         if (currentCompany) {
             userInfo.companyId = currentCompany;
         }
-        setFormErrors(formValidation(userInfo));
+        //setFormErrors(formValidation(userInfo));
         userInfo.companyName = findCompanyById(userInfo.companyId, props.companies.companiesList)!.name;
 
-        if (currentUserId && formValidation(userInfo).isValid) {
+
+        if (currentUserId) {
             props.editUser(userInfo);     // for editing old user
+            //props.editUser(form.getFieldsValue());
 
         }
-        if (!currentUserId && formValidation(userInfo).isValid) {
+        if (!currentUserId) {
             userInfo.id = guIdGenerator();    // saving new user
             props.addUser(userInfo);
 
         };
-        if (formValidation(userInfo).isValid) {
+        if (true) {
             props.updateCompanyUsers(userInfo);
             props.setIsModall(false);
             navigate('/users/')
+            console.log('novi info', userInfo)
+            //setUserInfo(newUserInfo);
         };
     };
 
@@ -99,13 +142,15 @@ export const UserFormModal = (props: PropsFromRedux) => {
         }
     }
 
-    return (
+
+
+    return (<>
         <motion.div className='user-co-form-backdrop backdrop'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <motion.form className='user-co-form-container theme'
+            {/* <motion.form className='user-co-form-container theme'
                 variants={modalDropIn}
                 initial='hidden'
                 animate='visible'
@@ -190,8 +235,92 @@ export const UserFormModal = (props: PropsFromRedux) => {
                     <button className='cancel-btn' type='button' onClick={cancelUser}>Cancel</button>
                     <button className='save-btn' type='button' onClick={saveUser}>Save</button>
                 </div>
-            </motion.form>
+            </motion.form> */}
+            <div>
+                <Form
+                    form={form}
+                    onFinish={() => { saveUser() }}
+                    fields={[
+                        {
+                            name: ['firstName'],
+                            value: userInfo.firstName
+                        },
+                        {
+                            name: ['lastName'],
+                            value: userInfo.lastName
+                        },
+                        {
+                            name: ['companyId'],
+                            value: userInfo.companyId
+                        },
+                        {
+                            name: ['dOB'],
+                            value: moment(userInfo.dOB)
+                        },
+                        {
+                            name: ['position'],
+                            value: userInfo.position
+                        },
+                        {
+                            name: ['phoneNumber'],
+                            value: userInfo.phoneNumber
+                        },
+                    ]}
+                >
+                    <Form.Item
+                        name='firstName'
+                        label='First Name'
+                        rules={[
+                            {
+                                required: true,
+                                message: "Must enter name"
+                            },
+                            { whitespace: true }
+                        ]}
+
+                    >
+                        <Input placeholder='Enter your first name...' />
+                    </Form.Item>
+                    <Form.Item name='lastName' label='Last Name'>
+                        <Input placeholder='Enter your last name...' />
+                    </Form.Item>
+                    <Form.Item name='companyId' label='Company'>
+                        <Select placeholder='Enter your company name...' >
+                            {companiesList.map((companyItem) => {
+                                return <Select.Option value={companyItem.id}>{companyItem.name}</Select.Option>
+                            })}
+                        </Select>
+                    </Form.Item>
+                    <Form.Item name='dOB' label='Date Of Birth'>
+                        <DatePicker placeholder='Enter your birthday...' value={date} format={'DD/MM/YYYY'} />
+                    </Form.Item>
+                    <Form.Item name='position' label='Position'>
+                        <Select>
+                            <Select.Option value='Manager'>Manager</Select.Option>
+                            <Select.Option value='Developer'>Developer</Select.Option>
+                        </Select>
+                    </Form.Item>
+                    <Form.Item name='phoneNumber' label='Phone Number'>
+                        <Input type='number' placeholder='Enter your phone number...' />
+                    </Form.Item>
+                    <div className='form-footer'>
+                        <Form.Item name='cancel'>
+                            <Button type='primary' onClick={() => { cancelUser() }}>
+                                Cancel
+                            </Button>
+                        </Form.Item>
+                        <Form.Item name='save'>
+                            <Button type='primary' htmlType='submit'>
+                                Save
+                            </Button>
+                        </Form.Item>
+                    </div>
+                </Form>
+            </div>
+
         </motion.div>
+
+    </>
     );
 };
 

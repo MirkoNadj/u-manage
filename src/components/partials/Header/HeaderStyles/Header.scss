@@ -1,3 +1,4 @@
+@use '../../../../styles/color-light';
 @use '../../../../styles/color-dark';
 
 .header {
@@ -6,84 +7,78 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: fit-content;
-    //box-shadow: 2px 2px 8px 0.5px color-dark.$btn-blue-shadow;
+    height: 42px;
+    box-shadow: 0px 2px 5px 2px color-light.$primary-shadow;
+    z-index:0;
 
 .header-title {
-    width: 160px;
-    height: 50px;
+    width: 145px;
+    height: 40px;
     margin-left: 15px;
-    border-right: 2px solid color-dark.$primary;
+    padding-top: 3px;
+    border-right: 2px solid color-light.$primary-shadow;
     
     img {
-        height: 24px;
-        margin-top: 10px;
+        height: 22px;
     }
 
     a {    
         text-decoration: none;
         display: inline;
-        padding: 0px 5px;        
-        vertical-align: 3px;
+        padding: 0px 5px;
     }
     
     h1 {
         display: inline;
         font-size: 20px;
-        margin: 0px; 
+        vertical-align: -5px;        
     }
 }
 
 nav ul {
     display: block;
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-       
+    margin: 0px;
+    padding: 0px;
+    
     a {    
         text-decoration: none;
         display: inline-block;
-        padding: 0px 15px;
-        font-size: 24px;
-        font-weight: bold;
+        padding: 10px 25px;
+        font-size: 16px;
+        font-weight: 400;
+        vertical-align: 0px;
     }
     
     a:hover {        
         cursor: pointer;
-        text-shadow: rgba(136,136,136,1) 0px 0px 1px, rgb(136, 136, 136) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, rgba(136,136,136,1) 0px 0px 1px, 1px 1px 1px rgb(0, 41, 155);
+        text-shadow: 0px 0px 1px rgb(86, 86, 86);
     }}
     
     a.active {
-        height:34px;
-        border-radius: 8px;
-        background-color: rgba(245, 245, 245, 0.11);
+        height:42px;
+        border-bottom: groove 2px color-light.$btn-primary; 
     }
 }
 
-.theme-btn {
-    width: 40px;
-    height: 40px;
+.theme-btn, .weather-btn {
+    width: 35px;
+    height: 35px;
+    background-color: color-light.$btn-secondary;
+    //box-shadow: 0px 0px 3px 1px color-light.$btn-secondary-shadow;
 	border-radius: 100%;
-    border-width: 1px;
-    border-color: color-dark.$btn-blue;
+    border: 0px solid color-light.$btn-secondary;
 	cursor:pointer;
     font-size: 18px;
-    margin: 0px 10px 0px;
-    padding: 1px 0px 0px 0.5px
+    margin: 0px 10px 0px 0px;
+    padding: 1px 0px 1px 0.5px;
 }
 
-.weather-btn {
-    width: 40px;
-    height: 40px;
-	border-radius: 100%;
-	border-width: 1px;
-    border-color: color-dark.$btn-blue;
-	cursor:pointer;
-    font-size: 18px;
-	text-decoration:none;
-	text-shadow:10px 11px 10px color-dark.$btn-blue-shadow;
-    margin: 0px 10px 0px;
-    padding: 1px 0px 0px 0.5px
+.theme-btn:active, .weather-btn:active {
+    width: 34px;
+    height: 34px;
+    margin: 0px 10.5px 0px 0.5px;
+    font-size: 17px;
 }
 
 @media screen and (max-width: 480px) {

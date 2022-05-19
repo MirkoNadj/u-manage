@@ -1,27 +1,23 @@
+@use '../../../../styles/color-light';
 @use '../../../../styles/color-dark';
 
 .paging-line {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 0px;
-    border-radius: 5px;
     font-size: 14px;
 
     p {
-        display: inline;        
+        display: inline;
+        color: color-light.$secondary;   
     }
 
-    button {
-        height: 24px;
-        margin: 0 5px;
-        padding: 1px 5px;        
-    }
-    select {
-        height: 24px;
-        margin: 0 10px;
-        border-radius: 5px;
-        outline:none;
+    .ant-select {
+        vertical-align: bottom;
+        margin: 0px 10px;
+        color: color-dark.$secondary;
+        border-radius: 3px;       
+        box-shadow: 0px 0px 1px 0.05px color-light.$secondary;        
     }
 }
 .page-info {
@@ -30,14 +26,5 @@
 }
 
 .page-btns-container {  
-    width: 303px;
-}
-
-.paging-line button:enabled {
-    color: color-dark.$primary;
-    font-weight: bold;
-}
-
-.paging-line button:disabled {
-    background-color: rgb(206, 206, 206);
+    width: 330px;
 }

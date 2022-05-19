@@ -54,7 +54,7 @@ export const Header = ({ theme, setTheme }: any) => {
                     className='header-title'
                     variants={itemVariant}
                 >
-                    <img src="./mngLogo.png" alt='LOGO'></img>
+                    <img src="./mngLogo-small.png" alt='LOGO'></img>
                     <Link to='/'><h1>U-manage</h1></Link>
 
                 </motion.div>

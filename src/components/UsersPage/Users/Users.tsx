@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom'
 import './UsersStyles/Users.css';
-import { TableUsers } from '../TableUsers/TableUsers';
+import { TableUsersAnt } from '../TableUsersAnt/TableUsersAnt';
 import { User, LocationProps } from '../../../Interfaces/ObjectInterfaces';
 import { AppDispatch, RootState } from '../../../app/store';
 import { deleteUser } from '../../../features/usersSlice';
@@ -9,6 +9,8 @@ import { connect, ConnectedProps } from 'react-redux';
 import { updateCompanyUsers } from '../../../features/companiesSlice';
 import UserFormModal from '../UserFormModal/UserFormModal';
 import { PlusOutlined } from '@ant-design/icons';
+
+import { Button } from 'antd';
 
 export const Users = (props: PropsFromRedux) => {
     const [isModal, setIsModall] = useState(false);
@@ -24,18 +26,17 @@ export const Users = (props: PropsFromRedux) => {
     return (
         <div className='users-co-page'>
             <div className='toolbar'>
-                <h2>Users</h2>
+
                 <Link
                     to='/users/create/'
                     state={{
                         currentCompanyId: '',
                         isUserFormModal: true
-                    }}>
-                    <button className='addUserCoBtn' title='Add New User'><PlusOutlined /></button>
+                    }}><Button type="primary" size='large' title='Add New User'><PlusOutlined /></Button>
                 </Link>
-            </div>
-            <TableUsers usersList={props.users.usersList} deleteUser={props.deleteUser} updateCompanyUsers={props.updateCompanyUsers} />
 
+            </div>
+            <TableUsersAnt usersList={props.users.usersList} deleteUser={props.deleteUser} updateCompanyUsers={props.updateCompanyUsers} />
             {isModal && <UserFormModal setIsModall={setIsModall} />}
         </div>
     );

@@ -1,15 +1,20 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 import './PagingLineStyles/PagingLine.css'
+import { Button } from 'antd';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { Select } from 'antd';
 
 export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: any) {
 
     const [perPage, setPerPage] = useState(5);
     const [page, setPage] = useState(0)
 
-    const eventHadler = (event: ChangeEvent<HTMLSelectElement>) => {
-        setPerPage(parseInt(event.target.value));
+    const selectHadler = (value: number) => {
+        setPerPage(value);
         setPage(0);
     }
+
+    const { Option } = Select;
 
     const toPageF = () => {
         let toPage = 1;
@@ -26,37 +31,36 @@ export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: any) {
     setPagingEnd(toPageF());
 
     return (
-        <div className='paging-line theme'>
+        <div className='paging-line'>
             <div className='page-info'>
                 <p>Showing {page * perPage + 1} - {toPageF()} of {pagingRange} results</p>
             </div>
             <div className='page-btns-container'>
                 <p>Results per page:</p>
-                <select
+                <Select
                     id='results-range'
-                    name='results-range'
-                    value={perPage}
-                    onChange={eventHadler}
+                    defaultValue={5}
+                    onChange={selectHadler}
                 >
-                    <option value={5}>5</option>
-                    <option value={10}>10</option>
-                    <option value={20}>20</option>
-                    <option value={50}>50</option>
-                    <option value={100}>100</option>
-                </select>
-                <button
+                    <Option value={5}>5</Option>
+                    <Option value={10}>10</Option>
+                    <Option value={20}>20</Option>
+                    <Option value={50}>50</Option>
+                    <Option value={100}>100</Option>
+                </Select>
+                <Button
                     disabled={!(toPageF() > perPage)}
                     onClick={() => { setPage(page - 1) }}
-                >{'<'}
-                </button>
+                ><LeftOutlined />
+                </Button>
 
-                <button onClick={() => { setPage(page) }}>{page + 1}</button>
+                <Button onClick={() => { setPage(page) }}>{page + 1}</Button>
 
-                <button
+                <Button
                     disabled={(toPageF() >= pagingRange)}
                     onClick={() => { setPage(page + 1) }}
-                >{'>'}
-                </button>
+                ><RightOutlined />
+                </Button>
             </div>
         </div>
     )

@@ -8,39 +8,25 @@
   padding: 50px;
 }
 
-.toolbar {
-  display: flex;
-  justify-content: space-between;
+.toolbar .ant-btn {
+  float: right;
+  margin-bottom: 20px;
+  background-color: rgb(75, 110, 255);
+  border: none;
+  box-shadow: 1px 1px 2px 0.3px rgb(65, 95, 220);
+  border-radius: 10px;
 }
-.toolbar .addUserCoBtn {
-  height: 30px;
-  padding: 5px 20px;
-  font-size: 16px;
-  color: rgb(234, 234, 234);
-  background-color: rgb(0, 0, 175);
-  border: solid 1px rgb(0, 0, 175);
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px 1px rgb(0, 0, 132);
+.toolbar .ant-btn:hover {
+  background-color: rgb(75, 110, 255);
 }
-.toolbar .addUserCoBtn a:link {
-  text-decoration: none;
-  color: rgb(234, 234, 234);
-}
-.toolbar .addUserCoBtn a:visited {
-  text-decoration: none;
-}
-.toolbar .addUserCoBtn:active {
-  transform: scale(0.985);
-  box-shadow: 1px 1px 1px 1px rgb(0, 0, 132);
-}
-.toolbar .addUserCoBtn:after {
+.toolbar .ant-btn:after {
   content: " " attr(title);
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
+  transition: visibility 0s linear 0.8s, opacity 0.8s linear, font 0.08s linear;
   font-size: 0;
 }
-.toolbar .addUserCoBtn:hover:after {
+.toolbar .ant-btn:hover:after {
   content: " " attr(title);
   visibility: visible;
   opacity: 1;

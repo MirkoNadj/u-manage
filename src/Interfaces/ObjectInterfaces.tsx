@@ -16,7 +16,7 @@ export interface ValidationErrors {
     lastName?: string;
     companyId?: string;
     companyName?: string;
-    dOB?: string;
+    dOB?: any;
     position?: string;
     phoneNumber?: string | number;
 }

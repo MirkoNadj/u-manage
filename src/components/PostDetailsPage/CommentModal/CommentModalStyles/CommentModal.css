@@ -15,7 +15,7 @@
   height: -moz-fit-content;
   height: fit-content;
   padding: 20px;
-  border: 1px solid rgb(17, 24, 56);
+  border: 1px solid rgb(66, 66, 66);
   border-radius: 10px;
   text-align: justify;
 }
@@ -40,7 +40,7 @@
   font-size: 26px;
   margin: 10px 0px;
   padding: 5px;
-  border: 1px solid rgb(17, 24, 56);
+  border: 1px solid rgb(66, 66, 66);
   border-radius: 10px;
 }
 .comment-modal-container h3 {
@@ -48,12 +48,12 @@
   font-style: italic;
   margin: 10px 0px;
   padding: 5px;
-  border: 1px solid rgb(17, 24, 56);
+  border: 1px solid rgb(66, 66, 66);
   border-radius: 10px;
 }
 .comment-modal-container p {
   margin: 10px 0px;
   padding: 15px;
-  border: solid 1px rgb(17, 24, 56);
+  border: solid 1px rgb(66, 66, 66);
   border-radius: 10px;
 }/*# sourceMappingURL=CommentModal.css.map */

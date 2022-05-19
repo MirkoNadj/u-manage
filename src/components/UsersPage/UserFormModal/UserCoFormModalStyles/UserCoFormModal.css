@@ -2,6 +2,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 100;
   min-height: 100%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -55,8 +56,8 @@
   float: right;
   font-size: 16px;
   color: white;
-  background-color: rgb(0, 0, 175);
-  border: solid 1px rgb(0, 0, 175);
+  background-color: rgb(75, 110, 253);
+  border: solid 1px rgb(75, 110, 253);
   border-radius: 5px;
   box-shadow: 2px 2px 5px 1px rgb(0, 0, 132);
 }
@@ -67,9 +68,9 @@
   padding: 5px 20px;
   margin-right: auto;
   font-size: 16px;
-  color: rgb(0, 0, 175);
+  color: rgb(75, 110, 253);
   background-color: white;
-  border: solid 1px rgb(0, 0, 175);
+  border: solid 1px rgb(75, 110, 253);
   border-radius: 5px;
 }
 
@@ -106,7 +107,7 @@
 .form-body input:focus, .form-body select:focus {
   border-style: solid;
   border-width: 1px;
-  border-color: rgb(0, 0, 175);
+  border-color: rgb(75, 110, 253);
 }
 .form-body .errors {
   position: absolute;

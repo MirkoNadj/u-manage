@@ -3,7 +3,7 @@
   margin: 20px auto;
   font-size: 18px;
   border-style: solid;
-  border-color: lightgrey;
+  border-color: rgb(208, 212, 215);
   border-width: 0.5px;
   border-radius: 15px;
   border-spacing: 0px 0px;
@@ -21,7 +21,7 @@
   padding: 0px 15px;
   margin: 0px 0px;
   border-top-style: solid;
-  border-color: lightgrey;
+  border-color: rgb(208, 212, 215);
   border-width: 2px 2px;
 }
 .table-users-co .td-edit {
@@ -35,9 +35,9 @@
 
 .del-btn, .edit-btn {
   padding: 3px 5px;
-  color: rgb(17, 24, 56);
+  color: rgb(66, 66, 66);
   border-radius: 5px;
-  border-color: lightgrey;
+  border-color: rgb(208, 212, 215);
 }
 
 .del-btn:after, .edit-btn:after {

@@ -2,23 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 0px;
-  border-radius: 5px;
   font-size: 14px;
 }
 .paging-line p {
   display: inline;
+  color: rgb(130, 130, 130);
 }
-.paging-line button {
-  height: 24px;
-  margin: 0 5px;
-  padding: 1px 5px;
-}
-.paging-line select {
-  height: 24px;
-  margin: 0 10px;
-  border-radius: 5px;
-  outline: none;
+.paging-line .ant-select {
+  vertical-align: bottom;
+  margin: 0px 10px;
+  color: rgb(84, 86, 91);
+  border-radius: 3px;
+  box-shadow: 0px 0px 1px 0.05px rgb(130, 130, 130);
 }
 
 .page-info {
@@ -27,14 +22,5 @@
 }
 
 .page-btns-container {
-  width: 303px;
-}
-
-.paging-line button:enabled {
-  color: rgb(17, 24, 56);
-  font-weight: bold;
-}
-
-.paging-line button:disabled {
-  background-color: rgb(206, 206, 206);
+  width: 330px;
 }/*# sourceMappingURL=PagingLine.css.map */

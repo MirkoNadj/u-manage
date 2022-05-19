@@ -1,41 +1,41 @@
 .theme-light {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(45deg, rgb(255, 255, 255) 0%, rgb(177, 177, 189) 40%, rgb(165, 165, 223) 70%, rgb(177, 177, 189) 100%);
+  background-color: rgb(248, 250, 251);
 }
-.theme-light h1, .theme-light h2, .theme-light h3, .theme-light h4, .theme-light h5, .theme-light h6, .theme-light p, .theme-light th, .theme-light td, .theme-light label, .theme-light li {
-  color: rgb(17, 24, 56);
+.theme-light h1, .theme-light h2, .theme-light h3, .theme-light h4, .theme-light h5, .theme-light h6, .theme-light p, .theme-light li, .theme-light th, .theme-light td, .theme-light label {
+  color: rgb(66, 66, 66);
 }
 .theme-light .theme {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(45deg, rgb(255, 255, 255) 0%, rgb(177, 177, 189) 40%, rgb(165, 165, 223) 70%, rgb(177, 177, 189) 100%);
+  background-color: rgb(248, 250, 251);
+}
+.theme-light .ant-table-title {
+  color: rgb(66, 66, 66);
 }
 .theme-light .backdrop {
   background-color: rgba(38, 48, 116, 0.801);
 }
 .theme-light .form-body-theme {
-  background-color: rgb(188, 188, 208);
+  background-color: rgb(248, 250, 251);
 }
 .theme-light .weather-btn-theme {
-  color: rgb(0, 0, 175);
-  background-color: rgb(188, 188, 208);
+  color: rgb(84, 86, 91);
+  background-color: white;
 }
 .theme-light .postcard-theme {
-  background-color: lightgrey;
+  background-color: rgb(208, 212, 215);
+  box-shadow: 0.5px 0.5px 3px 1.5px rgb(230, 240, 240);
 }
-.theme-light .postcard-theme h1, .theme-light .postcard-theme h2, .theme-light .postcard-theme h3, .theme-light .postcard-theme label, .theme-light .postcard-theme textarea {
-  color: rgb(17, 24, 56);
+.theme-light .postcard-theme h1, .theme-light .postcard-theme h2, .theme-light .postcard-theme h3 {
+  color: rgb(66, 66, 66);
 }
 
 .theme-dark {
-  background: rgb(7, 8, 60);
-  background: linear-gradient(45deg, rgb(7, 8, 60) 0%, rgb(12, 11, 43) 33%, rgb(2, 2, 87) 70%, rgb(0, 0, 0) 100%);
+  background-color: rgb(212, 11, 138);
 }
-.theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6, .theme-dark p, .theme-dark th, .theme-dark td, .theme-dark label, .theme-dark li {
-  color: lightgrey;
+.theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6, .theme-dark p, .theme-dark li, .theme-dark th, .theme-dark td, .theme-dark label {
+  color: rgb(208, 212, 215);
 }
 .theme-dark .theme {
-  background: rgb(7, 8, 60);
-  background: linear-gradient(45deg, rgb(7, 8, 60) 0%, rgb(12, 11, 43) 33%, rgb(2, 2, 87) 70%, rgb(0, 0, 0) 100%);
+  background: rgb(212, 11, 138);
 }
 .theme-dark .backdrop {
   background-color: rgba(0, 4, 86, 0.801);
@@ -44,14 +44,14 @@
   background-color: rgb(32, 24, 120);
 }
 .theme-dark .weather-btn-theme {
-  color: lightgrey;
-  background-color: rgb(17, 24, 56);
+  color: rgb(208, 212, 215);
+  background-color: rgb(66, 66, 66);
 }
 .theme-dark .postcard-theme {
   background-color: rgb(0, 0, 132);
 }
 .theme-dark .postcard-theme h1, .theme-dark .postcard-theme h2, .theme-dark .postcard-theme h3, .theme-dark .postcard-theme input, .theme-dark .postcard-theme textarea, .theme-dark .postcard-theme .comment-name, .theme-dark .postcard-theme .comment-area {
-  color: lightgrey;
+  color: rgb(208, 212, 215);
   background-color: rgb(0, 0, 132);
 }
 

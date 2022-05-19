@@ -1,0 +1,39 @@
+.ant-table-override .ant-table {
+  border-radius: 20px;
+  box-shadow: 0.5px 0.5px 3px 1.5px rgb(230, 240, 240);
+  z-index: 1;
+}
+.ant-table-override .ant-table-title {
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20px 20px 0px 0px;
+}
+.ant-table-override .ant-table-thead .ant-table-cell {
+  color: rgb(130, 130, 130);
+  background-color: rgb(250, 250, 250);
+  font-size: 12px;
+  font-weight: 500;
+}
+.ant-table-override .fullname-col, .ant-table-override .company-col {
+  font-size: 12px;
+  font-weight: 700;
+}
+.ant-table-override .dOB-col, .ant-table-override .position-col {
+  font-weight: 500;
+}
+.ant-table-override .btn-col {
+  width: 173px;
+}
+.ant-table-override .ant-btn-default {
+  color: rgb(84, 86, 91);
+  margin: 0px 5px 0px 0px;
+  font-size: 12px;
+  font-weight: 650;
+  border-radius: 3px;
+  box-shadow: 0px 0px 1px 0.05px rgb(130, 130, 130);
+}
+.ant-table-override .ant-table-footer {
+  border-radius: 0px 0px 20px 20px;
+  padding: 16px 10px;
+  background-color: rgb(255, 255, 255);
+}/*# sourceMappingURL=TableUsersAnt.css.map */

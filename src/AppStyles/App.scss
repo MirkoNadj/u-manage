@@ -2,15 +2,16 @@
  @use '../styles/color-dark';
 
 .theme-light {
-    background: color-light.$background;
-    background: color-light.$background-gradient;
-    
+    background-color: color-light.$primary-bg;
 
-    h1, h2, h3, h4, h5, h6, p, th, td, label, li {color: color-dark.$primary}
+    h1, h2, h3, h4, h5, h6, p, li, th, td, label {color: color-dark.$primary}
 
     .theme {        
-        background: color-light.$background;
-        background: color-light.$background-gradient;
+        background-color: color-light.$primary-bg;
+        
+    }
+    .ant-table-title {
+            color: color-dark.$primary;
     }
 
     .backdrop {
@@ -18,29 +19,29 @@
     }
 
     .form-body-theme {
-        background-color: rgb(188, 188, 208);
+        background-color: color-light.$primary-bg;
     }
 
     .weather-btn-theme {
-        color: color-dark.$btn-blue;
-        background-color: rgb(188, 188, 208);
+        color: color-dark.$secondary;
+        background-color: color-light.$btn-secondary;
     }
 
     .postcard-theme {
-        h1, h2, h3, label, textarea {color: color-dark.$primary}
-        background-color: color-light.$primary;      
+        h1, h2, h3 {color: color-dark.$primary}
+        background-color: color-light.$primary;
+        box-shadow: 0.5px 0.5px 3px 1.5px color-light.$primary-shadow;      
     }
     
 }
 
 .theme-dark {
-    background: color-dark.$background;
-    background: color-dark.$background-gradient;
-    h1, h2, h3, h4, h5, h6, p, th, td, label, li {color: color-light.$primary};
+    background-color: color-dark.$primary-bg;
+
+    h1, h2, h3, h4, h5, h6, p, li, th, td, label {color: color-light.$primary};
 
     .theme {
-        background: color-dark.$background;
-        background: color-dark.$background-gradient;
+        background: color-dark.$primary-bg;
     }
 
     .backdrop {
@@ -57,8 +58,8 @@
     }
 
     .postcard-theme {
-        h1, h2, h3, input, textarea, .comment-name, .comment-area {color: color-light.$primary;background-color: color-dark.$btn-blue-shadow}
-        background-color: color-dark.$btn-blue-shadow;        
+        h1, h2, h3, input, textarea, .comment-name, .comment-area {color: color-light.$primary;background-color: color-dark.$btn-primary-shadow}
+        background-color: color-dark.$btn-primary-shadow;        
     }
 }
 
@@ -67,17 +68,3 @@
     grid-template-columns: repeat(12, 1fr);  
     grid-auto-rows: fit-content;
 }
-
-
-
-// h6 {
-//     color: white;
-// }
-// .theme-palevioletred .tema {
-//     background: palevioletred;
-//     color:red;
-// }
-// .theme-blueviolet h6 {
-//     background: blueviolet;
-// }
-

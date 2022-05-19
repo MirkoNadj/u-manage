@@ -14,13 +14,13 @@ export function convertDateString(date: string = '1990-01-01') {
     return date.split('-').reverse().join('-');
 }
 
-export const newUserInfo: User = {
+export let newUserInfo: User = {
     id: '',
     firstName: '',
     lastName: '',
     companyId: '',
     companyName: '',
-    dOB: '',
+    dOB: "Tue May 10 2000",
     position: '',
     phoneNumber: '',
 };
