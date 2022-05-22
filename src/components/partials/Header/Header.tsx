@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
 import { WeatherModal } from '../WeatherModal/WeatherModal';
-import './HeaderStyles/Header.css';
+import './Header.scss';
 import { GlobalOutlined, LoadingOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -55,7 +55,7 @@ export const Header = ({ theme, setTheme }: any) => {
                     variants={itemVariant}
                 >
                     <img src="./mngLogo-small.png" alt='LOGO'></img>
-                    <Link to='/'><h1>U-manage</h1></Link>
+                    <Link to='/'><h1 id='h'>U-manage</h1></Link>
 
                 </motion.div>
                 <nav>

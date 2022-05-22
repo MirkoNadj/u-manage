@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
-import './TableUsersAnt.css';
+import './TableUsersAnt.scss';
 
 import { Table, Button } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
-//import { convertDateString } from '../../../services/StorageRepository';
+import { formatDateForTable } from '../../../services/StorageRepository';
 import { User } from '../../../Interfaces/ObjectInterfaces';
 
 import { PagingLine } from '../../partials/PagingLine/PagingLine';
 
-export const TableUsersAnt = ({ usersList, deleteUser, updateCompanyUsers }: any) => {
+export const TableUsersAnt = ({ usersList, deleteUser, updateCompanyUsers, title }: any) => {
 
     const [pagingStart, setPagingStart] = useState(0);
     const [pagingEnd, setPagingEnd] = useState(usersList.length);
@@ -23,7 +23,7 @@ export const TableUsersAnt = ({ usersList, deleteUser, updateCompanyUsers }: any
     const dataSource: any = usersList.slice(pagingStart, pagingEnd).map((userItem: User) => ({
         id: userItem.id,
         fullName: userItem.firstName + ' ' + userItem.lastName,
-        dOB: userItem.dOB,
+        dOB: formatDateForTable(userItem.dOB),
         companyName: userItem.companyName,
         position: userItem.position,
     }))
@@ -76,19 +76,19 @@ export const TableUsersAnt = ({ usersList, deleteUser, updateCompanyUsers }: any
                 );
             }
         }
-    ]
+    ];
 
     return (
         <div>
-            <Table className='ant-table-override'
+            <Table className='ant-table-override ant-table-theme'
                 columns={columns}
                 dataSource={dataSource}
                 pagination={false}
 
-                title={() => 'Users'}
+                title={() => title}
                 footer={() => <PagingLine pagingRange={usersList.length} setPagingStart={setPagingStart} setPagingEnd={setPagingEnd} />}
             >
             </Table>
         </div >
-    )
-}
+    );
+};

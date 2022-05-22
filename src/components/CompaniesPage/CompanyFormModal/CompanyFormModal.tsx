@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
-import '../../UsersPage/UserFormModal/UserCoFormModalStyles/UserCoFormModal.css';
-import { Company, CompanyValidationErrors } from '../../../Interfaces/ObjectInterfaces';
+import { useNavigate, useParams, useOutletContext } from 'react-router-dom';
+import './CompanyFormModal.scss';
+import { Company, CompanyValidationErrors, OwnProps } from '../../../Interfaces/ObjectInterfaces';
 import { companyFormValidation } from '../../../services/formValidation';
 import { guIdGenerator } from '../../../services/guidGenerator';
 import CompanyUsers from '../CompanyUsers/CompanyUsers';
@@ -18,6 +18,7 @@ export const CompanyFormModal = (props: PropsFromRedux) => {
     const [companyInfo, setCompanyInfo] = useState<Company>(newCompanyInfo);
     const [companyFormErrors, setCompanyFormErrors] = useState<CompanyValidationErrors>({ isValid: false });
     const [isUsers, setIsUsers] = useState(false);
+    const { setIsModal } = useOutletContext<OwnProps>();
 
     let navigate = useNavigate();
     let { currentCompanyId } = useParams();
@@ -49,13 +50,11 @@ export const CompanyFormModal = (props: PropsFromRedux) => {
             props.addCompany(companyInfo)
             setIsUsers(true)
             navigate(`/companies/`)
-
-
         };
     };
 
     const cancelCompany = () => {
-        props.setIsModall(false);
+        setIsModal(false);
         currentCompanyId ? navigate(`/companies/${currentCompanyId}`) : navigate('/companies/');
     }
 
@@ -82,12 +81,12 @@ export const CompanyFormModal = (props: PropsFromRedux) => {
 
     return (
         <>
-            <motion.div className='user-co-form-backdrop backdrop'
+            <motion.div className='co-form-backdrop backdrop'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
             >
-                <motion.form className='user-co-form-container theme'
+                <motion.form className='co-form-container theme'
                     variants={modalDropIn}
                     initial='hidden'
                     animate='visible'
@@ -134,13 +133,12 @@ export const CompanyFormModal = (props: PropsFromRedux) => {
                 {(currentCompanyId || isUsers) && <CompanyUsers />}
             </motion.div>
         </>
-    )
+    );
 };
 
-let mapStateToProps = (state: RootState, ownProps: any) => {
+let mapStateToProps = (state: RootState) => {
     return {
         companies: state.companies,
-        setIsModall: ownProps.setIsModall
     };
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './PagingLineStyles/PagingLine.css'
+import './PagingLine.scss'
 import { Button } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
@@ -46,7 +46,6 @@ export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: any) {
                     <Option value={10}>10</Option>
                     <Option value={20}>20</Option>
                     <Option value={50}>50</Option>
-                    <Option value={100}>100</Option>
                 </Select>
                 <Button
                     disabled={!(toPageF() > perPage)}
@@ -63,5 +62,5 @@ export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: any) {
                 </Button>
             </div>
         </div>
-    )
-}
+    );
+};

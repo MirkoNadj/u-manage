@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import './Loading.css';
+import './Loading.scss';
 import { SpinnerCircularFixed } from 'spinners-react';
 
 export const Loading: FC = () => {

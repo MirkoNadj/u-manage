@@ -1,13 +1,13 @@
 import React, { FC, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './AppStyles/App.css';
+import './App.scss';
 import { Header } from './components/partials/Header/Header';
 import { Home } from './components/partials/Home/Home';
 import Users from './components/UsersPage/Users/Users';
 import UserFormModal from './components/UsersPage/UserFormModal/UserFormModal';
 import CompanyFormModal from './components/CompaniesPage/CompanyFormModal/CompanyFormModal';
 import Companies from './components/CompaniesPage/Companies/Companies'
-import PostsList from './components/PostsListPage/PostsList';
+import PostsList from './components/PostsListPage/PostsList/PostsList';
 import { PostDetails } from './components/PostDetailsPage/PostDetails/PostDetails';
 
 const App: FC = () => {

@@ -1,11 +1,10 @@
 @use '../../../styles/color-light';
 @use '../../../styles/color-dark';
 
-.ant-table-override {
+.ant-co-table-override {
     .ant-table {
         border-radius: 20px;
         box-shadow: 0.5px 0.5px 3px 1.5px color-light.$primary-shadow;
-        z-index: 1;
     }
     .ant-table-title {
         font-size: 18px;
@@ -16,14 +15,14 @@
         font-size: 12px;
         font-weight: 500;      
     }
-    .fullname-col, .company-col{
+    .name-col, .country-col{
         font-size: 12px;
         font-weight: 700;
     }
-    .dOB-col, .position-col {
+    .city-col, .num-of-users-col {
         font-weight: 500;
     }
-    .btn-col {
+    .btns-col {
         width: 173px;
     }
     .ant-btn-default {
@@ -31,24 +30,14 @@
         font-size: 12px;
         font-weight: 650;        
         border-radius: 3px;       
-        
+        box-shadow: 0px 0px 1px 0.05px color-light.$btn-secondary-shadow;
     }
     .ant-btn-default:hover {
         border-color: color-dark.$btn-primary;
-        box-shadow: 0px 0px 1px 0.05px color-dark.$btn-primary-shadow;
+        box-shadow: 0px 0px 1px 0.05px color-light.$btn-primary-shadow;
     }
     .ant-table-footer {
         border-radius: 0px 0px 20px 20px;
         padding: 16px 10px;
     }
-    
-    // .ant-select:not(.ant-select-customize-input) .ant-select-selector:hover {
-    //     border-color:color-dark.$btn-primary;
-    //     box-shadow: 0px 0px 1px 0.05px color-dark.$btn-primary-shadow;       
-    // }
-    // .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector{
-    //     border-color:color-dark.$btn-primary; 
-    //     box-shadow: 0px 0px 1px 0.05px color-dark.$btn-primary-shadow;
-    // }
-    
 }

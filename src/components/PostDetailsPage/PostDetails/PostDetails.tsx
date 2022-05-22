@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './PostDetailsStyles/PostDetails.css';
+import './PostDetails.scss';
 import { useParams } from 'react-router-dom';
 import PostTitleBody from '../PostTitleBody/PostTitleBody';
 import CommentsList from '../CommentsList/CommentsList';

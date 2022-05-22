@@ -14,13 +14,18 @@ export function convertDateString(date: string = '1990-01-01') {
     return date.split('-').reverse().join('-');
 }
 
+export function formatDateForTable(date: string) {
+    let formated = date.slice(4, 6) + ' ' + date.slice(0, 3) + ' ' + date.slice(7, 11);
+    return formated;
+}
+
 export let newUserInfo: User = {
     id: '',
     firstName: '',
     lastName: '',
     companyId: '',
     companyName: '',
-    dOB: "Tue May 10 2000",
+    dOB: "Fri Jan 01 1960",
     position: '',
     phoneNumber: '',
 };

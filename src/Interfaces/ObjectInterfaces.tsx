@@ -115,6 +115,6 @@ export interface LocationProps {
     }
 }
 
-export interface SetIsModal {
-    setIsModall: Dispatch<SetStateAction<boolean>>;
+export interface OwnProps {
+    setIsModal: Dispatch<SetStateAction<boolean>>;
 }

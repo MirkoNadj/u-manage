@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
-import './PostCardAnt.css';
+import './PostCardAnt.scss';
 import { useNavigate } from 'react-router-dom'
 import { Post } from '../../../Interfaces/ObjectInterfaces';
 import { Card, Avatar } from 'antd';
-import { EditOutlined, EllipsisOutlined, StarOutlined, SettingOutlined } from '@ant-design/icons';
+import { EllipsisOutlined, StarOutlined } from '@ant-design/icons';
 import TextTruncate from 'react-text-truncate';
-import { forEachTrailingCommentRange } from 'typescript';
 
 const { Meta } = Card;
 

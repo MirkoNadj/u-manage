@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './CommentsListStyles/CommentsList.css';
+import './CommentsList.scss';
 import { CommentCard } from '../CommentCard/CommentCard';
 import { Comment, OwnPropsId } from '../../../Interfaces/ObjectInterfaces';
 import { Loading } from '../../partials/Loading/Loading';
@@ -14,8 +14,8 @@ export const CommentsList = (props: PropsFromRedux) => {
         fetchComments(postDetailsId!);
     }, [postDetailsId, fetchComments]);
 
-    return (<div className='comments postcard-theme'>
-        <h1>Comments:</h1>
+    return (<div className='comments title-body-container-theme'>
+        <h2>Comments:</h2>
         {comments.status === 'loading' && <Loading />}
         {comments.status === 'failed' && <h1 className='error'>{comments.error}</h1>}
 

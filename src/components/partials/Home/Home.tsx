@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import './Home.css';
+import './Home.scss';
 
 
 export const Home: FC = () => {

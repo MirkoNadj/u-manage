@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, useCallback } from "react";
 import { getWeather } from "../../../services/getWeather";
 import { WeatherObject } from "../../../Interfaces/ObjectInterfaces";
 import { PositionObject } from "../../../TypeFiles/ObjectTypes";
-import "./WeatherStyles/Weather.css";
+import "./Weather.scss";
 import { motion } from 'framer-motion';
 
 export const WeatherModal: FC = () => {
@@ -89,7 +89,7 @@ export const WeatherModal: FC = () => {
     if (weather) {
         return (
             <motion.div
-                className="weather-modal isHovering"
+                className="weather-modal isHovering theme"
                 variants={modalVariant}
                 initial='startMotion'
                 animate='endMotion'
