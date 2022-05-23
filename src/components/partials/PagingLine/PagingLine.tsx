@@ -35,7 +35,7 @@ export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: Paging
     return (
         <div className='paging-line'>
             <div className='page-info'>
-                <p>Showing {page * perPage + 1} - {toPageF()} of {pagingRange} results</p>
+                <p>Showing {pagingRange ? (page * perPage + 1) : 0} - {toPageF()} of {pagingRange} results</p>
             </div>
             <div className='page-btns-container'>
                 <p>Results per page:</p>
