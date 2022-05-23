@@ -25,7 +25,7 @@ export let newUserInfo: User = {
     lastName: '',
     companyId: '',
     companyName: '',
-    dOB: "Fri Jan 01 1960",
+    dOB: '',
     position: '',
     phoneNumber: '',
 };

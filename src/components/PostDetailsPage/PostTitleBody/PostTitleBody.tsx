@@ -29,6 +29,9 @@ export const PostTitleBody = (props: PropsFromRedux) => {
 
     return (
         <div className='title-body-container title-body-container-theme'>
+            {posts.status === 'loading' && (<Loading />)}
+            {posts.error && <h1 className='error'>{posts.error}</h1>}
+
             <h2>Post Details</h2>
             <label>Title</label>
             <TextArea
@@ -54,10 +57,10 @@ export const PostTitleBody = (props: PropsFromRedux) => {
             />
             <Button className='edit-post-btn' title='Edit Post' onClick={() => { props.editPost(post); setTimeout(() => { navigate('/newsletterPosts') }, 1000); }}><EditOutlined /></Button>
             <Button className='del-post-btn' title='Delete Post' onClick={() => { deleteP(post.id) }}><DeleteOutlined /></Button>
-            {posts.status === 'loading' && (<Loading />)}
+
             {posts.status === 'deleted' && <span className='post-status'>Post deleted</span>}
             {posts.status === 'patched' && <span className='post-status'>Post changed</span>}
-            {posts.error && <h1 className='error'>{posts.error}</h1>}
+
         </div>
     );
 };

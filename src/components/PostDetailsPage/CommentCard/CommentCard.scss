@@ -7,12 +7,10 @@
     border-radius: 10px;
     box-shadow: 0.5px 0.5px 3px 1.5px color-light.$primary-shadow;
     font-size: 18px;
+    z-index: 0;
     
     .ant-card-head-title {
       min-width: 30ch;
-    }
-    .ant-card {
-      background-color: blue;
     }
 }
 

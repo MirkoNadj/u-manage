@@ -18,7 +18,7 @@
         width: 100%;
         margin: 20px;
     }
-}  
+};  
 
 .user-co-form-container {
     height: auto;   
@@ -31,7 +31,7 @@
     .form-title {
         height: 85px;
         border-radius: 10px 10px 0px 0px;
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid color-light.$primary-shadow;
         text-align: center;
         font-size: 18px;
         font-weight: bold;
@@ -50,11 +50,10 @@
             .close {
                 color: color-light.$btn-secondary-shadow
             }
-
             .close:hover {
                 cursor: pointer;
             }
-    }
+    };
 
     .form-body {
         padding: 10px 30px;
@@ -88,22 +87,37 @@
         }  
         .ant-form-item-control {
                 height: 60px;
-        }  
+                
+        } 
+        
+        .ant-select-selection-item, #dOB {
+            font-weight: 500;
+        }
 
-        .ant-input, .ant-select-selector, .ant-picker {
+        .ant-input,
+        .ant-select-selector,
+        .ant-form-select-selector,
+        
+        .ant-picker {
             width: 100%;
             height: 50px;
             border-radius: 10px;
             padding-top: 20px;
             font-weight: 500;
         }
-    }
+
+        .ant-input:hover,
+        .ant-select-selector:hover, 
+        .ant-picker:hover {
+        border-color: color-light.$btn-primary
+        }
+    };
 
     .form-footer {
         height: 85px;  
         padding: 20px 30px;
         border-radius: 0px 0px 10px 10px; 
-        border-top: 1px solid grey;   
+        border-top: 1px solid color-light.$primary-shadow;;   
     
         .ant-btn-primary {
             width: 100px;
@@ -115,7 +129,7 @@
             background-color: color-dark.$btn-primary;
             border: solid 1px color-dark.$btn-primary;
             border-radius: 5px;
-            box-shadow: 1px 1px 2px 0.5px color-dark.$btn-primary-shadow;
+            box-shadow: 0px 0px 0.5px 0.1px color-dark.$btn-primary-shadow;
         }
 
         .ant-btn-default { 
@@ -133,7 +147,7 @@
           
         .ant-btn-primary:active, .ant-btn-default:active {
               transform: scale(0.98);
-              box-shadow: 0.5px 0.5px 0.5px 0.1px color-dark.$btn-primary-shadow;
+              box-shadow: 0px 0px 0.5px 0.1px color-dark.$btn-primary-shadow;
         } 
-    }
-}
+    };
+};

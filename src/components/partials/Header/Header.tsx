@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
 import { WeatherModal } from '../WeatherModal/WeatherModal';
 import './Header.scss';
-import { GlobalOutlined, LoadingOutlined } from '@ant-design/icons';
+import { CloudSyncOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { Theme } from '../../../Interfaces/ObjectInterfaces';
 
-export const Header = ({ theme, setTheme }: any) => {
+export const Header = ({ theme, setTheme }: Theme) => {
     let [isWeather, setIsWeather] = useState(false);
 
     const headerVariant = {
@@ -65,16 +66,16 @@ export const Header = ({ theme, setTheme }: any) => {
                         <NavLink to='/newsletterPosts'><motion.li variants={itemVariant}>Newsletter</motion.li></NavLink>
                     </ul>
                 </nav>
-                <motion.div
+                <motion.div className='header-btns'
                     variants={itemVariant}
                 >
                     <button className='theme-btn weather-btn-theme' onClick={() => { setTheme(!theme) }}>{theme ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}</button>
                     <button className='weather-btn weather-btn-theme'
-                        onClick={() => window.open('https://www.metaweather.com')}
+                        onClick={() => window.open('https://www.weather-forecast.com/')}
                         onMouseOver={() => { setIsWeather(true) }}
                         onMouseOut={() => { setIsWeather(false) }}
                     >
-                        {isWeather ? <LoadingOutlined spin /> : <GlobalOutlined />}
+                        <CloudSyncOutlined />
                     </button>
                 </motion.div>
                 {isWeather && <WeatherModal />}

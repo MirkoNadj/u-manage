@@ -3,8 +3,9 @@ import './PagingLine.scss'
 import { Button } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
+import { Paging } from '../../../Interfaces/ObjectInterfaces';
 
-export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: any) {
+export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: Paging) {
 
     const [perPage, setPerPage] = useState(5);
     const [page, setPage] = useState(0)
@@ -29,6 +30,7 @@ export function PagingLine({ pagingRange, setPagingStart, setPagingEnd }: any) {
 
     setPagingStart(page * perPage);
     setPagingEnd(toPageF());
+
 
     return (
         <div className='paging-line'>

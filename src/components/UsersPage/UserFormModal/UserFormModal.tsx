@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import './UserFormModal.scss';
-import { User, LocationProps } from '../../../Interfaces/ObjectInterfaces';
+import { User, LocationProps, PickerDate } from '../../../Interfaces/ObjectInterfaces';
 import { guIdGenerator } from '../../../services/guidGenerator';
 import { newUserInfo, findUserById, positionsList, findCompanyById, formatDateForTable } from '../../../services/StorageRepository';
 import { AppDispatch, RootState } from '../../../app/store';
@@ -12,13 +12,6 @@ import { motion } from 'framer-motion';
 import { CloseOutlined } from '@ant-design/icons';
 import { Form, Button, Input, Select, DatePicker } from 'antd';
 import moment, { Moment } from 'moment';
-import { DatePickerProps } from "antd/lib/date-picker";
-
-type ExtractPickProps<T extends DatePickerProps["picker"]> = Extract<
-    DatePickerProps,
-    { picker: T }
->;
-type PickerDate = ExtractPickProps<"date">;
 
 export const UserFormModal = (props: PropsFromRedux) => {
     const companiesList = props.companies.companiesList;
@@ -27,7 +20,6 @@ export const UserFormModal = (props: PropsFromRedux) => {
     const location = useLocation() as LocationProps;
     const [form] = Form.useForm();
     let navigate = useNavigate();
-
 
     let currentCompany = '';
     if (location.state) {
@@ -62,9 +54,10 @@ export const UserFormModal = (props: PropsFromRedux) => {
             userInfo.id = guIdGenerator();    // saving new user
             props.addUser(userInfo);
         };
+
         props.updateCompanyUsers(userInfo);
         props.setIsModal(false);
-        navigate('/users/')
+        currentCompany ? navigate(`/companies/${currentCompany}`) : navigate('/users/');
     };
 
     const cancelUser = () => {
@@ -123,11 +116,11 @@ export const UserFormModal = (props: PropsFromRedux) => {
                         },
                         {
                             name: ['companyId'],
-                            value: (userInfo.companyId !== '' ? userInfo.companyId : undefined)
+                            value: ((currentCompany || currentUserId) ? (userInfo.companyId || currentCompany) : undefined)
                         },
                         {
                             name: ['dOB'],
-                            value: moment(userInfo.dOB)
+                            value: (currentUserId ? moment(userInfo.dOB) : '')
                         },
                         {
                             name: ['position'],
@@ -193,6 +186,7 @@ export const UserFormModal = (props: PropsFromRedux) => {
                         <Form.Item
                             name='dOB'
                             label='Date Of Birth'
+
                             rules={[
                                 {
                                     required: true,
@@ -202,7 +196,7 @@ export const UserFormModal = (props: PropsFromRedux) => {
 
                         >
                             <DatePicker
-                                placeholder='Enter your birthday...'
+                                placeholder='Enter birthday...'
                                 format={'DD/MM/YYYY'}
                                 ref={date}
                                 disabledDate={disabledDate} />

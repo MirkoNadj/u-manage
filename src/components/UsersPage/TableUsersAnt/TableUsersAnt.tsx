@@ -6,11 +6,11 @@ import './TableUsersAnt.scss';
 import { Table, Button } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { formatDateForTable } from '../../../services/StorageRepository';
-import { User } from '../../../Interfaces/ObjectInterfaces';
+import { User, TableUsers, UserData } from '../../../Interfaces/ObjectInterfaces';
 
 import { PagingLine } from '../../partials/PagingLine/PagingLine';
 
-export const TableUsersAnt = ({ usersList, deleteUser, updateCompanyUsers, title }: any) => {
+export const TableUsersAnt = ({ usersList, deleteUser, updateCompanyUsers, title }: TableUsers) => {
 
     const [pagingStart, setPagingStart] = useState(0);
     const [pagingEnd, setPagingEnd] = useState(usersList.length);
@@ -20,7 +20,7 @@ export const TableUsersAnt = ({ usersList, deleteUser, updateCompanyUsers, title
         updateCompanyUsers(userItem);
     };
 
-    const dataSource: any = usersList.slice(pagingStart, pagingEnd).map((userItem: User) => ({
+    const dataSource: UserData[] = usersList.slice(pagingStart, pagingEnd).map((userItem: User) => ({
         id: userItem.id,
         fullName: userItem.firstName + ' ' + userItem.lastName,
         dOB: formatDateForTable(userItem.dOB),
@@ -58,7 +58,7 @@ export const TableUsersAnt = ({ usersList, deleteUser, updateCompanyUsers, title
             key: '5',
             title: '',
             className: 'btn-col',
-            render: (record: any) => {
+            render: (record: User) => {
                 return (
                     <>
                         <Link to={`/users/${record.id}`} state={{
@@ -84,7 +84,6 @@ export const TableUsersAnt = ({ usersList, deleteUser, updateCompanyUsers, title
                 columns={columns}
                 dataSource={dataSource}
                 pagination={false}
-
                 title={() => title}
                 footer={() => <PagingLine pagingRange={usersList.length} setPagingStart={setPagingStart} setPagingEnd={setPagingEnd} />}
             >

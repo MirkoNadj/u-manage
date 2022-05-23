@@ -9,18 +9,14 @@
     align-items: center;
     min-height: 42px;
     box-shadow: 0px 2px 5px 2px color-light.$primary-shadow;
-    z-index:0;
+    z-index:1;
 
 .header-title {
-    width: 145px;
+    width: 155px;
     height: 40px;
     margin-left: 15px;
     padding-top: 3px;
     border-right: 2px solid color-light.$primary-shadow;
-    
-    img {
-        height: 22px;
-    }
 
     a {    
         text-decoration: none;
@@ -64,19 +60,19 @@ nav ul {
     width: 35px;
     height: 35px;
     background-color: color-light.$btn-secondary;
-	border-radius: 100%;
+	border-radius: 50%;
     border: 0px solid color-light.$btn-secondary;
     box-shadow: 0px 0px 5px 2px color-light.$primary-shadow;
 	cursor:pointer;
     font-size: 18px;
     margin: 0px 10px 0px 0px;
     padding: 1px 0px 1px 0.5px;
+    padding: 1px 0px 1px 0.5px;
 }
 
 .theme-btn:hover, .weather-btn:hover {
     box-shadow: 0px 0px 8px 2.5px color-light.$primary-shadow;
 }
-
 
 .theme-btn:active, .weather-btn:active {
     width: 34px;
@@ -107,8 +103,13 @@ nav ul {
     li {
         display: inline;
     }
+    .header-btns {
+        height:max-content;
+        padding: 0px;
+    }
+    }
+
     .theme-btn, .weather-btn {
-        margin: 5px;
-    }    
-}
+        margin: 10px 10px;
+    }
 }

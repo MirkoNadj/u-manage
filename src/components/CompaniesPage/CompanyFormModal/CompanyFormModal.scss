@@ -18,12 +18,12 @@
         width: 100%;
         margin: 20px;
     }
-}  
+};  
 
 .co-form-container {
     height: auto;   
     min-width: 350px;
-    max-width: 30%;
+    max-width: 25%;
     margin: 20px;
     border-radius: 10px;    
 
@@ -39,13 +39,15 @@
           width: 30px;
           height: 30px;
           margin-left: auto;
+          
           font-size: 24px;
+          color:color-light.$btn-secondary-shadow
         }
 
-        button:hover {
-          cursor: pointer;
+        h1:hover {
+          cursor: pointer;          
         }
-    }
+    };
 
     .form-footer {
       height: 90px;  
@@ -62,7 +64,7 @@
             background-color: color-dark.$btn-primary;
             border: solid 1px color-dark.$btn-primary;
             border-radius: 5px;
-            box-shadow: 2px 2px 5px 1px color-dark.$btn-primary-shadow;
+            box-shadow: 0.5px 0.5px 0.5px 0.5px color-dark.$btn-primary-shadow;
         }
 
         .cancel-btn { 
@@ -71,17 +73,17 @@
             padding: 5px 20px;
             margin-right: auto;
             font-size: 16px;
-            color: color-dark.$btn-primary;;
+            color: color-dark.$btn-primary;
             background-color: color-light.$btn-secondary;
             border: solid 1px color-dark.$btn-primary;
             border-radius: 5px;
         }    
 
         .save-btn:active, .cancel-btn:active {
-          transform: scale(0.98);
-          box-shadow: 0px 0px 3px 1px color-dark.$btn-primary-shadow;
+            transform: scale(0.99);
+            box-shadow: 0.3px 0.3px 0.3px 0.1px color-dark.$btn-primary-shadow;
         } 
-    }
+    };
 
     .form-body {
         padding: 10px 30px;
@@ -127,5 +129,5 @@
             font-size: 14px;
             margin-top: -34px;
         }
-    }
-}
+    };
+};
