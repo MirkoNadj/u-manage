@@ -78,7 +78,12 @@
     .ant-form-select-selector, 
     .ant-select:not(.ant-select-customize-input) 
     .ant-select-selector, 
-    .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector,
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover
+    .ant-select-status-error.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input) 
+    .ant-select-selector, .ant-select-status-error.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input) 
+    .ant-select-selector, .ant-picker-status-error.ant-picker, .ant-picker-status-error.ant-picker:not([disabled]):hover{
         color: color-light.$secondary;
         background-color: color-dark.$primary-bg;
     };
