@@ -1,0 +1,85 @@
+@use '../../../styles/color-dark';
+@use '../../../styles/color-light';
+
+.title-body-container {
+    height:fit-content;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 3px 1.5px color-light.$primary-shadow;
+    margin-bottom: 10px;
+
+    h2 {
+      margin-bottom: 36px;
+      border-bottom: groove 2px color-light.$btn-primary; 
+    }
+
+    .ant-btn-default {
+      color: color-dark.$secondary;
+      font-size: 14px;
+      font-weight: 650;        
+      border-radius: 3px;       
+      box-shadow: 0px 0px 1px 0.05px color-dark.$btn-primary-shadow;
+      margin: 10px 10px 10px 0px;
+    }
+    .ant-btn-default:hover {
+        border-color:color-dark.$btn-primary;
+    }
+      
+    .ant-btn-default:after {
+        content:' ' attr(title);
+        visibility: hidden; 
+        opacity: 0;
+        transition: visibility 0s linear 1s, opacity 1s linear, font 0.05s linear;
+        font-size:0;
+    }
+      
+    .ant-btn-default:hover:after {
+        content:' ' attr(title);
+        visibility: visible;
+        opacity:1;
+        transition-delay: 0.3s;
+        font-size:14px; 
+    }    
+
+    label {
+      font-size: 24px;
+      float:right;
+    }
+
+    .post-status {
+        float: right;
+        color:color-light.$error;
+    }
+}
+
+#post-title,
+#post-body {
+    width:100%;
+    padding:20px;
+    margin: 10px 0px;
+    text-align: center;
+    font-size: 26px;    
+    border-radius:30px 0px 0px 0px;
+}
+
+#post-title:hover,
+#post-body:hover {
+    border-color:color-dark.$btn-primary;
+}
+
+#post-title:focus,
+#post-body:focus {
+    border-color:color-dark.$btn-primary;
+    box-shadow: 0px 0px 5px 0.5px color-dark.$btn-primary-shadow;
+}
+
+
+#post-body {
+    height: 250px;
+    font-size: 16px;
+    text-align: justify;
+}  
+
+.loadingErrors {
+    height: 20px;
+}

@@ -12,7 +12,7 @@ export const formValidation = (userInfo: User) => {
         formErrors.lastName = "Last name is required";
         formErrors.isValid = false;
     }
-    if (!userInfo.companyId) {
+    if (!userInfo.companyId || userInfo.companyId === 'defaultId') {
         formErrors.companyId = "Company name required";
         formErrors.isValid = false;
     }

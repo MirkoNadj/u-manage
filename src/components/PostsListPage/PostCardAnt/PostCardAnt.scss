@@ -1,0 +1,85 @@
+@use '../../../styles/color-light';
+@use '../../../styles/color-dark';
+
+.ant-postCard-override {
+    min-width: 300px;
+    width: 30%;
+    max-width: 500px;
+    height: 300px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 3px 1.5px color-light.$primary-shadow;
+
+    .ant-card-head-wrapper {
+        height: 30px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .ant-card-head {
+        height: 0px;
+        padding: 0px;
+        margin: 0px; 
+        display: inline;       
+    }
+    .ant-card-extra {
+        width: 100%;
+        text-align: right;
+    }
+    .ant-card-cover {
+        text-align: left;
+    
+        img {
+            width: 60px;
+            margin: 5px auto 5px 20px;
+            border-radius: 100%;
+        }
+    }
+
+    .ant-card-body {
+        padding: 10px;
+    }
+
+    .ant-card-meta {
+
+        .ant-card-meta-avatar {
+            float:right;
+            margin-top:125px;
+            
+        }
+        h2 {
+            font-size: 20px;
+            margin: 10px;
+            padding: 0px;
+            text-align: left;
+        }
+
+        h4 {
+            margin: 5px;
+            text-align: justify;
+            color: color-dark.$secondary;
+        }
+    }
+
+    .stars {
+        display: inline; 
+    }
+
+    .star-outlined {
+        font-size: 20px;
+        color: gold;
+        margin-right: 5px;
+    }
+
+    .more {
+        display: inline;
+        font-size: 24px;
+        font-weight: bold;
+        border-radius: 5px;        
+        text-align: center;
+        padding: 0px 5px;       
+    }
+
+    .more:hover{
+        background-color: color-dark.$primary-shadow;
+    }
+}

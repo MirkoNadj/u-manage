@@ -1,0 +1,34 @@
+@use '../../../styles/color-light';
+@use '../../../styles/color-dark';
+
+.weather-modal {
+    position:absolute;
+    top: 70px;
+    right: 10px;
+    z-index: +999;
+    width: 220px;
+    height: 150px;
+    padding: 5px;
+   
+    color:color-light.$primary;
+    font-size: 12px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: color-dark.$btn-primary;
+    text-align: center;
+
+    p {
+        font-size: 14px;
+        border-bottom: groove 2px color-light.$btn-primary;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .weather-modal {
+        position:absolute;
+        top: 155px;
+        z-index: +999;
+        width: 92%;
+        height: 200px;
+    }
+}

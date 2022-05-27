@@ -1,0 +1,13 @@
+@use '../../../styles/color-light';
+
+.comments {
+    height:fit-content;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 3px 1.5px color-light.$primary-shadow;
+    padding: 20px;
+
+    h2 {
+      margin-bottom: 36px;
+      border-bottom: groove 2px color-light.$btn-primary; 
+    }
+}

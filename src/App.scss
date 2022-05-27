@@ -1,0 +1,161 @@
+ @use '/src/styles/color-light';
+ @use '/src/styles/color-dark';
+
+ // LIGHT THEME
+
+.theme-light {
+    background-color: color-light.$primary-bg;
+
+    h1, h2, h3, h4, h5, h6, p, li, th, td, label, .more {
+        color: color-dark.$primary
+    };
+
+    .theme {        
+        background-color: color-light.$primary-bg;        
+    };
+
+    .ant-table-title {
+            color: color-dark.$primary;
+    };
+
+    .ant-table-theme {
+        .ant-btn-default {
+            color: color-dark.$secondary;    
+            box-shadow: 0px 0px 1px 0.05px color-light.$btn-secondary-shadow;
+        }
+    };
+
+    .backdrop {
+        background-color: rgb(66, 66, 66,0.7);
+    };
+
+    .form-body-theme {
+        background-color: color-light.$terciary-bg;
+    };
+
+    .weather-btn-theme {
+        color: color-dark.$secondary;
+        background-color: color-light.$btn-secondary;
+    };;
+
+    .postcard-theme {
+        h1, h2, h3 {color: color-dark.$primary}
+        background-color: color-light.$primary;
+        box-shadow: 0.5px 0.5px 3px 1.5px color-light.$primary-shadow;
+         
+    };
+
+    .title-body-container-theme {
+        background-color: color-light.$terciary-bg;
+
+        .ant-btn-default, .edit-post-btn {
+            color: color-dark.$primary;    
+            box-shadow: 0px 0px 1px 0.05px color-light.$btn-secondary-shadow;
+        }
+    };
+
+    .comment-theme {
+        background-color: color-light.$primary-bg;
+    };
+}
+
+//DARK THEME
+
+.theme-dark {
+    background-color: color-dark.$primary-bg;
+
+    h1, h2, h3, h4, h5, h6, p, li, th, td, label, .more {
+        color: color-light.$primary
+    };
+
+    .ant-input {
+        color: color-light.$secondary;
+        background-color: color-dark.$primary-bg;
+    };
+
+    .ant-picker,
+    .ant-form-item-required, #dOB,
+    .ant-form-select-selector, 
+    .ant-select:not(.ant-select-customize-input) 
+    .ant-select-selector, 
+    .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector,
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover
+    .ant-select-status-error.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input) 
+    .ant-select-selector, .ant-select-status-error.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input) 
+    .ant-select-selector, .ant-picker-status-error.ant-picker, .ant-picker-status-error.ant-picker:not([disabled]):hover{
+        color: color-light.$secondary;
+        background-color: color-dark.$primary-bg;
+    };
+
+    .theme {
+        background: color-dark.$primary-bg;
+    };
+
+    .backdrop {
+        background-color: color-dark.$primary;
+    };
+
+    .ant-table-theme {
+        .ant-table,
+        .ant-table-thead,
+        .ant-table-cell,
+        .ant-table-footer {
+            color:color-light.$primary;
+            background: color-dark.$primary-bg;   
+        }
+        .ant-table-tbody > tr.ant-table-row:hover > td {
+            background-color: color-dark.$secondary;
+        }
+        .ant-btn-default {
+            color: color-light.$primary;
+            background-color:color-dark.$primary-bg;
+        }        
+        .ant-select:not(.ant-select-customize-input) .ant-select-selector,
+        .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+            background-color:color-dark.$primary-bg;
+            color:color-light.$primary;
+        }
+        .ant-btn[disabled] {
+            background-color:color-dark.$primary-bg;
+        }
+    };
+
+    .weather-btn-theme {
+        color: color-light.$primary;
+        background-color: color-dark.$primary;
+    };
+
+    .postcard-theme {
+        background-color: color-dark.$btn-primary-shadow;
+        h1, h2, h3, input, textarea, .comment-name, .comment-area {
+            color: color-light.$primary;background-color: color-dark.$btn-primary-shadow
+        }
+    };
+
+    .ant-btn.ant-btn-default.del-post-btn {
+            color: color-dark.$primary;    
+            box-shadow: 0px 0px 1px 0.05px color-light.$btn-secondary-shadow;
+    };     
+
+    .comment-theme {
+        background-color: color-dark.$primary-bg;        
+        .ant-card-head-title,
+        .ant-card-body,
+        .seeMail {
+            color:color-light.$secondary;
+        }
+    }; 
+    
+    .ant-card {
+            background-color: color-dark.$primary-bg;
+    };
+};
+
+// GRID
+
+.grid-container {
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);  
+    grid-auto-rows: fit-content;
+}

@@ -1,0 +1,43 @@
+@use '../../../styles/color-light';
+@use '../../../styles/color-dark';
+
+.ant-table-override {
+    .ant-table {
+        border-radius: 20px;
+        box-shadow: 0.5px 0.5px 3px 1.5px color-light.$primary-shadow;
+    }
+    .ant-table-title {
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 20px 20px 0px 0px;
+    }
+    .ant-table-thead .ant-table-cell {        
+        font-size: 12px;
+        font-weight: 500;      
+    }
+    .fullname-col, .company-col{
+        font-size: 12px;
+        font-weight: 700;
+    }
+    .dOB-col, .position-col {
+        font-weight: 500;
+    }
+    .btn-col {
+        width: 173px;
+    }
+    .ant-btn-default {
+        margin: 0px 5px 0px 0px;
+        font-size: 12px;
+        font-weight: 650;        
+        border-radius: 3px;       
+        
+    }
+    .ant-btn-default:hover {
+        border-color: color-dark.$btn-primary;
+        box-shadow: 0px 0px 1px 0.05px color-dark.$btn-primary-shadow;
+    }
+    .ant-table-footer {
+        border-radius: 0px 0px 20px 20px;
+        padding: 16px 10px;
+    }
+}

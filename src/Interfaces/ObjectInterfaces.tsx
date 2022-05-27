@@ -1,4 +1,6 @@
 import { ChangeEventHandler, Dispatch, SetStateAction } from "react";
+import { DatePickerProps } from "antd/lib/date-picker";
+import { Params } from 'react-router-dom';
 
 export interface WeatherObject {
     tempMax: number | string;
@@ -37,19 +39,11 @@ export interface InputFieldProps {
     type: string;
     id: string;
     name: string;
+    placeholder?: string;
     value: string | number | readonly string[] | undefined,
     onChange: ChangeEventHandler,
-    error: string | number | undefined;
-}
-
-export interface SelectFieldProps {
-    label: string,
-    id: string;
-    name: string;
-    value: string;
-    defaultValue: string;
-    itemArr: { id: string, name?: string }[];
-    onChange: ChangeEventHandler,
+    onFocus?: any;
+    onBlur?: any;
     error: string | number | undefined;
 }
 
@@ -101,3 +95,58 @@ export interface TextAreaProps {
 export interface OwnPropsId {
     postDetailsId: string | undefined
 }
+
+export interface LocationProps {
+    state: {
+        currentCompanyId: string;
+        isUserFormModal: boolean;
+    }
+}
+
+export interface OwnProps {
+    setIsModal: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface TableCompanies {
+    companiesList: Company[];
+    deleteCompany: (companyItem: Company) => void;
+    removeCompanyNameForUsers: (companyItem: Company) => void;
+}
+
+export interface TableUsers {
+    usersList: User[];
+    deleteUser: (userItem: User) => void;
+    updateCompanyUsers: (userItem: User) => void;
+    title: string;
+}
+
+export interface CompanyData extends Omit<Company, 'users'> {
+    numOfUsers: number;
+}
+
+export interface UserData {
+    id: string;
+    fullName: string;
+    dOB: string;
+    companyName: string;
+    position: string;
+}
+
+export interface Paging {
+    pagingRange: number;
+    setPagingStart: Dispatch<SetStateAction<number>>;
+    setPagingEnd: Dispatch<SetStateAction<number>>;
+}
+
+type ExtractPickProps<T extends DatePickerProps["picker"]> = Extract<
+    DatePickerProps,
+    { picker: T }
+>;
+export type PickerDate = ExtractPickProps<"date">;
+
+export interface Theme {
+    theme: boolean;
+    setTheme: Dispatch<SetStateAction<boolean>>
+}
+
+

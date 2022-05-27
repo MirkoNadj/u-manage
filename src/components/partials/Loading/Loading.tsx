@@ -1,10 +1,11 @@
 import React, { FC } from "react";
-import './Loading.css';
+import './Loading.scss';
+import { SpinnerCircularFixed } from 'spinners-react';
 
 export const Loading: FC = () => {
     return (
         <div className="loading">
-            <h1>LOADING POSTS...</h1>
+            <SpinnerCircularFixed size={90} thickness={135} speed={100} color="rgba(57, 105, 172, 1)" secondaryColor="rgba(57, 62, 172, 1)" />
         </div>
     )
 }

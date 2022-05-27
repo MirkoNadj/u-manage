@@ -2,7 +2,8 @@ import React, { FC, useState, useEffect, useCallback } from "react";
 import { getWeather } from "../../../services/getWeather";
 import { WeatherObject } from "../../../Interfaces/ObjectInterfaces";
 import { PositionObject } from "../../../TypeFiles/ObjectTypes";
-import "./WeatherModal.css";
+import "./Weather.scss";
+import { motion } from 'framer-motion';
 
 export const WeatherModal: FC = () => {
     const [weather, setWeather] = useState<WeatherObject>({
@@ -50,20 +51,65 @@ export const WeatherModal: FC = () => {
         }
     }, [fetchWeather, location]);
 
+    const modalVariant = {
+        startMotion: {
+            x: '100vw',
+            opacity: 0,
+        },
+        endMotion: {
+            x: 0,
+            opacity: 1,
+            transition: {
+                type: 'tween',
+                duration: 0.8,
+                when: 'beforeChildren',
+                staggerChildren: 0.1
+            }
+        }
+    }
+
+    const itemVariant = {
+        startMotion: {
+            x: '100vw',
+            opacity: 0
+        },
+        endMotion: {
+            x: 0,
+            opacity: 1,
+            transition: {
+                type: 'spring',
+                duration: 1,
+                bounce: 0.3,
+            }
+        }
+    }
+
+
+
     if (weather) {
         return (
-            <div className="weather-modal isHovering">
-                <p>Weather today:</p>
-                <h5>Max temperature: {weather.tempMax}</h5>
-                <h5>Min temperature: {weather.tempMin}</h5>
-                <h5>Pressure: {weather.pressure}</h5>
-                <h5>Humidity: {weather.humidity}</h5>
-            </div>
+            <motion.div
+                className="weather-modal isHovering theme"
+                variants={modalVariant}
+                initial='startMotion'
+                animate='endMotion'
+            >
+                <motion.p variants={itemVariant}>Weather today:</motion.p>
+                <motion.h4 variants={itemVariant}>Max temperature: {weather.tempMax} <sup>o</sup>C</motion.h4>
+                <motion.h4 variants={itemVariant}>Min temperature: {weather.tempMin} <sup>o</sup>C</motion.h4>
+                <motion.h4 variants={itemVariant}>Pressure: {weather.pressure} mmHg</motion.h4>
+                <motion.h4 variants={itemVariant}>Humidity: {weather.humidity} %</motion.h4>
+            </motion.div>
         );
     }
     return (
-        <div className="weather-modal isHovering">
+        <motion.div
+            className="weather-modal isHovering"
+            variants={modalVariant}
+            initial='startMotion'
+            animate='endMotion'
+        >
             <p>Unable to get location</p>
-        </div>
+        </motion.div>
     );
 };
