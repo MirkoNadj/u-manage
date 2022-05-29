@@ -26,11 +26,11 @@ export const companiesSlice = createSlice({
 
     updateCompanyUsers(state, action:PayloadAction<User>) {
         let changedCompanyList = state.companiesList.map((companyItem) => {
+            companyItem.users = companyItem.users.filter(userItem => userItem !== action.payload.id);
             if (companyItem.id === action.payload.companyId) {                
                 companyItem.users.push(action.payload.id);
                 return companyItem;
-            }
-            companyItem.users = companyItem.users.filter(userItem => userItem !== action.payload.id);
+            }            
             return companyItem;
         });
         state.companiesList = changedCompanyList;
