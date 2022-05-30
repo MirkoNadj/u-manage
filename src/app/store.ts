@@ -38,6 +38,7 @@ store.subscribe(()=>{
   saveToLocalStorage({
     users: store.getState().users,
     companies: store.getState().companies,
+    posts: store.getState().posts
   });
 });
 

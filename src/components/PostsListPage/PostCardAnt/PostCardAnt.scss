@@ -81,5 +81,12 @@
 
     .more:hover{
         background-color: color-dark.$primary-shadow;
+    }   
+}
+
+@media screen and (max-width: 660px) {
+    
+    .ant-postCard-override {
+        width: 100%;
     }
 }
